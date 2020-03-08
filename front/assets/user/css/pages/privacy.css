@@ -1,0 +1,89 @@
+.privacy_panel {
+    padding: 0px 30px 30px 25px;
+}
+
+.form_btn2 {
+    background: #52387a;
+    border-radius: 0px;
+    height: 35px;
+    color: #ff9933;
+    text-transform: none;   
+    letter-spacing: 2px;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 10px 15px 10px 15px;
+    width: 80%;
+}
+
+.privacy_block {
+    margin-top: 30px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(135 , 127 , 147 , 0.5);
+    /* width: 100%; */
+    margin-left: -25px;
+    margin-right: -30px;
+}
+
+.privacy_block div.row:nth-child(1) {
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.privacy_block div.row:nth-child(2) {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.privacy_img {
+    width: 38px;
+}
+
+.privacy_label {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.privacy_button {
+    text-align: right;
+}
+
+.margin_bottom_4 {
+    margin-bottom: 4px;
+}
+
+.margin_4 {
+    margin-bottom: 4px; 
+    margin-top: 4px;
+}
+
+.privacy_block_last {
+    margin-top: 30px;
+    padding-bottom: 0px;
+    border-bottom: 0px solid rgba(135 , 127 , 147 , 0.5);
+    /* width: 100%; */
+    margin-left: -25px;
+    margin-right: -30px;
+}
+
+.privacy_block_last div.row:nth-child(1) {
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.privacy_block_last div.row:nth-child(2) {
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    margin-top: 20px;
+    align-items: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}

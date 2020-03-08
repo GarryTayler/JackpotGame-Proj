@@ -1,0 +1,53 @@
+
+#grTable.table > thead > tr > th {
+    padding: 2px 6px;
+    text-align: center;
+    vertical-align: middle;
+    color: black;
+    font-weight: bold;
+}
+
+#grTable.table > tbody > tr > td {
+    padding: 4px 6px;
+    text-align: center;
+    vertical-align: middle;
+    color: #313131;
+}
+
+#grTable.table > tbody > tr > td img {
+    width: 30px;
+    height: 30px;
+}
+#grTable.table tbody td>button {
+    padding: 8px 12px;
+}
+#grTable .no-data {
+    height: 100px;
+    font-weight: bold;
+}
+.m-tooltip .tooltip-inner {
+    color: #f3f3f3;
+    background: black;
+    -webkit-box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.1);
+    -moz-box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.1);
+    box-shadow: 0px 1px 15px 1px rgba(69, 65, 78, 0.1);
+    border-radius: 5px !important;
+}
+.m-tooltip.bs-tooltip-top .arrow::before,
+.m-tooltip.bs-tooltip-auto[x-placement^="top"] .arrow::before {
+    border-top-color: black;
+}
+
+.light-theme a, .light-theme span {
+    border-radius: 0 !important;
+    font-size: 18px;
+    line-height: 24px;
+    border: 1px solid #BBB;
+    padding: 4px 10px;
+}
+.gr-change-btn:focus,
+#search-form button:focus {
+    background-color: #36a3f7;
+    color: white;
+    border: 1px solid #36a3f7;
+}

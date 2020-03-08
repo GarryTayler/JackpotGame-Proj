@@ -1,0 +1,112 @@
+.profile-info-wrapper{
+    margin-top:40px;
+    padding:0px;
+    margin-left:0px;
+    margin-right:0px;
+    /*border-bottom: 2px solid #2F3753;*/
+}
+.clearfix {
+    margin-top:30px;
+}
+.profile-wrapper {
+    margin-bottom: 20px;
+    background: #131933;
+}
+.profile-wrapper input {
+    background: #303D60;
+    border-radius: 4px;
+    height: 40px;
+    color:white;
+}
+.profile-wrapper input:focus{
+    outline: none;
+}
+.profile-info-wrapper div {
+    padding:10px 0px;
+}
+.profile-info-wrapper label {
+    color:white;
+    font-size: 13px;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.profile-info-wrapper input {
+    width: calc(100% - 105px);
+    float: left;
+}
+.profile-info-wrapper button,
+.btn_change{
+    background: #7598FE;
+    width: 80px;
+    color:white;
+    font-size: 13px;
+    border-radius: 4px;
+    height: 40px;
+    padding-top:9px;
+    margin-left: -5px;
+    text-transform:none;
+}
+.profile-overview {
+    color:white;
+    margin-top:20px;
+    font-size:14px;
+}
+.overview-wrapper {
+    margin:20px 0px 10px 0px;
+}
+.overview-wrapper p{
+    margin-bottom: 5px;
+    font-size:12px;
+}
+@media(min-width: 776px) {
+    .left-overview:first-child{
+        border-bottom:1px solid #2C3552;
+    }
+    .left-overview {
+        border-right:1px solid #2C3552;
+        padding:0px;
+    }
+    .right-overview:nth-child(2){
+        border-bottom:1px solid #2C3552;
+    }
+}
+@media(max-width: 776px) {
+    .left-overview {
+        margin-bottom: 5px;
+        padding:0px;
+        border-right: 0px;
+        border-bottom:1px solid #2C3552;
+    }
+    .right-overview{
+        margin-bottom: 5px;
+        padding:0px;
+        border-bottom:1px solid #2C3552;
+    }
+    .right-overview:nth-child(4) {
+        border-bottom: 0px;
+    }
+}
+.security-wrapper p {
+    color:white;
+    font-size:12px;
+    margin-bottom: 5px;
+}
+.avatar-wrapper {
+    padding:60px;
+    text-align:center;
+    float:left;
+}
+.avatar-wrapper img {
+    width:100%;
+    margin-bottom: 20px;
+    border-radius: 4px;
+}
+.avatar-wrapper button {
+    width:100%;
+}
+.avatar-wrapper p {
+    font-size:11px;
+    color:#797D97;
+    margin-bottom: 0px;
+    height: 18px;
+}

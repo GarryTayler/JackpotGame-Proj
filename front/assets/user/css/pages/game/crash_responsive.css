@@ -1,0 +1,232 @@
+.increase_mode_div {
+	height: 50px;
+}
+
+@media (max-width:1890px){
+	.increase_mode_div {
+		width: 100%;
+	}
+	.increase_mode {
+		padding-top: 2px !important;
+	}
+	span.increase_mode {
+    	width: 50%;
+    	/* line-height: 2.3; */
+    }
+    .bet_input_div {
+    	width: 100%;
+    	margin-top: 10px;
+    }
+    .bet_input {
+	    margin-left: 0;
+	    width: 100% !important;
+	}
+	#current_players {
+		order: 2;
+		margin: 10px auto;
+	}
+	#winner_div {
+		order: 3;
+		margin: auto;
+	}
+}
+
+@media (max-width:1724px){
+	.increase_mode {
+		padding-top: 0px !important;
+	}
+	.increase_mode {
+		line-height: 1.45 !important;
+	}
+}
+
+@media (max-width:1490px){
+	.bet_btn_div {
+		display: block !important;
+	}
+	.bet_btn {
+		float: left;
+		margin-right: 10px;
+	}
+}
+
+@media (max-width:1400px) {
+	.current_users_header .user_name_div {
+		font-size: 14px;
+	}
+	.current_users_header .bet_amount_div {
+		font-size: 14px;
+	}
+	.current_users_header {
+    	font-size: 14px;
+    }
+    .select_mode_div {
+    	max-width: 100%;
+		flex: 100%;
+    }
+    .mode_label {
+    	margin: 12px 10px 10px 10px !important;
+    }
+    .select_button_div {
+    	max-width: 100%;
+		flex: 100%;
+    }
+    .button_label {
+    	margin: 12px 10px 10px 10px !important;
+    }
+    .icon_button_div {
+    	margin: 10px 0 10px 20px;
+    }
+}
+
+@media (max-width:1250px){
+	body {
+    	font-size: 14px;
+    }
+	.chat-panel-open .chat-panel {
+	    transition: left 0.4s;
+	    left: -270px;
+	}
+
+	.chat-panel {
+	    transition: left 0.4s;
+	    z-index: 9994;
+	    position: fixed;
+	    top: 0;
+	    bottom: 0;
+	    left: 0;
+	    width: 270px;
+	}
+
+    .copen {
+    	display: block;
+    }
+	
+	.icon_button_div .sound_button_div, .icon_button_div .time_button_div {
+		width: 50%;
+		margin: 0 !important;
+	}
+	.icon_button_div .sound_button_div .btn_sound, .icon_button_div .history_refresh {
+		margin: auto;
+	}
+	.main-panel {
+		order: 2;
+	}
+	.game_panel {
+	    padding-right: 0;
+	    padding-left: 0;
+	}
+
+}
+@media (max-width:1150px){
+	.top_cash_container {
+		margin-left: 0px;
+	}
+	.bottom_cash_container {
+		margin-left: 0px;
+	}
+	#main-container {
+	    width: 100%;
+	}
+}
+@media (max-width:991px){
+	/*#top_panel {
+		border: none !important;
+		background: none !important;
+	}*/
+	#top_panel > .main-panel > div {
+		width: 50%;
+		padding: 10px;
+	}
+	#main-container {
+		width: 100%;
+	}
+	#sidebar .sidebarNav {
+		display: none !important;
+	}
+	.bet_mode_div {
+		margin: 0 !important;
+	}
+}
+@media (max-width:769px) {
+	.top_cash_container .col-md-8 {
+		flex: 0 0 100%;
+		max-width: 100%;
+	}
+}
+@media (max-width:768px) {
+	.chat-panel-open .chat-panel {
+	    left: -100%;
+	}
+	.bet_btn_div {
+		display: flex !important;
+	}
+	.bet_btn {
+		margin: auto !important;
+	}
+
+	.bet_btn_mode_div {
+		display: flex !important;
+	}
+        .btn-place-bet {
+            font-size: 18px;
+        }
+	.bet_mode_div {
+            margin: auto !important;
+	}
+	.chat-panel {
+	    width: 100%;
+	}
+	.increase_mode {
+		padding-top: 0 !important;
+		/* line-height: 2.3 !important; */
+	}
+        
+	#bet_100K {
+		display: none;
+	}
+	#bet_half {
+		display: none;
+	}
+}
+
+@media (width: 768px) {
+    .bet_btn_mode_div {
+        margin-left: 35px;
+    }
+}
+
+@media (max-width:575px) and (min-width: 340px) {
+	.select_mode_div {
+		display: block !important;
+	}
+	.game_mode_div {
+		width: auto;
+    	float: left;
+    	margin: 0 !important;
+	}
+	.select_button_div {
+		display: block !important;
+		float: left;
+	}
+	.main-panel {
+		float: left;
+		margin: 0 !important;
+	}
+	.icon_button_div {
+		float: left;
+		    width: 100%;
+	}
+	.history_refresh {
+		margin-left: 10px !important;
+	}
+	.bet_btn {
+		width: 105px;
+		height: 45px;
+	}
+}
+@media (max-width:340px) {
+	#top_panel .main-panel > div {
+    	padding-right: 15px !important;
+    }
+}

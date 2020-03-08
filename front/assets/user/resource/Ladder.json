@@ -1,0 +1,12 @@
+{
+    "image" : [
+        "http://localhost:7900/assets/user/images/game/ladder/BET_1K_ACTIVE.png" , 
+        "http://localhost:7900/assets/user/images/game/ladder/BET_10K_ACTIVE.png" , 
+        "http://localhost:7900/assets/user/images/game/ladder/BET_100K_ACTIVE.png" , 
+        "http://localhost:7900/assets/user/images/game/ladder/BET_HALF_ACTIVE.png" , 
+        "http://localhost:7900/assets/user/images/game/ladder/BET_X2_ACTIVE.png" , 
+        "http://localhost:7900/assets/user/images/game/ladder/BET_MAX_ACTIVE.png" ,
+        "http://localhost:7900/assets/user/images/game/ladder/betting_blue_active.png" , 
+        "http://localhost:7900/assets/user/images/game/ladder/betting_red_active.png" 
+    ]
+}

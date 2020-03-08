@@ -1,0 +1,123 @@
+.deposit-wrapper {
+    margin-bottom: 20px;
+    background: #0B102F;
+}
+.deposit-wrapper input {
+    background: #303D60;
+    border-radius: 4px;
+    height: 40px;
+    color:white;
+}
+.deposit-wrapper input:focus{
+    outline: none;
+}
+.deposit-wrapper p {
+    margin-bottom: 5px;
+    color:white;
+}
+.bitcoin-deposit-wrapper {
+    padding:0px;
+    text-align:center;
+    float:left;
+    padding-top:50px;
+}
+.btn_change{
+    background: #7598FE;
+    width: 80px;
+    color:white;
+    font-size: 12px;
+    border-radius: 4px;
+    height: 40px;
+    margin-left: -5px;
+    text-transform:none;
+    padding:8px 16px;
+    padding-top:5px;
+}
+@media (min-width: 776px) {
+    .address-wrapper {
+        width: 70%;
+        margin-left:calc(15%);
+        margin-right:calc(15%);
+        margin-top:40px;
+    }
+}
+@media (max-width: 776px) {
+    .address-wrapper {
+        width: 100%;
+        margin-top:40px;
+    }
+}
+.address-wrapper input {
+    width: calc(100% - 155px)
+}
+.address-wrapper .btn_change {
+    width:120px;
+    margin-left: -7px;
+}
+.qr-wrapper {
+    margin-top:40px;
+}
+.qr-wrapper img {
+    width:160px;
+    height: 160px;
+    border:5px solid #333D60;
+}
+.deposit-info-wrapper {
+    padding-bottom: 30px;
+    padding-top:35px;
+}
+@media (min-width: 776px) {
+    .deposit-info-wrapper {
+        padding:50px 40px;
+        height: auto;
+    }
+    .calc-wrapper {
+        margin-top:50px;
+        width: 70%;
+        margin-left:calc(15%);
+        margin-right:calc(15%);
+    }
+}
+
+@media (max-width: 776px) {
+    .calc-wrapper {
+        margin-top:35px;
+        width: 100%;
+    }
+}
+.calc-wrapper p {
+    color:white;
+    font-size:13px;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+.calc-wrapper label {
+    vertical-align: middle;
+    width:16px;
+    color:white;
+    margin-left:5px;
+    font-weight: bold;
+    font-size: 16px;
+}
+.calc-wrapper input {
+    width:calc(50% - 16px);
+}
+.calc-wrapper span {
+    margin-left:-35px;
+    font-size:12px;
+    color:#707A95;
+}
+.pay-wrapper {
+    margin-top:40px;
+}
+.pay-wrapper p {
+    font-size:12px;
+    margin-bottom: 10px;
+}
+.pay-wrapper a {
+    cursor: pointer;
+}
+.bitcoin-deposit-wrapper .wrapper-header {
+    font-size:32px;
+    height:40px;
+}

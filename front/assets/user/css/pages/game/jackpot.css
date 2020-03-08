@@ -1,0 +1,683 @@
+#deposit {
+	/*float: right;*/
+}
+
+.btn-deposit:hover {
+	box-shadow: -3px -3px 5px 0px #6e458d,
+			3px 3px 5px 0px #6e458d,
+			3px -3px 5px 0px #6e458d,
+			-3px 3px 5px 0px #6e458d;
+}
+
+.margin-auto {
+	margin: auto;
+}
+
+.row {
+	margin: 0px;
+}
+
+/* @media (min-width: 1366px) {
+	.icon_button_div {
+		position: absolute;
+		top: 30px;
+		right: 30px;
+	}
+} */
+
+@media (min-width: 1250px) {
+	.icon_button_div {
+		position: absolute;
+		margin-top: 20px;
+		right: 30px;
+	}
+}
+
+.sound_button_div {
+	align-self: flex-end;
+	margin-right: 15px;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+.time_button_div {
+	align-self: flex-end;
+	margin-top: auto;
+	margin-bottom: auto;
+}
+
+
+span.title-small {
+	color: #fff;
+}
+
+span.numeric {
+	color: #ff9900;
+}
+
+
+/**
+Jackpot panel
+*/
+#jackpot_circle {
+	margin: auto;
+	position: relative;
+	/*width: 556px;*/
+	/*height: 556px;*/
+}
+#jackpot-wrapper {
+	position:absolute;
+	width:90%;
+	height:90%;
+	left:5%;
+	top:5%;
+	border: solid 4px white;
+	border-radius: 50%;
+}
+#div-rotate {
+	/*padding: 0px 5px 10px 5px;*/
+	/*border: solid 4px white;*/
+	/*border-radius: 50%;*/
+	text-align: center;
+	vertical-align: middle;
+	position: absolute;
+	width: 96%;
+	height: 96%;
+	left: 2%;
+	top: 2%;
+}
+#div-chart {
+	width: 100%;
+	height: 100%;
+	text-align: center;
+	vertical-align: middle;
+}
+#myChart {
+	width: 100% !important;
+	height: 100% !important;
+}
+.circle_div {
+	margin: auto;
+	/* margin-top: -479px; */
+	color: white;
+	background: radial-gradient(circle at center, #211730, transparent 62%, #2F3B63 70%, transparent 0%);
+	/* height: 400px; */
+	/* width: 400px; */
+	position: absolute;
+	width: 70%;
+	height: 70%;
+	left: 15%;
+	top: 15%;
+}
+
+#div-relative {
+	position: relative;
+}
+
+img.jackpot-timer {
+	width: 30px;
+	height: 30px;
+}
+
+#div-time-left {
+	margin: auto 0px;
+	width: 100%;
+	border-radius: 3px;
+	background: #c989fa;
+	height: 10px;
+}
+
+#div-time-elapsed {
+	margin: auto 0px;
+	width: 0px;
+	border-bottom-right-radius: 2px;
+	border-top-right-radius: 2px;
+	height: 100%;
+	background: #462f69;
+	position: absolute;
+	top: 0;
+}
+
+#time-progress-bar {
+	position: relative;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+/**
+Player Info
+*/
+#current_players {
+	/* min-width: 300px; */
+}
+
+@media (min-width: 776px) {
+	#current_players {
+		margin-left:-15px;
+		width: 250px;
+	}
+}
+#player_list {
+	border: solid 1px #1e263f; 
+	padding: 3px; overflow: auto;
+	height:calc(100% - 32px);
+}
+
+.div-player-info {
+	border: solid 1px #1f2331;
+    background: #1e263f;
+    /* height: 70px; */
+    padding: 10px 0px;
+    color: white;
+    margin-bottom: 10px;
+    font-size: 10px;
+}
+
+.div-player-info:last-child {
+	margin-bottom: 0px;
+}
+@media (min-width: 1024px) {
+	.bet-log-wrapper {
+		border:2px solid red;
+		padding-left:2px;
+		padding-right:2px;
+		min-width: 150px;
+	}
+}
+
+.div-player-info > img {
+	margin: auto 5px;
+	border-radius: 50%;
+	background: white;
+	width: 50px;
+    height: 50px;
+}
+
+.player-name {
+	font-size: 16px;
+	margin-bottom: 0px;
+}
+
+.div-deposit-info {
+	margin-top: -10px;
+}
+
+.lbl-percent {
+	color: #ffa443;
+	font-size: 20px;
+	margin: auto;
+	margin-right: 15px;
+	margin-top: -10px;
+}
+
+/**
+Last Winner
+ */
+
+@media (min-width: 992px) {
+	.deposit-wrapper {
+		border-left: 2px solid #4A5479;
+	}
+}
+.img-win {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    margin-top: 20px;
+}
+
+.img-winner {
+	margin: 0 5px;
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    background: white;
+}
+
+#last_winner {
+	font-size: 13px;
+    color: white;
+    margin-bottom: 30px;
+    padding: 20px 0 0 20px;
+    border: solid 1px #4c4c71;
+    background: #1e263f;
+    display: flex;
+    box-shadow: 0px 7px 9px #20283F;
+}
+
+#last_winner_name {
+	font-size: 18px;
+	word-break: keep-all;
+}
+
+.last-win-info > div {
+	margin: -10px 0px;
+}
+
+.last-win-info > div:first-child {
+	margin-bottom: 0px;
+}
+
+
+/**
+Deposit
+ */
+
+button.btn-deposit {
+	background: linear-gradient(#834298, #475e82);
+	border-radius: 10px;
+	height: 100px;
+	width: 110px;
+	font-size: 25px;
+	color: #fbd3fe;
+	margin: 5px auto;
+	border: solid 1px rgb(86, 59, 119);
+}
+
+div.betting-container {
+	border-radius: 9px !important;
+	background-color: #24153a;
+	height: 50px;
+	border: 1px solid rgba(253, 252, 253, 0.31);
+	margin: auto;
+	align-items: center;
+	flex-direction: row;
+	box-sizing: border-box;
+	display: flex;
+	position: relative;
+	box-shadow: 0 1px 0 hsla(0, 0%, 100%, .02), inset 0 1px 3px rgba(0, 0, 0, .1);
+	overflow: hidden;
+	width: 100%;
+}
+
+div.betting-container:after, div.betting-container:before {
+	z-index: 1;
+	content: "";
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	width: 1.375rem;
+	opacity: .4;
+}
+
+div.betting-container:before {
+	background: linear-gradient(90deg, #000, transparent);
+}
+
+
+/* deposit input */
+
+#bet {
+	height: 48px;
+	padding: 5px 20px;
+	font-size: 15px;
+	margin-left: -32px;
+	padding-left: 39px;
+	color: #fff;
+	border-color: #303030;
+	background: #24153a;
+	display: block;
+	line-height: 1.42857143;
+	border: 1px solid transparent;
+	border-radius: 3px;
+	box-shadow: none;
+	margin-bottom: 0px;
+}
+
+div.betting-container:after {
+	right: -5px;
+	background: linear-gradient(270deg, #000, transparent);
+}
+
+.clear_bet {
+	cursor: pointer;
+}
+
+.clear_bet:hover {
+	opacity: .8;
+}
+
+
+/**
+Top panel
+ */
+#top_panel {
+	box-shadow: 11px 9px 15px 1px #252F4A;
+	background: #151d33;
+	margin-top: 20px;
+	font-size: 14px;
+	position: relative;
+}
+
+#top_panel > .main-panel {
+	margin: 8px;
+	padding: 8px 0px;
+	color: white;
+}
+
+#top_panel > .main-panel > div {
+	text-align: center;
+}
+
+#top_panel > .main-panel > div:last-child {
+	padding-right: 0px;
+}
+
+#top_panel > .main-panel > div > label {
+	margin-bottom: 2px !important;
+}
+
+#top_panel > .main-panel > div > div {
+	/*text-align: center;*/
+	font-size: 20px;
+}
+
+.btn-bet {
+	border: solid 2px #ff7ceb;
+	background: linear-gradient(#c925ac, #cd54e3);
+	border-radius: 10px;
+	text-transform: none;
+	font-size: 14px;
+	padding: 3px 40px;
+	margin: auto;
+}
+
+.btn-bet:hover {
+	box-shadow: -3px -3px 5px 0px #6e458d,
+	3px 3px 5px 0px #6e458d,
+	3px -3px 5px 0px #6e458d,
+	-3px 3px 5px 0px #6e458d;	
+}
+
+.bet-btn-container {
+	margin-top: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-evenly;
+	width: 265px;
+}
+#last_win_percent,
+#last_win_amount {
+	color: white;
+}
+#jackpotBetWrap {
+	position: relative;
+}
+#jackpotBetWrap div.input-group-append span {
+	background-color: #ffbd09;
+    border-radius: 0;
+    border: 1px solid #ffbd09;
+    color: #856400;
+    height: 50px;
+    font-size: 18px;
+    padding: .375rem 0.8rem;
+    font-weight: bold;
+}
+#jackpotBetWrap input {
+	border-radius: 0;
+    border: none;
+	background-color: #1e263f;
+	color: white;
+	font-weight: bold;
+	font-size:.8rem;
+}
+#jackpotBetWrap .input-group-prepend span{
+	background-color: #1e263f;
+	border:#1e263f;
+}
+@media(max-width: 992px) {
+	.deposit-wrapper {
+		padding-right:10px;
+	}
+	.btn-grid-deposit {
+		/*width: calc(50% - 20px);*/
+		/*margin:10px;*/
+	}
+}
+@media(min-width: 992px) {
+	.btn-grid-deposit {
+		width: calc(33.33% - 5px);
+		margin: 5px auto;
+	}
+	.deposit-wrapper {
+		padding-right:0px;
+	}
+}
+.bet-btn-grid-container {
+  	grid-template-columns: auto auto auto;
+	grid-gap: 10px;
+}
+
+.bet-btn-grid-container .btn-grid-deposit {
+	position: absolute;
+	width: 96%;
+	height: 96%;
+	top: 2%;
+	left: 2%;
+	border-radius: 0;
+    font-size: 24px;
+	color: #6f7890;
+	font-weight: bold;
+	border: solid 1px rgb(0, 0, 0);
+	background-image: none;
+	background-color: transparent;
+	padding: 0;
+}
+.btn-grid-deposit.third{
+	border-top-right-radius: 20px;
+}
+.bet-btn-grid-container button:focus,
+.bet-btn-grid-container button:hover,
+.bet-btn-grid-container button:active {
+	background-color: #7498fd;
+	color: white;
+	border: 1px solid #7498fd;
+}
+@media (max-width: 992px) {
+	#jackpotBetWrap div.input-group-append span {
+		font-size: 20px;
+		height: 50px;
+	}
+	.bet-btn-grid-container {
+	    grid-template-columns: auto auto;
+	}
+	.btn-grid-deposit.third {
+		border-top-right-radius: 0;
+	}
+}
+
+@media (min-width: 586px) {
+	.order-md-1{-webkit-box-ordinal-group:4;-ms-flex-order:1;order:1}
+	.order-md-2{-webkit-box-ordinal-group:4;-ms-flex-order:2;order:2}
+	.order-md-3{-webkit-box-ordinal-group:4;-ms-flex-order:3;order:3}
+}
+
+#referralPanelWrap {
+	display: flex;
+	min-height: 750px;
+}
+#referralPanelWrap .referralBox {
+	flex: 2;
+}
+#referralPanelWrap .howItWorksWrap {
+	flex: 1;
+	background-color: #131832;
+	padding: 30px 10px 15px 10px;
+}
+.howItWorksWrap .howItWorksItem {
+	display: flex;
+}
+.howItWorksWrap .howItWorksItem img {
+	width: 100px;
+	height: 100px;
+	margin-right: 5px;
+}
+.howItWorksWrap .howItWorksItem h4 {
+	font-size: 15px;
+	color: white;
+}
+.howItWorksWrap .howItWorksItem p {
+	margin-bottom: 0;
+	font-size: 11px;
+	line-height: 1.5;
+}
+.howItWorksWrap h3{
+	font-size: 17px;
+	font-weight: bold;
+	color: white;
+	text-align: center;
+	margin-bottom: 24px;
+}
+.howItWorksItem.arrow-img img {
+	width: 36px;
+	height: 60px;
+	margin-left: 36px;
+}
+.referralBox {
+	background-color: #1e263f;
+	padding-top: 30px;
+	padding-bottom:20px;
+}
+.referralBox h3 {
+	font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    color: white;
+}
+.referralBox p {
+	text-align: center;
+	color: white;
+}
+.withdraw-from-wrapper,
+.referral-from-wrapper {
+	max-width: 70%;
+    display: block;
+    margin: 0 auto;
+}
+.withdraw-from-wrapper  label,
+.referral-from-wrapper  label {
+	color: white;
+}
+
+.withdraw-from-wrapper .input-group-text,
+.referral-from-wrapper .input-group-text {
+	text-align: center;
+	display: block;
+	padding: .6rem .75rem;
+}
+
+.referral-from-wrapper .input-group-text {
+	background-color: #4c5778;
+	color: #838ba5;
+	border: 1px solid #4c5778;
+}
+
+.referral-from-wrapper .input-group-text {
+	width: 100px;
+}
+
+.withdraw-from-wrapper input.form-control,
+.referral-from-wrapper input.form-control {
+	padding: .6rem .75rem;
+	font-size: 1.3rem;
+	background-color: #313d60;
+    border: 1px solid #313d60;
+    color: white;
+}
+
+.referral-from-wrapper .input-group-text:hover {
+	background-color: #6f93fa;
+	color: white;
+	border: 1px solid #6f93fa;
+}
+
+.referral-from-wrapper input.form-control:focus {
+	z-index: 2;
+}
+.referral-from-wrapper .input-group-append {
+	margin-left: -5px;
+}
+
+#yourReferralCode,
+#yourReferralLink {
+	border-radius: 5px;
+	z-index: 2;
+}
+.wdPlaceholder {
+	background-color: #313d60;
+    border: 1px solid #313d60;
+    border-top-right-radius: .25rem !important;
+	border-bottom-right-radius: .25rem !important;
+	color: #bbb9b9;
+    font-weight: bold;
+}
+#wdEqualSign {
+	background-color: #1e263f;
+	border: 1px solid #1e263f;
+	font-weight: bold;
+	color:white;
+}
+.withdraw-from-wrapper button.wd-btn {
+    border: 0 none;
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: 500;
+    height: 44px;
+    line-height: 44px;
+    padding: 0 25px;
+    position: relative;
+    text-transform: uppercase;
+	vertical-align: middle;
+	background-image: none;
+	background-color: #6287f1;
+	color:white;
+}
+.withdraw-title {
+	text-align: center;
+    color: white;
+    font-weight: bold;
+}
+#withdrawBitcoinInfo {
+	max-width: 85%;
+    margin: 0 auto;
+    border: 1px solid #222946;
+    padding: 30px 15px;
+    border-radius: 5px;
+	margin-top: 40px;
+	position: relative;
+}
+#withdrawBitcoinInfo span {
+	color: white;
+    font-size: 12px;
+    position: absolute;
+    top: -15px;
+    background-color: #131832;
+    padding-left: 3px;
+    padding-right: 3px;
+}
+.wd-info-bg {
+	position: absolute;
+    max-width: 80%;
+    right: 0;
+    bottom: 0;
+}
+.howItWorksWrap.withdraw {
+	min-height: 600px;
+	position: relative;
+}
+@media (max-width: 992px) {
+	#referralPanelWrap {
+		display: block;
+	}
+	.referral-from-wrapper .input-group-text {
+		width: 80px;
+	}
+	.howItWorksWrap.withdraw {
+		min-height: 500px;
+	}
+    .withdraw-from-wrapper,
+    .referral-from-wrapper {
+        max-width: 90%;
+    }
+}

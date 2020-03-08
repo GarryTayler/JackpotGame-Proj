@@ -1,0 +1,732 @@
+/*=========================================================
+Author        : Micky UC
+Template Name : Cryptocash - ICO & Cryptocurrency Landing Page HTML Template
+Version       : 1.0
+Date Modified : 2019.04.22
+==============================================================*/
+div.main_container {
+    padding-top: 160px;
+}
+
+div.main_container.submenu_css {
+    padding-top: 270px !important;
+}
+.right-menu {
+    margin-right:0px !important;
+}
+.right-menu >li {
+    padding: 0px 10px !important;
+}
+.menu-btn {
+    background: #131933;
+    color: white !important;;
+    font-weight: bold !important;;
+    border-radius: 40px !important;;
+    border:2px solid #252B4F !important;;
+    width: 104px !important;;
+    text-align: center !important;
+    padding:.3rem 1rem;
+}
+.menu-btn:hover{
+    background: #252B4F;
+}
+a.nav-link.signup {
+    color: #fff;
+}
+
+a.btn.btn-default.nav_item:hover {
+    background: #0a0b0e;
+}
+
+a.nav-link.nav_item.signup:hover {
+    color: #ff67cb;
+}
+
+#search_text {
+    border-radius: 0px;
+    background: #372a4b;
+    height: 55px;
+    padding-top: 15px; 
+    padding-bottom: 15px;
+    padding-left: 25px;
+    border: none;
+    width: 90%;
+    float: left;    
+    color: #fff;
+    outline: 0;
+    font-size: 14px;
+}
+
+#search_btn {
+    float: left;
+    width: 10%;
+    padding: 10px;
+    background: #372a4b;
+    color: white;
+    font-size: 17px;
+    border-left: none;
+    cursor: pointer;
+    height: 55px;
+    border-radius: 0px;
+    outline: 0;
+}
+
+#search_btn:hover {
+    opacity: .7;
+}
+
+.parallelogram {
+    height: 50px;
+    text-align: left;
+    color: #fff;
+    position: relative;
+    padding: 10px 10px 10px 20px;
+    line-height: 30px;
+    z-index: 1000;
+}
+
+.parallelogram:after {
+      background: #52387a;
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      -webkit-transform: skew(-15deg);
+      -moz-transform: skew(-15deg); 
+      -o-transform: skew(-15deg); 
+      z-index: -1;
+  }
+
+  div.history_tab {
+    align-self: center;
+  }
+
+  div.history_tab ul {
+        display: flex;
+        list-style: none;
+        flex-direction: row;
+        justify-content: space-around;
+        color: #8775a3;    
+  }
+
+  div.history_tab ul li{
+    cursor: pointer;  
+  }
+
+  div.history_tab ul li:hover{
+     color: #ff67cb;
+  }
+
+  div.history_tab ul li.active:hover{
+    color: #ff67cb;
+    border-bottom: 1px solid #ff67cb;
+ }
+
+  div.history_tab ul li.active {
+    color: #fff;
+    border-bottom: 1px solid #fff;
+  }
+
+  .font_size_11 {
+    font-size: 11px !important; 
+  }
+
+  .font_size_12 {
+      font-size: 12px;
+  }
+
+  .font_size_13 {
+        font-size: 13px;
+   }
+
+.font_size_14 {
+    font-size: 14px;
+}
+
+.font_size_15 {
+    font-size: 15px;
+}
+
+.font_size_16 {
+    font-size: 16px;
+}
+
+.font_size_18 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.history_panel {
+    background: #4c3d64;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 220px;
+    padding: 15px 0px 15px 0px;
+    font-size: 14px;   
+    max-width: 31%;
+}
+
+.balance_history {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: center;    
+}
+
+.avatar_mark {
+    margin-right: 10px;
+}
+
+.balance_history span {
+    color: #f6bb43;   
+}
+
+.grey_color {
+    color: #aa9ebe;
+}
+
+.avatar1 {
+    height: 60px;
+    border-radius: 30px;
+}
+
+.bet_panel {
+    background: rgba(55 , 42 , 75 , 0.5); 
+    min-height: 285px; 
+    width: 100%; 
+    padding: 20px 0px 30px 0px;
+}
+
+div.latest_news {
+    padding-bottom: 0px;   
+}
+
+.latest_news .row , .ticket_panel .row , .match_panel .row , .trade_panel .row {
+    margin-left: 0px; 
+    margin-right: 0px; 
+    margin-bottom: 20px; 
+    padding: 0px 30px 0px 30px;
+}
+
+.news_panel {
+    display: flex; 
+    flex-direction: row;
+    background: #4c3d64;
+    margin-left: 30px !important;
+    margin-right: 30px !important;
+    border-radius: 6px;
+    padding: 20px 0px 20px 0px !important;
+}
+
+img.news_img {
+    height: 170px;
+}
+
+img.news_icon {
+    height: 25px;
+}
+
+.flex-center {
+    justify-content: center;   
+}
+
+.load_more {
+    cursor: pointer;
+}
+
+.load_more:hover {
+    opacity: .8;
+}
+
+.bottom_div {
+    border-top: 1px solid #584d6b;
+    padding-top: 20px !important;
+    margin: 0px 30px 20px 30px !important;
+}
+
+.avatar_div {
+  text-align: center;
+}
+
+.avatar_div .avatar_result {
+    height: 30px;
+    width: 30px;
+    background: #f6bb43;
+    border-radius: 20px;
+    position: absolute;
+    top: 110px;
+    margin-left: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.parallelogram1 {
+    height: 50px;
+    color: #fff;
+    position: relative;
+    padding: 10px 10px 10px 10px;
+    line-height: 30px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: row;
+}
+
+.parallelogram1:after {
+      background: #52387a;
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      -webkit-transform: skew(-15deg);
+      -moz-transform: skew(-15deg); 
+      -o-transform: skew(-15deg); 
+      z-index: -1;
+  }
+
+  .parallelogram1 div:nth-child(1) {
+        width: 70%;
+        margin-left: 10px;
+  }
+
+  .parallelogram1 div:nth-child(2) {
+         width: 30%;
+  }
+
+  .parallelogram1 div.method {
+        text-align: right;
+        margin-right: 15px;   
+  }
+
+  .parallelogram1 div.method a {
+        font-size: 14px;
+        text-decoration: underline;
+  }
+
+
+  .panel_div {
+    background: #4c3d64;
+    border-radius: 6px;
+    display: flex;
+    line-height: 15px;
+  }
+
+.parallelogram_btn {
+    height: 20px;
+    color: #fff;
+    position: relative;
+    padding: 10px 10px 10px 10px;
+    z-index: 1000;
+    line-height: 0px;
+    display: flex;
+    justify-content: center;
+    min-width: 80px;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.parallelogram_btn:after {
+      background: #4c3d64;
+      position: absolute;
+      content: '';
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      -webkit-transform: skew(-15deg);
+      -moz-transform: skew(-15deg); 
+      -o-transform: skew(-15deg); 
+      z-index: -1;
+      border: 1px solid #fff;
+  }
+
+  .ticket_panel .panel_div {
+      flex-direction:  column;
+      padding: 20px 10px 20px 10px !important;
+      margin: 0px 20px 10px 20px !important;
+  }
+
+  .trade_panel .panel_div {
+    padding: 20px 10px 20px 10px !important;
+    margin: 0px 20px 10px 20px;
+  }
+
+  .match_panel .panel_div {
+    padding: 10px 5px 10px 0px !important;
+    margin: 0px 10px 7px 10px !important;
+  }
+
+  .display_column {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .display_row {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+  }
+
+  .bet_label {
+    background: #d870ad;
+    padding: 2px 8px 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;      
+  }
+
+    .parallelogram_button {
+        height: 43px;
+        text-align: center;
+        color: #fff;
+        position: relative;
+        padding: 15px 40px 15px 40px;
+        z-index: 1000;
+        font-size: 13px;
+        line-height: 13px;
+    }
+
+    .parallelogram_button:hover {
+        cursor: pointer;
+    }
+
+    .parallelogram_button:hover:after {
+        background: #7a52b4;
+    }
+
+    .parallelogram_button:after {
+        background: #52387a;
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        -webkit-transform: skew(-15deg);
+        -moz-transform: skew(-15deg); 
+        -o-transform: skew(-15deg); 
+        z-index: -1;
+    }
+
+.matches_img 
+{
+    height: 20px;
+    width: 25px;
+}
+
+.left_part {
+    padding-right: 30px;    
+}
+
+.right_part {
+    padding: 0px 15px 0px 15px;
+    color: #fff;    
+}
+
+
+/*
+submenu ================================================================================================================================================
+*/
+
+.fixed-submenu {
+    position: fixed;
+    top: 80px;
+    right: 0;
+    left: 0;
+    z-index: 999;    
+}
+
+.header_wrap.fixed-submenu {
+    background-color: #211730;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+    opacity: .8;
+    display: flex;
+    align-items: center;
+}
+
+header.header_wrap.fixed-submenu.nav-fixed {
+    top: 70px;
+}
+
+div.container-fluid_sub {
+    display: flex;
+    flex-direction: column;
+}
+
+.sub_menu_label {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;    
+    padding-left: 1em;
+}
+
+.sub_menu_detail ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+}
+
+header.header_wrap.fixed-submenu.nav-fixed div.container-fluid_sub div.sub_menu_label {
+    display: none;
+}
+
+.sub_detail_menu {
+    color: #8c6cb7;   
+    font-weight: 500;
+}
+
+.sub_detail_menu.active {
+    color: #32d056;
+    font-weight: 500;
+}
+
+/*
+div.container-fluid_sub div.sub_menu_detail ul > li > .nav-link.active:before {
+    background-color: #ffffff;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 10002;
+    width: 0;
+    height: 1px;
+    margin: 0 auto;
+    background: #ffffff;
+    transition: .2s all ease-in-out;
+    width: 80%;
+}*/
+
+.submenu_li {
+    display: flex;
+    flex-direction: row;
+    align-items: center;    
+}
+
+div.container-fluid_sub {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media (min-width: 576px) {
+    div.container-fluid_sub {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    div.container-fluid_sub {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    div.container-fluid_sub {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    div.container-fluid_sub {
+        max-width: 1170px;
+    }
+}
+
+.container-fluid_sub {
+    position: relative;
+    z-index: 5;
+}
+
+.container-fluid_sub {
+    width: 100%;
+    padding-right: 15px;
+    margin-right: auto;
+    margin-left: auto;    
+}
+
+i.fa.fa-close.link-color {
+    cursor: pointer;
+}
+
+/*
+submenu ================================================================================================================================================
+*/
+
+.logo_light , .logo_dark {
+    height: 50px;
+}
+.logo-border{
+    border-right: 2px solid #485991;
+    padding-left:5px;
+}
+.profile_avatar {
+    width: 32px;
+    border-radius: 50%;
+}
+
+#avatar_name {
+    color: #fff; 
+    margin-left: 15px; 
+    letter-spacing: 2px;
+    min-width: 50px;
+    font-size:13px;
+}
+
+.profile_icon1 {
+    width: 15px;
+    margin-right: 8px;   
+}
+
+.profile_icon2 {
+    width: 18px;
+}
+
+#profile_balance {
+    font-size: 13px;
+    color: #eeb545;
+    margin-right: 8px;        
+    font-weight: 600;
+}
+
+.header_wrap.fixed-top  .vip_level {
+    color: #fff; 
+    line-height: 16px; 
+}
+
+.header_wrap.fixed-top.nav-fixed  .vip_level {
+    color: #fff; 
+    line-height: 16px; 
+}
+
+.profile_dropdown_btn {
+    cursor: pointer;
+}
+
+.profile_dropdown_btn:hover{
+    opacity: .8;
+}
+
+#myDropdown a {
+    color: #fff;
+}
+
+#myDropdown {
+    padding: 10px 0px 10px 0px;
+}
+
+.vip_level {
+    background:#d770ac !important;
+    padding: 2px 10px 2px 10px;    
+}
+
+.online_avatar {
+    position: absolute;
+    left: 28px;
+    top: 5px;
+}
+
+
+/* scroll */
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 5px;
+    height: 5px !important;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: #1F2640;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #0B102F;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #0B102F;
+  }
+
+
+  body {
+    scrollbar-color: #5a2d82 #2f1244;
+    scrollbar-width: 4px;
+  }
+
+
+  /* game panel */
+  .game_panel {
+    width: 100%;
+    padding-right: 10px;
+    padding-left: 10px;
+    margin-right: auto;
+    margin-left: auto;      
+  }
+  @media (min-width: 991px) {
+      .bet-detail-wrapper {
+          background: #222c47;
+          border-radius: 40px;
+          width:180px;
+          margin-left:16px;
+          margin-right:16px;
+          padding-left:16px;
+      }
+      .bet-detail-wrapper >img{
+          float: left;
+          padding-top:12px;
+      }
+      .bet-detail-wrapper >label {
+          font-size:10px;
+          color:#8A93AE;
+          float: left;
+          margin-left: 16px;
+      }
+      .bet-detail-wrapper >span {
+          color:white !important;
+          text-align: left;
+          font-size: 14px;
+          font-weight: bold;
+          float: left;
+          margin-left: 16px;
+          width: 100px;
+          margin-bottom:-7px;
+      }
+  }
+  .game_panel {
+    position: relative;
+    z-index: 5;
+  }
+
+  #chat_message_input_img:hover {
+      opacity: .8;
+  }
+  /* ================= */
+
+
+  .sub_menu_detail {
+    line-height: 16px;    
+  }
+
+  .sidebar_link.active {
+    color: #ff6570;      
+  }
+
+  .bet_button1 {
+    font-size: 13px;
+    font-weight: 100;
+    background: #d770ac;
+    padding: 10px 35px 10px 35px;
+    line-height: 13px;
+  }
+
+  .bet_button1:hover {
+    background: #9c517d;
+  }

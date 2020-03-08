@@ -1,0 +1,300 @@
+body {
+    color: #cbb4ff;
+}
+.margin-auto {
+    margin: auto;
+}
+.row {
+    margin: 0px;
+}
+
+.icon_button_div {
+    margin: 10px 0 10px auto;
+}
+
+span.title-small {
+    color: #a265a3;
+}
+
+span.numeric {
+    color: white;
+    cursor: pointer;
+}
+span.numeric.active {
+    color: #d5343d;
+}
+span.game_mode {
+    border-radius: 6px;
+    width: 90px;
+    text-align: center;
+    cursor: pointer;
+    margin: auto;
+}
+span.game_mode.active {
+    background-color: #3e66b8;
+    border: solid 2px #669efa;
+}
+
+#my-panel {
+    padding-left: 15px;
+    padding-right: 20px;
+}
+
+.current_users_header {
+    background: linear-gradient(#3085d7, #2773c2);
+    color: white;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    font-size: 16px;
+    /* padding: 8px; */
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-bottom: 3px;
+}
+.current_users_body {
+    background-color: #462f69;
+    /* height: 360px; */
+    min-height: 200px;
+    max-height: 360px;
+    overflow-y: auto;
+    border-radius: 5px;
+}
+
+.user_item {
+    border-radius: 5px;
+    margin: 5px auto;
+    color: #cbb4ff;
+}
+.user_items > div:nth-child(even) {
+    background: #51377a;
+}
+.user_items > div:nth-child(odd) {
+    background: #392656;
+}
+.user_item_img {
+    margin: 3px;
+    margin-right: 20px;
+    object-fit: cover;
+    height: 100%;
+}
+.user_item_img > img {
+    border-radius: 3px;
+    height: 35px;
+}
+.user_item_name, .user_item_bet {
+    /* padding-top: 5px !important; */
+    margin: auto 0px;
+    padding: 5px 0px !important;
+}
+.user_item_bet {
+    margin-left: auto !important;
+    margin-right: 30px;
+}
+.cashed_users_div {
+    margin-bottom: 20px;
+}
+.cashed_users_header {
+    background: linear-gradient(#119720, #2bb169);
+    color: white;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    font-size: 16px;
+    /* padding: 8px; */
+    padding-top: 10px;
+    padding-left: 15px;
+    padding-bottom: 3px;
+}
+.cashed_users_body {
+    background-color: #462f69;
+    min-height: 200px;
+    max-height: 250px;
+    overflow-y: auto;
+    border-radius: 5px;
+}
+
+.canvas_div {
+    height: 450px;
+    margin-bottom: 25px;
+}
+
+.top_cash_container {
+    margin-left: 25px;
+    background-color: #462f69;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 5px;
+}
+.bottom_cash_container {
+    margin-left: 25px;
+    background-color: #462f69;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+.bet_btn {
+    width: 87px;
+    height: 38px;
+    cursor: pointer;
+}
+.bet_input_div > input {
+    width: 80px;
+    height: 50px;
+    padding-left: 20px;
+    border: solid 2px #604C7A;
+    border-radius: 6px;
+}
+
+
+span.bet_mode {
+    border-radius: 6px;
+    width: 96px;
+    text-align: center;
+    line-height: 22px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: -2px;
+}
+span.bet_mode.active {
+    /*background-color: #392656;*/
+    background: linear-gradient(#663480, #46266e);
+    border: solid 2px #ad7ef5;
+}
+
+span.increase_mode {
+    border-radius: 6px;
+    width: 90px;
+    /* height: 50px; */
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.45;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+span.increase_mode.active {
+    /*background-color: #392656;*/
+    background: linear-gradient(#87419b, #502a88);
+    border: solid 2px #de8fff;
+    margin: -2px;
+}
+
+span.increase_mode.active.odd {
+    margin-left: 2px;
+}
+
+.btn-place-bet {
+    border: solid 2px #ff7ceb;
+    background: linear-gradient(#cd54e3, #c925ac);
+    border-radius: 50px; text-transform: none;
+    font-size: 20px;
+    width: 198px;
+    height: 60px;
+    margin: auto;
+}
+
+.btn-place-bet.cashout {
+    padding: 0px;
+}
+
+.btn-place-bet.cashout.small {
+    font-size: 18px;
+}
+
+div.betting-container {
+    border-radius: 9px !important;
+    background-color: #24153a;
+    height: 60px;
+    border: 1px solid rgba(253, 252, 253, 0.31);
+    margin: auto;
+    align-items: center;
+    flex-direction: row;
+    box-sizing: border-box;
+    display: flex;
+    position: relative;
+    box-shadow: 0 1px 0 hsla(0,0%,100%,.02), inset 0 1px 3px rgba(0,0,0,.1);
+    overflow: hidden;
+    width: 100%;
+}
+
+div.betting-container:after, div.betting-container:before {
+    z-index: 1;
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1.375rem;
+    opacity: .4;
+}
+
+div.betting-container:before {
+    background: linear-gradient(90deg,#000,transparent);
+}
+    /* deposit input */
+.bet_input {
+    height: 48px;
+    padding: 5px 0px;
+    padding-left: 20px;
+    font-size: 15px;
+    margin-left: -32px;
+    color: #fff;
+    border-color: #303030;
+    background: #24153a;
+    display: block;
+    line-height: 1.42857143;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    box-shadow: none;
+    margin-bottom: 0px;
+    outline: none;
+}
+@media (min-width: 800px) {
+    .bet_input.with_icon {
+        padding-left: 45px;
+    }
+}
+div.betting-container:after {
+    right: -5px;
+    background: linear-gradient(270deg,#000,transparent);
+}
+
+.clear_bet {
+    cursor: pointer;
+}
+
+.clear_bet:hover {
+    opacity: .8;
+}
+
+
+
+/**
+Top panel
+    */
+#top_panel .main-panel > div {
+    padding-right: 30px;
+    text-align: center;
+}
+#top_panel .main-panel > div:last-child {
+    padding-right: 0px;
+}
+input::-webkit-input-placeholder {
+    color: #654793;
+}
+input::placeholder｛
+    color: #654793;
+｝
+::-webkit-input-placeholder {
+    color: #654793;
+}
+::-moz-placeholder {
+    color: #654793;
+}
+:-moz-placeholder {
+    color: #654793;
+}
