@@ -60,7 +60,7 @@
                 <span class="logo-border"></span>
             </a>
             <button class="navbar-toggler animation" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" data-animation="fadeInDown" data-animation-delay="1.1s"> 
-                <span class="ion-android-menu"></span> 
+                <span class="ion-android-menu"></span>
             </button>
 			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
                 <ul class="navbar-nav m-auto">                    <li class="animation" data-animation="fadeInDown" data-animation-delay="1.2s"><a class="nav-link nav_item signup <?php echo $menu=='home'?'active':''; ?>" href="<?= site_url(''); ?>">HOME</a></li>
@@ -87,42 +87,17 @@
                                         <span class="bet_label vip_level" style="display: none;">Level 1</span>
                                     </div>
                                 </div>
-                                <ul class="dropdown-menu list_none"> 
+                                <ul class="dropdown-menu list_none">
                                     <li>
                                         <a class="dropdown-item nav-link nav_item" href="<?= site_url("Profile"); ?>">
                                             My Profile
                                         </a>
-                                    </li> 
-                                    <!--<li>
-                                        <a class="dropdown-item nav-link nav_item" href="<?/*= site_url('Referral'); */?>">
-                                            Referral
-                                        </a>
                                     </li>
-                                    <li>
-                                        <a class="dropdown-item nav-link nav_item" href="#contact">
-                                            Deposit
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item nav-link nav_item" href="#contact">
-                                            Withdraw
-                                        </a>
-                                    </li> 
-                                    <li>
-                                        <a class="dropdown-item nav-link nav_item" href="#contact">
-                                            My Games
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item nav-link nav_item" href="#contact">
-                                            Messages
-                                        </a>
-                                    </li>-->
                                     <li>
                                         <a class="dropdown-item nav-link nav_item" href="<?= site_url("User/logout") ?>">
                                             Log Out
                                         </a>
-                                    </li> 
+                                    </li>
                                 </ul>
                             </div>
                         </li>
@@ -133,30 +108,12 @@
                             </div>
                             <img src="<?= base_url(''); ?>assets/user/images/plus_avatar.png" class="profile_icon2" style="display: none;"/>
                         </li>
-                        <!--<li class="animation" data-animation="fadeInDown" data-animation-delay="1.9s">
-                            <div class="lng_dropdown">
-                            <select name="countries" id="lng_select">
-                                <option value='en' data-image="<?/*= base_url(''); */?>assets/user/images/flags/english.png" data-title="English">EN</option>
-                                <option value='ko' data-image="<?/*= base_url(''); */?>assets/user/images/flags/korean.png" data-title="France">KO</option>
-                                <option value='cn' data-image="<?/*= base_url(''); */?>assets/user/images/flags/chinese.png" data-title="China">CN</option>
-                            </select>
-                            </div>
-                        </li>-->
                         <?php
                     }
                     else {
                         ?>
                         <li class="animation" data-animation="fadeInDown" data-animation-delay="2s" style="margin-right: 10px;"><a class="nav-link nav_item menu-btn" href="<?= site_url("Login"); ?>">Login</a></li>
                         <li class="animation" data-animation="fadeInDown" data-animation-delay="2.1s" style="margin-right: 10px;"><a class="nav-link nav_item signup menu-btn" href="<?= site_url("Signup"); ?>">Sign Up</a></li>
-                        <!--<li class="animation" data-animation="fadeInDown" data-animation-delay="1.9s">
-                            <div class="lng_dropdown">
-                            <select name="countries" id="lng_select">
-                                <option value='en' data-image="<?/*= base_url(''); */?>assets/user/images/flags/english.png" data-title="English">EN</option>
-                                <option value='ko' data-image="<?/*= base_url(''); */?>assets/user/images/flags/korean.png" data-title="France">KO</option>
-                                <option value='cn' data-image="<?/*= base_url(''); */?>assets/user/images/flags/chinese.png" data-title="China">CN</option>
-                            </select>
-                            </div>
-                        </li>-->
                         <?php
                     }
                     ?>

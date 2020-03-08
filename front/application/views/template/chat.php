@@ -8,7 +8,6 @@
         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
     </a>
 </div>
-
 <div class="chat-panel">
     <div class="row row_heading_v1" style="margin: 0">
         <div class="row" style="width: 100%;margin:0;height: 65px">
@@ -20,10 +19,8 @@
             </div>
         </div>
     </div>
-
     <ul class="list-unstyled mCustomScrollbar" id="chatlog1" style="border-bottom: 2px solid rgb(52, 63, 97);overflow-y: hidden;">
     </ul>
-    
     <div class="msg-input left-input" style="align-items: center;padding: 12px 0;">
         <?php
         if( isset($_SESSION['logged_in']) && $_SESSION['logged_in'] ) {
@@ -51,63 +48,48 @@
 <!-- socket part -->
 <script src="<?php echo base_url();?>assets/modules/socket.io-client/dist/socket.io.js"></script>
 <script>
-
-    run_waitMe($('.chat-panel'), 2, 'bounce');            
-
-    var chat_socket = io.connect( '<?php echo CHAT_SERVER_URL; ?>' );  
+    run_waitMe($('.chat-panel'), 2, 'bounce');
+    var chat_socket = io.connect( '<?php echo CHAT_SERVER_URL; ?>' );
     var game_type = '<?= $data['game_type']; ?>';
-
     function setScroll() {
         var height = $('#mCSB_1').height();
         var main_height = $('#mCSB_1_container').height();
         main_height = height - main_height;
-
         if(main_height < 0) {
             $('#mCSB_1_container').css('top' , main_height + 'px');
             height = height - $('#mCSB_1_dragger_vertical').height();
-            $('#mCSB_1_dragger_vertical').css('top' , height + 'px');	
+            $('#mCSB_1_dragger_vertical').css('top' , height + 'px');
         }
-
     }
-    
     $('#chat_message_input').on('keyup' , function(e) {
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if( keycode == '13' ) {
             send_msg($('#chat_message_input').val());
         }
     });
-
     $('#chat_message_input_img').on('click' , function(e) {
         send_msg($('#chat_message_input').val());
     });
-
     function send_msg (msg) {
-
-        run_waitMe($('.chat-panel'), 2, 'bounce');            
+        run_waitMe($('.chat-panel'), 2, 'bounce');
         $.post("<?php echo site_url(); ?>User/emit",
         {
             msg: msg,
             type : game_type
         },
-        function(data, status){ 
-
+        function(data, status){
             $('.chat-panel').waitMe('hide');
             var result = jQuery.parseJSON(data);
             if(result.error_code != 0) {
                 showToast('error' , result.res_msg , 'bottom-left');
             }
 
-        });    
-
+        });
         $('#chat_message_input').val("");
-
     }
-
     function getTimeString (timestamp) {
-
         timestamp *= 1000;
         var d = new Date(timestamp);
-
         hour = d.getHours(); minute = d.getMinutes(); afterfix = 'AM';
         if( hour >= 12 ) {
             afterfix = 'PM';
@@ -124,10 +106,7 @@
         return hour + ':' + minute +' ' + afterfix;
 
     }
-
-
     chat_socket.on('chat_message' , function(msg) {
-
         var data = jQuery.parseJSON(msg);
         if( data.type == game_type ) {
             var no_avatar = "this.src='" + base_url + "assets/user/images/no_avatar.jpg'";
@@ -144,7 +123,7 @@
                             (($('.dropdown-menu2')['length'] == 0 && $('.dropdown-menu1')['length'] == 0)?'<ul class="dropdown-menu1">':'<ul class="dropdown-menu2">') +
                                 '<li class="dropdown-item1">' +
                                     '<i class="fa fa-user"></i>Tip' +
-                                '</li>				' + 
+                                '</li>				' +
                                 '<li class="dropdown-item1">' +
                                     '<i class="fa fa-ban"></i> Ignore' +
                                 '<li class="dropdown-item1">' +
@@ -156,12 +135,9 @@
                     '<div class = "msg">' +
                             data.msg +
                     '</div></div></div><span class = "time" style="display:block;text-align: center">' + getTimeString(data.curtime)+ '</span></li>';
-                    
-            //if($('.dropdown-menu2')['length'] == 0) 
+            //if($('.dropdown-menu2')['length'] == 0)
                 $('.dropdown-menu2').attr('class' , 'dropdown-menu1');
-
             $('#mCSB_1_container').append(html_code);
-        
             setTimeout(function(){
                 setScroll();
             }, 100);
@@ -178,13 +154,12 @@
     } , 100);
 
     function drawChat() {
-        run_waitMe($('.chat-panel'), 2, 'bounce');            
+        run_waitMe($('.chat-panel'), 2, 'bounce');
         $.post("<?php echo site_url(); ?>User/getChatList",
         {
             type : game_type
         },
-        function(data, status){ 
-            
+        function(data, status){
             var result = jQuery.parseJSON(data);
             var no_avatar = "this.src='" + base_url + "assets/user/images/no_avatar.jpg'";
             if(result.error_code == 0) {
@@ -202,7 +177,7 @@
                                         ( result.result.length > 0 ? '<ul class="dropdown-menu2">' : '<ul class="dropdown-menu1">' ) +
                                             '<li class="dropdown-item1">' +
                                                 '<i class="fa fa-user"></i>Tip' +
-                                            '</li>				' + 
+                                            '</li>				' +
                                             '<li class="dropdown-item1">' +
                                                 '<i class="fa fa-ban"></i> Ignore' +
                                             '<li class="dropdown-item1">' +
@@ -226,11 +201,7 @@
                     setScroll();
                 }, 100);
             }
-
             $('.chat-panel').waitMe('hide');
-
-        });    
+        });
     }
-        
-
 </script>

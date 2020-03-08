@@ -22,16 +22,10 @@
         </div>
     </div>
 </footer>
-<!-- END FOOTER SECTION --> 
-
+<!-- END FOOTER SECTION -->
 <a href="#" class="scrollup btn-default"><i class="ion-ios-arrow-up"></i></a>
-<!-- owl-carousel min js  --> 
-<script src="<?= base_url(''); ?>assets/user/owlcarousel/js/owl.carousel.min.js"></script>
-<!-- countdown js  --> 
-<script src="<?= base_url(''); ?>assets/user/js/jquery.countdown.min.js"></script> 
-<!-- scripts js --> 
-<script src="<?= base_url(''); ?>assets/user/js/jquery.dd.min.js"></script> 
-<!-- jquery.counterup.min js --> 
-<script src="<?= base_url(''); ?>assets/user/js/jquery.counterup.min.js"></script>
-<!-- scripts js --> 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>
+<script src="<?= base_url(''); ?>assets/user/js/jquery.dd.min.js"></script>
 <script src="<?= base_url(''); ?>assets/user/js/scripts.js"></script>

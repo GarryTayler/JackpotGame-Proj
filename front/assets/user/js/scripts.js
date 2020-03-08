@@ -451,16 +451,5 @@ Version      : 1.0
 		ckScrollInit($('.staggered-animation'), $('.staggered-animation-wrap'));
 	
 	});
-	
-	/*===================================*
-	14. START COUNTUP JS
-	*===================================*/
-	jQuery(document).ready(function($) {
-		jQuery('.counter').counterUp({
-			delay: 10,
-			time: 1000
-		});
-	});
-			
 })(jQuery);
 

@@ -66,17 +66,9 @@ require_once('application/views/template/loader.php');
     </div>
     <!-- END REGISTER WRAPPER -->
 </form>
-<!-- owl-carousel min js  -->
-<script src="<?= base_url(''); ?>assets/user/owlcarousel/js/owl.carousel.min.js"></script>
-<!-- magnific-popup min js  -->
-<script src="<?= base_url(''); ?>assets/user/js/magnific-popup.min.js"></script>
-<!-- countdown js  -->
-<script src="<?= base_url(''); ?>assets/user/js/jquery.countdown.min.js"></script>
-<!-- scripts js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 <script src="<?= base_url(''); ?>assets/user/js/jquery.dd.min.js"></script>
-<!-- jquery.counterup.min js -->
-<script src="<?= base_url(''); ?>assets/user/js/jquery.counterup.min.js"></script>
-<!-- scripts js -->
 <script src="<?= base_url(''); ?>assets/user/js/scripts.js"></script>
 <script type="text/javascript">
     base_url = "<?= site_url(''); ?>";
