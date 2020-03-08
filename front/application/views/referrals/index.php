@@ -46,7 +46,7 @@ require_once('application/views/template/menu.php');
         <?php
         require_once('application/views/template/chat.php');
         ?>
-        <div id="main-container">
+        <div id="main-container" >
             <div id="referralPanelWrap">
                 <div class="referralBox">
                     <h3>Referral</h3>

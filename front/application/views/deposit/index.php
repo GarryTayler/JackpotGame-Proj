@@ -36,7 +36,7 @@ require_once('application/views/template/menu.php');
         <?php
         require_once('application/views/template/chat.php');
         ?>
-        <div id="main-container" class="deposit-wrapper">
+        <div id="main-container" class="deposit-wrapper" >
             <div class="row" style="margin-left: 0px; margin-right: 0px;">
                 <div class="col-md-8 deposit-info-wrapper" style="background: #1F2640;float:left;">
                     <p class="text-center" style="color:#C8CAD0;font-size:13px;">You will receive coins automatically after sending BTC to the address displayed below</p>
@@ -75,17 +75,14 @@ require_once('application/views/template/menu.php');
             ?>
         </div>
     </div>
-
     <script type="text/javascript">
         var game_type = 'jackpot';
         var site_url = '<?=site_url()?>';
         var base_url = '<?=base_url()?>';
         var user_id = <?=or_default($this->session->userdata('USERID'), 0)?>;
     </script>
-
     <script src="<?= base_url(''); ?>assets/vuejs/vue.min.js"></script>
     <script src="<?= base_url(''); ?>assets/vuejs/axios.min.js"></script>
-
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/js/pages/game.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
 </div>

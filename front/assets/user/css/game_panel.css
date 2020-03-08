@@ -15,7 +15,7 @@
     height: 320px;
 }
 
-#chatlog1 
+#chatlog1
 {
     flex: 1;
     position: relative;
@@ -34,10 +34,6 @@ ol, ul {
 
 ol, ul {
     margin-bottom: 0;
-}
-
-#mCSB_1_container > *:first-child {
-    margin-top: 10px;
 }
 
 .notification {
@@ -109,10 +105,10 @@ ol, ul {
 }
 
 a.dropdown-toggle1 {
-    font-size: 14px;
+    font-size: 13px;
     touch-action: manipulation;
     text-decoration: none;
-    color: #666e79 !important;
+    color: #c9d6e4 !important;
     cursor: pointer;
 }
 
@@ -190,7 +186,7 @@ ul li.dropdown-item1:hover{
 
 .notification .time {
     font-size: 12px;
-    color: #566681;
+    color: #6c829d;
     padding-left: 5px;
     -webkit-box-flex: 1;
     flex: 1;
@@ -217,17 +213,17 @@ ul li.dropdown-item1:hover{
     position: relative;
     display: flex;
     border-collapse: separate;
-    margin-bottom: 8px;
-    margin-top: 16px;
+    margin-bottom: 20px;
+    margin-top: 20px;
     height: 32px;
     bottom: 0;
     width: 100%;
 }
 
 #chat_message_input {
-    padding-right: 60px !important;
-    margin: 0px 10px 0 20px;
-    height: 32px;
+    padding-right: 10px !important;
+    margin: 0px 5px 0 20px;
+    height: 40px;
     border: 1px solid transparent;
     background: #1D2643;
     padding: 8px;
@@ -248,7 +244,7 @@ ul li.dropdown-item1:hover{
     margin-right: 10px;
     position: relative;
     cursor: pointer;
-    height: 32px;
+    height: 38px;
 }
 
 #chat-send-btn {

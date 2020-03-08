@@ -81,14 +81,10 @@ jackpot_socket.on('Finish', function (resp) {
 });
 
 jackpot_socket.on('Update', function (resp) {
-	// u needs to refresh chart
-	console.log('Update');
 	app.player_index = -1;
-
 	app.bets = resp.bets;
 	app.players = resp.players;
 	app.game = resp.game;
-
 	// refresh panel
 	BettingPanel.refresh();
 	if (!user_id) return;

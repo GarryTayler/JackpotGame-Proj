@@ -39,7 +39,7 @@ require_once('application/views/template/menu.php');
 <link rel="stylesheet" type="text/css" href="<?= base_url() ?>assets/user/css/pages/game/jackpot.css"/>
 <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/user/css/pages/game/jackpot_responsive.css">
 <div class="main_container <?= $submenu != '' ? 'submenu_css' : ''; ?>"
-     style="background:url('<?= base_url(''); ?>assets/user/images/background.png') no-repeat center 0; padding-top: 110px !important;">
+     style="background:url('<?= base_url(''); ?>assets/user/images/background.png') no-repeat center 0; padding-top: 100px !important;">
     <!-- START SECTION BANNER -->
     <div class="game_panel animation" data-animation="fadeInUp" data-animation-delay="1.3s"
          style="display:flex; justify-content: space-around;">

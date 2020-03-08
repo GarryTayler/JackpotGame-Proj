@@ -37,7 +37,7 @@
             <div class="bet-detail-wrapper">
                 <img src="<?php echo base_url();?>assets/user/images/deposit_amount.png">
                 <span class="numeric">{{my_bet.BET_AMOUNT}}</span>
-                <label>Deposited Amount</label>
+                <label>Your Amount</label>
             </div>
             <div class="bet-detail-wrapper">
                 <img src="<?php echo base_url();?>assets/user/images/game_id.png">
@@ -46,7 +46,7 @@
             </div>
             <div class="bet-detail-wrapper">
                 <img src="<?php echo base_url();?>assets/user/images/players_in.png">
-                <span class="numeric">{{bets.length}}</span>
+                <span class="numeric">{{players.length}}</span>
                 <label>Players In</label>
             </div>
         </div>
@@ -193,12 +193,10 @@
             </div>
         </div>
     </div>
-
     <!-- END SECTION BANNER -->
     <?php
     require_once('application/views/template/footer.php');
     ?>
-
 </div>
 <script src="<?php echo base_url();?>assets/modules/socket.io-client/dist/socket.io.js"></script>
 <script>

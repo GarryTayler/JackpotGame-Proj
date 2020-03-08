@@ -15,7 +15,7 @@
                 <label class="chat-title">Live Chat</label>
             </div>
             <div class="chat-close-wrapper">
-                <a class="bar-close"><i class="fa fa-chevron-down" aria-hidden="true" style="font-size: 14px;margin-top:24px;"></i></a>
+                <a class="bar-close"><i class="fa fa-chevron-left" aria-hidden="true" style="font-size: 14px;margin-top:24px;"></i></a>
             </div>
         </div>
     </div>
@@ -111,7 +111,7 @@
         if( data.type == game_type ) {
             var no_avatar = "this.src='" + base_url + "assets/user/images/no_avatar.jpg'";
             data.avatar = base_url + "uploads/profile/" + data.avatar;
-            var html_code = '<li class="notification">' +
+            var html_code = '<li class="notification"><span class = "time" style="display:block;text-align: center">' + getTimeString(data.curtime)+ '</span>' +
             '<div class="overflow-h">' +
                 '<img width = "20%" class ="msg_user" src = "' + data.avatar + '" ' + ' onerror = "' + no_avatar + '">' +
                 '<div class="chat_content">' +
@@ -120,22 +120,11 @@
                             '<a class="dropdown-toggle1" data-toggle="dropdown">' +
                             data.username +
                             '</a>' +
-                            (($('.dropdown-menu2')['length'] == 0 && $('.dropdown-menu1')['length'] == 0)?'<ul class="dropdown-menu1">':'<ul class="dropdown-menu2">') +
-                                '<li class="dropdown-item1">' +
-                                    '<i class="fa fa-user"></i>Tip' +
-                                '</li>				' +
-                                '<li class="dropdown-item1">' +
-                                    '<i class="fa fa-ban"></i> Ignore' +
-                                '<li class="dropdown-item1">' +
-                                    '<i class="fa fa-money"></i>Report' +
-                                '</li>' +
-                            '</ul>' +
                         '</div>'+
                     '</div>' +
                     '<div class = "msg">' +
                             data.msg +
-                    '</div></div></div><span class = "time" style="display:block;text-align: center">' + getTimeString(data.curtime)+ '</span></li>';
-            //if($('.dropdown-menu2')['length'] == 0)
+                    '</div></div></div></li>';
                 $('.dropdown-menu2').attr('class' , 'dropdown-menu1');
             $('#mCSB_1_container').append(html_code);
             setTimeout(function(){
@@ -145,14 +134,12 @@
         }
 
     });
-
     var timerId = setInterval(function() {
         if($('#mCSB_1_container').length > 0) {
             drawChat();
             clearInterval(timerId);
         }
     } , 100);
-
     function drawChat() {
         run_waitMe($('.chat-panel'), 2, 'bounce');
         $.post("<?php echo site_url(); ?>User/getChatList",
@@ -165,7 +152,10 @@
             if(result.error_code == 0) {
                 for( i = 0; i < result.result.length; i ++ ) {
                     var avatar = base_url + "uploads/profile/" + result.result[i].AVATAR;
-                    var html_code = '<li class="notification">' +
+					var html_code = '<li class="notification">' +
+					'           <span class = "time" style="display:block;text-align: center">' +
+                                        getTimeString(parseInt(result.result[i].CREATE_TIME)) +
+                        '</span>' +
                         '<div class="overflow-h">' +
                             '<img width = "20%" class ="msg_user" src = "' + avatar + '" onerror = "' + no_avatar + '">' +
                             '<div class="chat_content">' +
@@ -174,24 +164,11 @@
                                         '<a class="dropdown-toggle1" data-toggle="dropdown">' +
                                         result.result[i].USERNAME +
                                         '</a>' +
-                                        ( result.result.length > 0 ? '<ul class="dropdown-menu2">' : '<ul class="dropdown-menu1">' ) +
-                                            '<li class="dropdown-item1">' +
-                                                '<i class="fa fa-user"></i>Tip' +
-                                            '</li>				' +
-                                            '<li class="dropdown-item1">' +
-                                                '<i class="fa fa-ban"></i> Ignore' +
-                                            '<li class="dropdown-item1">' +
-                                                '<i class="fa fa-money"></i>Report' +
-                                            '</li>' +
-                                        '</ul>' +
                                     '</div>' +
                                 '</div>' +
                                 '<div class = "msg">' +
                                     result.result[i].MSG +
                                 '</div></div></div>' +
-                        '           <span class = "time" style="display:block;text-align: center">' +
-                                        getTimeString(parseInt(result.result[i].CREATE_TIME)) +
-                        '</span>' +
                         '</li>';
                     $('.dropdown-menu2').attr('class' , 'dropdown-menu1');
                     $('#mCSB_1_container').append(html_code);

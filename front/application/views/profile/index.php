@@ -39,7 +39,7 @@ require_once('application/views/template/menu.php');
             require_once('application/views/template/chat.php');
         ?>
         <!-- START PROFILE WRAPPER -->
-        <div id="main-container" class="profile-wrapper">
+        <div id="main-container" class="profile-wrapper" >
             <div class="col-md-8" style="background: #1F2640;padding:50px 30px;float:left;">
                 <p class="page-title" style="margin-left: 0px;">Profile</p>
                 <p class="page-sub-title">Your personal information</p>
