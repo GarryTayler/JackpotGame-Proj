@@ -1,0 +1,33 @@
+{
+  "name": "x2bet_backend",
+  "version": "1.0.1",
+  "description": "game",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "roulette"
+  },
+  "keywords": [
+    "game"
+  ],
+  "author": "c3guru",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "crypto": "^1.0.1",
+    "dateformat": "^3.0.3",
+    "express": "^4.16.4",
+    "mysql": "^2.16.0",
+    "net": "^1.0.2",
+    "ejs": "^2.6.1",
+    "node-cron": "^2.0.3",
+    "node-datetime": "^2.1.2",
+    "method-override": "^3.0.0",
+    "nodemon": "^1.18.8",
+    "path": "^0.12.7",
+    "random-number": "0.0.9",
+    "request": "^2.88.0",
+    "socket.io": "^2.2.0",
+    "socket.io-client": "^2.2.0"
+  }
+}
