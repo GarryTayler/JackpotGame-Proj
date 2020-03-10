@@ -4,16 +4,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Jackpot extends MY_Controller {
 	public function __construct() {
 		parent::__construct();
-
 		$this->load->model('jackpot_Model', 'jackpot');
 	}
-	
 	public function index() {
 		$contentData['sidebar'] = true;
 		$contentData['game_type'] = 'jackpot';
 		$this->load_view('game/jackpot/index' , 'game' , 'jackpot' , $contentData);
 	}
-
 	public function ajax_deposit() {
 		$userID = $this->session->userdata('USERID');
 		if (!$userID) $this->load_json(array('status' => false, 'msg' => 'You have to login first.'));
@@ -50,15 +47,12 @@ class Jackpot extends MY_Controller {
 				'CREATE_TIME' => time()
 			)
 		);
-
         $curAmount = $availableAmount - $depositAmount;
         // update session
         $this->session->set_userdata('WALLET', $curAmount);
-
 		// notice all users in this betting game - new bet
 		//	to socket server
         $host = JACKPOT_SERVER_URL."new_deposit";
-		
 		$userInfo = $this->db->from('users')->where('ID', $userID)->get()->row();
 		$json = json_encode(array(
 			'USERID' => $userID,
@@ -75,21 +69,17 @@ class Jackpot extends MY_Controller {
 		curl_setopt($ch, CURLOPT_POST, 1);
 		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
-		
 		curl_setopt($ch, CURLOPT_HTTPHEADER, array(    //<--- Added this code block
 		        'Content-Type: application/json',
 		        'Content-Length: ' . strlen($json))
 		);
-
 		$data = curl_exec($ch);
 		$ret = json_decode($data , true);
-
 		if($ret == NULL)
             $this->load_json(array('status'=> false , 'msg' => "Jackpot game server has got connection problem."));
 
         $this->load_json(array('status' => true, 'balance'=>number_format($curAmount, 0,'.', ' ')));
 	}
-
 	public function ajax_round_info () {
 		// when a new user gets into game, first he gets current game's status
 		$gameInfo = $this->jackpot->cur_game();
@@ -100,14 +90,13 @@ class Jackpot extends MY_Controller {
 		$lastWinner = $this->jackpot->last_winner(); // to show last winner
 		// get time left
 		$gameInfo->TIME_LEFT = $this->jackpot->round_time_left($gameInfo->ID);
-		// get 
+		// get
 		if ($gameInfo->TIME_LEFT < 0) {
 			$gameInfo->TIME_LEFT = 90;
 			$gameInfo->STARTED = false;
 		} else {
 			$gameInfo->STARTED = true;
 		}
-
 		$this->load_json(array(
 			'status' => true,
 			// 'userid' => $myID,
@@ -123,9 +112,7 @@ class Jackpot extends MY_Controller {
 		$gameInfo = $this->db->from('jackpot_game')->where('ID', $gameID)->get()->row();
 		if (!$gameInfo) $this->load_json(array('status' => false, 'msg' => 'Invalid Game ID'));
 		if ($gameInfo->WINNER) $this->load_json(array('status' => true, 'winner' => $gameInfo->WINNER));
-
 		$checkResult = $this->jackpot->finish_round($gameID, false);
-				
 		$this->load_json($checkResult);
 	}
 
@@ -133,7 +120,6 @@ class Jackpot extends MY_Controller {
 		$userID = $this->session->userdata('USERID');
 		if ( !$userID ) $this->load_json( array('status' => false, 'msg' => 'You should login first.') );
 		$WALLET = $this->db->from('users')->where('ID', $userID)->get()->row()->WALLET;
-
 		$this->load_json(array('status' => true, 'wallet' => $WALLET));
 	}
 

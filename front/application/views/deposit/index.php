@@ -13,7 +13,6 @@ require_once('application/views/template/loader.php');
 <?php
 require_once('application/views/template/menu.php');
 ?>
-
 <style>
     input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
         color: #fff;
@@ -24,7 +23,7 @@ require_once('application/views/template/menu.php');
     }
     ::-ms-input-placeholder { /* Microsoft Edge */
         color: #fff;
-    }
+	}
 </style>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/user/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
 <link rel="stylesheet" type="text/css" href="<?= base_url('');?>assets/user/css/game_panel.css" />
@@ -43,7 +42,7 @@ require_once('application/views/template/menu.php');
                     <div class="text-center">
                         <div class="address-wrapper">
                             <p style="text-align: left;font-size: 10px;width:100%;">Your personal BTC deposit address</p>
-                            <input type="text" id="deposit-address" name="deposit-address">
+                            <input type="text" id="deposit-address" name="deposit-address" readonly>
                             <button class="btn_change">Copy address</button>
                         </div>
                         <div class="qr-wrapper">

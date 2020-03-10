@@ -10,7 +10,6 @@ function update_wallet() {
         }
     })
 }
-
 function set_layout() {
     const is_mobile = ($(window).width() <= 756);
     if (is_mobile) {
@@ -33,13 +32,8 @@ function set_layout() {
         $('#my-panel').css('height', ($(window).height() - 270) + 'px');
         $('.chat-panel').css('margin-top' , ($(window).scrollTop()) + 'px');
         // $('.chat-panel').css('height', main_height + 'px');
-    }
-
-    $('footer').width($('#main-container')[0].clientWidth);
-
-    // $('.chat-panel').css('max-height' , ($(window).height() - 110) + 'px');
-
-
+	}
+	$('footer').width($('#main-container')[0].clientWidth);
     // for jackpot --> by Elvis 2019-05-29
     if ($("#main-container").width() <= 940) {
         $('body').addClass('chat-panel-open');
@@ -47,7 +41,11 @@ function set_layout() {
         $copen.fadeIn();
         $copen.addClass("rollIn animated").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
         });
-    }
+	}
+	else {
+		$copen = $("div.copen");
+		$copen.fadeOut();
+	}
 }
 
 
@@ -75,14 +73,11 @@ $(document).ready(function() {
             $chatPanel = $(".chat-panel");
             $copen = $("div.copen");
             $main_container = $("#main-container");
-
             width = $chatPanel.width();
             $chatPanel.css("transform" , " translateX( calc(-100% - 30px) )");
-            
             $copen.fadeIn();
             $copen.addClass("rollIn animated").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
             });
-            
             $main_container.css('margin-left' , (-width) + "px");
             $main_container.css('width' , "100%");
         } else {
@@ -94,7 +89,6 @@ $(document).ready(function() {
         }
 
     });
-
     $("div.copen").click(function() {
         var min_width = 893;
         if ($("#main-container").width() > min_width) {
@@ -112,4 +106,4 @@ $(document).ready(function() {
             $copen.fadeOut();
         }
     });
-});         
+});

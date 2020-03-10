@@ -208,7 +208,6 @@ var Jackpot = function() {
 				url: mainServerUrl + 'ajax_round_info',
 				formData: {}
 			}, function (error, response, body) {
-				console.log(body);
 				var ret = JSON.parse(body);
 				if (ret.status) {
 					// init game variables

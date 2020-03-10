@@ -1,14 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends MY_Controller {	
-	public function __construct() 
+class User extends MY_Controller {
+	public function __construct()
 	{
 		parent::__construct();
-		$this->load->model('Chats_Model');	
+		$this->load->model('Chats_Model');
 	}
-    
-	public function login() 
+	public function login()
 	{
 		if( isset($_SESSION['logged_in']) && $_SESSION['logged_in'] ) {
 			redirect($_SESSION['url']);
@@ -16,29 +15,24 @@ class User extends MY_Controller {
 		else
 			$this->load_view('user/login');
     }
-    
 	public function register()
 	{
 		$this->load_view('user/register');
 	}
-
-	public function signIn() 
+	public function signIn()
 	{
 		$info = $this->input->post();
 		$ret = array();
-
-		/*$result = $this->Users_Model->getUserInfobyUsername($info['username']);
-		if(count($result) < 1)
-			$result = $this->Users_Model->getUserInfobyEmail($info['username']);*/
-
-        $result = $this->Users_Model->getUserInfobyEmail($info['username']);
+		$result = $this->Users_Model->getUserInfobyUsername($info['username']);
 		if(count($result) < 1) {
-			$ret['error_code'] = 1;
-			$ret['res_msg'] = 'Incorrect username/email and / or password. Do you need help loggin in?';
-			echo json_encode($ret);
-			return;
+			$result = $this->Users_Model->getUserInfobyEmail($info['username']);
+			if(count($result) < 1) {
+				$ret['error_code'] = 1;
+				$ret['res_msg'] = 'Incorrect username/email and / or password. Do you need help loggin in?';
+				echo json_encode($ret);
+				return;
+			}
 		}
-
 		if( $result[0]['PASSWORD'] != md5($info['password']) ) {
 			$ret['error_code'] = 1;
 			$ret['res_msg'] = 'Incorrect username/email and / or password. Do you need help loggin in?';
@@ -51,7 +45,6 @@ class User extends MY_Controller {
 			echo json_encode($ret);
 			return;
 		}
-
 		$session_userdata = array(
 			'WALLET' => $result[0]['WALLET'],
 			'USERNAME'  => $result[0]['USERNAME'],
@@ -60,18 +53,14 @@ class User extends MY_Controller {
 			'logged_in' => TRUE,
 			'USERID' => $result[0]['ID']
 		);
-		
 		$this->session->set_userdata($session_userdata);
-		$this->session->set_userdata('token', $this->Users_Model->saveToken($this->input->ip_address() , $this->session->userdata('USERID')));        
-
+		$this->session->set_userdata('token', $this->Users_Model->saveToken($this->input->ip_address() , $this->session->userdata('USERID')));
 		$ret['error_code'] = 0;
-
-		if( isset($_SESSION['url']) && ($_SESSION['url'] != '') ) { 
+		if( isset($_SESSION['url']) && ($_SESSION['url'] != '') ) {
 			$ret['login_link'] = $this->session->userdata('url');
 		}
-		else 
+		else
 			$ret['login_link'] = site_url('');
-
 		echo json_encode($ret);
 		return;
 	}

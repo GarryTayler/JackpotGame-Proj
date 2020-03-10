@@ -206,7 +206,8 @@ ul li.dropdown-item1:hover{
     box-sizing: inherit;
     font-weight: 600;
     margin-top: 3px;
-    line-height: 16px;
+	line-height: 16px;
+	padding-right: 10px;
 }
 
 .msg-input {
@@ -315,19 +316,12 @@ ul li.dropdown-item1:hover{
     color: #32d056 !important;
 }
 
-/*div.copen a.open_chat {
-    cursor: pointer;
-}*/
-
-/*a.open_chat i.fa.fa-angle-double-right:hover {
-    color: #32d056 !important;
-}*/
-
 #main-container {
     width: 78%;
     display: inline-block;
     transition: margin-left .4s , width .4s;
-    margin-left: 0px;
+	margin-left: 10px;
+	margin-right: 10px;
     z-index: 101;
     margin-bottom: 100px;
 }
@@ -381,4 +375,14 @@ div.copen a.open_chat i {
     .chat-panel {
         height: calc(100vh - 70px);
     }
+}
+
+@media (max-width: 1200px) {
+    footer {
+		width: 100vw !important;
+	}
+}
+
+.row {
+	margin: 0px;
 }

@@ -2,12 +2,14 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Profile extends MY_Controller {
-	
 	public function __construct() {
 		parent::__construct();
+		if( !(isset($_SESSION['logged_in']) && $_SESSION['logged_in']) ) {
+			redirect('Login');
+			return;
+		}
         $this->load->model('Users_Model');
 	}
-	
 	public function index() {
 		$contentData = array();
 		$userId = $this->session->userdata('USERID');
@@ -15,13 +17,11 @@ class Profile extends MY_Controller {
 		$contentData['userInfo'] = $userInfo;
 		$this->load_view('profile/index' , '' , '' , $contentData);
 	}
-	
 	public function privacy() {
 		$contentData = array();
 		$contentData['user_submenu'] = true;
 		$this->load_view('account_settings/privacy_security' , '' , 'Privacy_and_Security' , $contentData);
 	}
-
 	public function saveUsername() {
 	    $param = $this->input->post();
 	    $userid = $this->session->userdata('USERID');
@@ -39,7 +39,6 @@ class Profile extends MY_Controller {
         $ret['link'] = site_url('/Profile');
         echo json_encode($ret);
     }
-
     public function saveEmail() {
         $param = $this->input->post();
         $userid = $this->session->userdata('USERID');
@@ -65,7 +64,6 @@ class Profile extends MY_Controller {
         $ret['link'] = site_url('/Profile');
         echo json_encode($ret);
     }
-
     public function saveSecurity() {
         $param = $this->input->post();
         $userid = $this->session->userdata('USERID');
@@ -89,7 +87,6 @@ class Profile extends MY_Controller {
         $ret['link'] = site_url('/Profile');
         echo json_encode($ret);
     }
-
     public function saveAvatar() {
         $userId = $this->session->userdata('USERID');
         $userInfo = $this->Users_Model->getUserInfobyUserid($userId);

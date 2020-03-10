@@ -6,32 +6,16 @@ class MY_Controller extends CI_Controller
     
 	public function __construct() {
         parent::__construct();
-        
         // save last access url
         if ($this->input->server('REQUEST_METHOD') == 'GET') {
-            
             if( !( strpos( uri_string() , 'Login' ) !== false || strpos( uri_string() , 'Signup' ) !== false ) ) {
-                $this->session->set_userdata('url', current_url());        
+                $this->session->set_userdata('url', current_url());
             }
         }
-
         if ($this->session->userdata('site_language') && $this->session->userdata('site_language') != ''){
 
         } else {
-            //$country = $this->ip_info("Visitor", "countrycode");
-
-            /*if ($country == 'CN' || $country == 'HK') {
-                $language = 'chinese';
-            } else if ($country == 'KR') {
-                $language = 'korean';
-            } else if ($country == 'JP') {
-                $language = 'japanese';
-            } else {
-                $language = 'english';
-            }*/
-
             $language = 'english';
-            
             switch($language) {
 
                 case 'english':
@@ -47,16 +31,13 @@ class MY_Controller extends CI_Controller
                 	$language ='english';
                     $lang = 'en';
                     break;
-
             }
-
-            $this->session->set_userdata('site_lang', $lang);        
-            $this->session->set_userdata('site_language', $language);    
+            $this->session->set_userdata('site_lang', $lang);
+            $this->session->set_userdata('site_language', $language);
         }
-
         $this->load->model('Users_Model');
         if( isset($_SESSION['logged_in']) && $_SESSION['logged_in'] && !strpos( uri_string() , 'logout' ) && !strpos( uri_string() , 'signIn' ))      {
-            $token = $this->Users_Model->updateToken($this->input->ip_address() , $this->session->userdata('USERID')); 
+            $token = $this->Users_Model->updateToken($this->input->ip_address() , $this->session->userdata('USERID'));
             if( $token != "0" && $token != "1" ) {
                 $this->session->set_userdata('token' , $token);
             }
@@ -66,7 +47,7 @@ class MY_Controller extends CI_Controller
         }
 
         $this->curTime = date('Y-m-d H:i:s');
-    }    
+    }
 
 	protected function load_view($path ,  $menu = '' , $submenu = '', $contentData = NULL) {
         $data = array();

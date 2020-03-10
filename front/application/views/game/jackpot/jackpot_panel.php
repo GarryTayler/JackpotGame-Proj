@@ -18,6 +18,10 @@
 .btn_sound.off {
 	background-image: url(<?=base_url()?>/assets/user/images/sound_off.png)
 }
+#main-container {
+	margin-left: 0px !important;
+	margin-right: 0px !important;
+}
 </style>
 
 <link rel="stylesheet" type="text/css"

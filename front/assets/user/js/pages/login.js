@@ -23,23 +23,15 @@ function blockUI() {
     }
   });
   $('.blockUI.blockMsg').center_layout();
-}//end Blockui   
-
-
+}//end Blockui
 $( document ).ready(function() {
     $('#LoginForm').on('keyup' , function(event) {
         event.preventDefault();
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13'){
-          if($('#accept_button').prop('checked')) {
-              $('#btn_login').trigger('click');
-          }
-          else {
-            showToast('error' , 'You should accept terms of service.');
-          }
+					$('#btn_login').trigger('click');
         }
     });
-
     $('#btn_login').on('click' , function(e) {
         e.preventDefault();
         // check validation of login form
@@ -56,7 +48,6 @@ $( document ).ready(function() {
             showToast('error' , 'The Password shouldn\'t be empty. This is required field.');
             return;
         }
-
         blockUI();
         $.ajax({
           url: base_url+'User/signIn',
@@ -64,10 +55,10 @@ $( document ).ready(function() {
           dataType: 'json',
           data: {
             username : $('#username').val() ,
-            password : $('#password').val() 
+            password : $('#password').val()
           },
           success: function(data) {
-              $.unblockUI();  
+              $.unblockUI();
               if(data.error_code == 0) {
                 location.href = data.login_link;
               }
@@ -75,7 +66,6 @@ $( document ).ready(function() {
                 showToast('error' , data.res_msg);
               }
           }
-        });        
-
+        });
     });
 });
