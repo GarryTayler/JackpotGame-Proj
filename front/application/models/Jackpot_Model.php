@@ -103,11 +103,12 @@ class Jackpot_Model extends CI_Model {
 	}
 	
 	function player_bets($gameID) {
-		return $this->db->from('jackpot_game_log G')->where('GAMEID', $gameID)
+		$result = $this->db->from('jackpot_game_log G')->where('GAMEID', $gameID)
         ->select('USERID, sum(BET_AMOUNT) BET_AMOUNT')
         ->join('users U', 'U.ID = G.USERID')
         ->select('U.USERNAME, U.AVATAR')
-        ->group_by('USERID , G.ID')->order_by('G.ID', 'desc')->get()->result();
+        ->group_by('USERID , G.GAMEID')->order_by('G.ID', 'desc')->get()->result();
+		return $result;
 	}
 
     function game_bets($gameID) {

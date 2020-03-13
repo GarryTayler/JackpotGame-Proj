@@ -18,12 +18,14 @@
 	input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 		color: #fff;
 	}
+	
 	textarea::-webkit-input-placeholder { /* Chrome/Opera/Safari */
 		color: #bfb9cc;
 	}
+
 	::-ms-input-placeholder { /* Internet Explorer 10-11 */
 		color: #fff;
-	}
+	}  
 	::-ms-input-placeholder { /* Microsoft Edge */
 		color: #fff;
 	}

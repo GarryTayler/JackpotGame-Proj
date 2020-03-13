@@ -13,6 +13,10 @@
 	margin: auto;
 }
 
+.row {
+	margin: 0px;
+}
+
 /* @media (min-width: 1366px) {
 	.icon_button_div {
 		position: absolute;

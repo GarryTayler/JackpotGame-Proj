@@ -23,7 +23,9 @@
     </div>
 </footer>
 <!-- END FOOTER SECTION -->
+
 <a href="#" class="scrollup btn-default"><i class="ion-ios-arrow-up"></i></a>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/2.0.5/waypoints.min.js"></script>

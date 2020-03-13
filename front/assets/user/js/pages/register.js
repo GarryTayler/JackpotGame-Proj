@@ -30,12 +30,7 @@ $( document ).ready(function() {
         event.preventDefault();
         var keycode = (event.keyCode ? event.keyCode : event.which);
         if(keycode == '13'){
-            if($("#check-privacy").prop('checked') == true) {
-                $('#btn_register').trigger('click');
-            }
-            else {
-                showToast('error' , 'You should accept terms of service.');
-            }
+            $('#btn_register').trigger('click');
         }
     });
 
@@ -78,7 +73,7 @@ $( document ).ready(function() {
         }
 
         if($("#check-privacy").prop('checked') != true) {
-            showToast('error' , 'You should accept terms of service.');
+            showToast('error' , 'You should accept privacy and policy.');
             return;
         }
 

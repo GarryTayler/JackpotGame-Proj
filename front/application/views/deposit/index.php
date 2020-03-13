@@ -13,6 +13,7 @@ require_once('application/views/template/loader.php');
 <?php
 require_once('application/views/template/menu.php');
 ?>
+
 <style>
     input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
         color: #fff;
@@ -23,7 +24,7 @@ require_once('application/views/template/menu.php');
     }
     ::-ms-input-placeholder { /* Microsoft Edge */
         color: #fff;
-	}
+    }
 </style>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/user/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
 <link rel="stylesheet" type="text/css" href="<?= base_url('');?>assets/user/css/game_panel.css" />
@@ -35,14 +36,14 @@ require_once('application/views/template/menu.php');
         <?php
         require_once('application/views/template/chat.php');
         ?>
-        <div id="main-container" class="deposit-wrapper" >
+        <div id="main-container" class="deposit-wrapper" style="margin-left:10px;margin-right:10px;">
             <div class="row" style="margin-left: 0px; margin-right: 0px;">
                 <div class="col-md-8 deposit-info-wrapper" style="background: #1F2640;float:left;">
                     <p class="text-center" style="color:#C8CAD0;font-size:13px;">You will receive coins automatically after sending BTC to the address displayed below</p>
                     <div class="text-center">
                         <div class="address-wrapper">
                             <p style="text-align: left;font-size: 10px;width:100%;">Your personal BTC deposit address</p>
-                            <input type="text" id="deposit-address" name="deposit-address" readonly>
+                            <input type="text" id="deposit-address" name="deposit-address">
                             <button class="btn_change">Copy address</button>
                         </div>
                         <div class="qr-wrapper">
@@ -74,12 +75,14 @@ require_once('application/views/template/menu.php');
             ?>
         </div>
     </div>
+
     <script type="text/javascript">
         var game_type = 'jackpot';
         var site_url = '<?=site_url()?>';
         var base_url = '<?=base_url()?>';
         var user_id = <?=or_default($this->session->userdata('USERID'), 0)?>;
     </script>
+
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/js/pages/game.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
 </div>

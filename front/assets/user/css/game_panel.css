@@ -15,7 +15,7 @@
     height: 320px;
 }
 
-#chatlog1
+#chatlog1 
 {
     flex: 1;
     position: relative;
@@ -34,6 +34,10 @@ ol, ul {
 
 ol, ul {
     margin-bottom: 0;
+}
+
+#mCSB_1_container > *:first-child {
+    margin-top: 10px;
 }
 
 .notification {
@@ -316,12 +320,19 @@ ul li.dropdown-item1:hover{
     color: #32d056 !important;
 }
 
+/*div.copen a.open_chat {
+    cursor: pointer;
+}*/
+
+/*a.open_chat i.fa.fa-angle-double-right:hover {
+    color: #32d056 !important;
+}*/
+
 #main-container {
     width: 78%;
     display: inline-block;
     transition: margin-left .4s , width .4s;
-	margin-left: 10px;
-	margin-right: 10px;
+    margin-left: 0px;
     z-index: 101;
     margin-bottom: 100px;
 }
@@ -371,18 +382,27 @@ div.copen a.open_chat i {
     font-size: 30px;
     color: #fff;
 }
-@media (max-width: 992px) {
+/** 2020-03-10 **/
+@media(min-width: 1250px) and (max-width: 768px){
     .chat-panel {
         height: calc(100vh - 70px);
+        top:0;
     }
 }
-
-@media (max-width: 1200px) {
-    footer {
-		width: 100vw !important;
-	}
+@media(max-width: 1250px){
+    .chat-panel {
+        top:70px;
+        height: calc(100vh - 175px);
+    }
 }
-
-.row {
-	margin: 0px;
+@media (min-width: 1078px) and (max-width: 1250px){
+    .chat-panel {
+        height: calc(100vh - 147px);
+    }
+}
+@media (max-width: 768px) {
+    .chat-panel {
+        height: calc(100vh - 70px);
+        top:0;
+    }
 }

@@ -18,16 +18,12 @@
 .btn_sound.off {
 	background-image: url(<?=base_url()?>/assets/user/images/sound_off.png)
 }
-#main-container {
-	margin-left: 0px !important;
-	margin-right: 0px !important;
-}
 </style>
 
 <link rel="stylesheet" type="text/css"
       href="<?php echo base_url(); ?>assets/user/css/pages/game/jackpot_responsive.css">
 
-<div id="main-container" style="padding-left:10px; padding-right:10px;">
+<div id="main-container">
     <div class="row">
         <p class="page-title">Dashboard</p>
     </div>
@@ -197,12 +193,14 @@
             </div>
         </div>
     </div>
+
     <!-- END SECTION BANNER -->
     <?php
     require_once('application/views/template/footer.php');
     ?>
+
 </div>
 <script src="<?php echo base_url();?>assets/modules/socket.io-client/dist/socket.io.js"></script>
 <script>
-	var jackpot_socket = io.connect( '<?php echo JACKPOT_SERVER_URL; ?>' );
+    var jackpot_socket = io.connect('<?php echo JACKPOT_SERVER_URL; ?>', {forceNew: true, reconnection:false});
 </script>
