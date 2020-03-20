@@ -10,14 +10,14 @@ Version      : 1.0
 01. GENERAL STYLE
 *===================================*/
 @font-face {
-	font-family: 'OpenSans-bold';
+	font-family: 'OpenSans-Bold';
 	font-style: normal;
-	src: url('OpenSans-Bold.ttf') format('truetype');
+	src: url('NunitoSans-Bold.ttf') format('truetype');
 }
 @font-face {
 	font-family: 'OpenSans-Regular';
 	font-style: normal;
-	src: url('OpenSans-Regular.ttf') format('truetype');
+	src: url('NunitoSans-Regular.ttf') format('truetype');
 }
 body {
 	background: #ffffff none repeat scroll 0 0;
@@ -28,7 +28,7 @@ body {
     line-height: 30px;
 }
 html,
-body { 
+body {
 	height: 100%;
 }
 h1,
@@ -50,7 +50,7 @@ a {
 	transition: all .5s ease;
 }
 a:hover {
-	color: #ff69c9;
+	color: #faa82c;
 	text-decoration: none;
 	transition: all .5s ease;
 }
@@ -918,7 +918,7 @@ header .navbar-nav a {
 header a:hover,
 .navbar-nav li a.active,
 .navbar-nav .dropdown-menu li.active a {
-	color: #ff69c9;
+	color: #faa82c;
 }
 .navbar-expand-lg .navbar-nav .nav-link {
 	font-weight:bold;
@@ -941,7 +941,7 @@ header a:hover,
 	font-weight: 300;
 }
 .navbar-expand-lg .navbar-nav > li > .nav-link.active {
-	color: #93FFEB !important;
+	color: #00a0fb !important;
 }
 
 .navbar-expand-lg .nav_btn > li {
@@ -979,7 +979,7 @@ header a:hover,
 .dropdown-item:focus, 
 .dropdown-item:hover {
 	background-color: rgba(0, 0, 0, 0);
-	color: #ff69c9;
+	color: 	#faa82c;
 	padding:10px;
 }
 .navbar-expand-lg .navbar-nav li {
@@ -1001,12 +1001,13 @@ header a:hover,
 }
 
 .navbar-expand-lg .navbar-nav .dropdown-item:hover {
-	color:#ff69c9;
+	/* color:#faa82c; */
+	color: #eeb545;
 }
 .navbar-expand-lg .navbar-nav .dropdown-item.active,
 .navbar-expand-lg .navbar-nav .dropdown.show > a {
 	background-color: transparent;
-	color:#ff69c9;
+	color:#faa82c;
 }
 .lng_dropdown .dd.ddcommon {
 	cursor:pointer;
@@ -1837,7 +1838,7 @@ header a:hover,
 	width: 33px;
 }
 .roadmap .owl-nav i:hover {
-	background-color: #ff67cb;
+	background-color: #faa82c;
 	color: #fff;
 }
 .roadmap .owl-prev i {
@@ -1987,7 +1988,7 @@ header a:hover,
 	top: -86px;
 }
 .box_roadmap .roadmap_inner::after {
-	background-color: #ff67cb;
+	background-color: #faa82c;
 	border-radius: 100%;
 	content: "";
 	height: 10px;
@@ -2034,7 +2035,7 @@ header a:hover,
 	text-align: center;
 }
 .roadmap_wrap .owl-nav i:hover {
-	color: #ff67cb;
+	color: #faa82c;
 }
 .roadmap_wrap .owl-prev, 
 .roadmap_wrap .owl-next {
@@ -2184,7 +2185,7 @@ header a:hover,
 	z-index: 1;
 }
 .social_team a:hover {
-	color: #ff67cb;
+	color: #faa82c;
 }
 .gradient_box .social_team a:hover {
 	color: #444444;
@@ -2293,7 +2294,7 @@ header a:hover,
 }
 .v_blue .social_single_team li a:hover,
 .v_dark .social_single_team li a:hover {
-	color: #ff69c9;
+	color: #faa82c;
 }
 .v_dark .social_single_team li a {
 	border-color: #0c0e27;
@@ -2583,7 +2584,7 @@ header a:hover,
 	color: #0c0e27;
 }
 .v_dark .social_icon li a:hover {
-	color: #ff69c9;
+	color: #faa82c;
 }
 .v_dark .form_field .form-control::-webkit-input-placeholder {
 	color: #ffffff;
@@ -2715,7 +2716,7 @@ header a:hover,
 .footer_menu li a:hover,
 .footer_link a:hover,
 .footer_social li a:hover {
-	color: #ff69c9;
+	color: #faa82c;
 }
 .footer_link.list_arrow li {
 	list-style: none;

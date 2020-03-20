@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" href="<?= base_url('assets/images/favicon.png') ?>">
-    <title>Goldrush Admin</title>
+    <title>SPIN2WIN Admin</title>
     <!--begin::Web font -->
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
     <script>

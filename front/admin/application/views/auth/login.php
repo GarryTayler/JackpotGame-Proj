@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<title>Login | Goldrush</title>
+<title>Login | SPIN2WIN</title>
 <link rel="icon" type="image/png" href="<?= base_url('assets/images/favicon.png') ?>">
 <!-- Bootstrap Core CSS -->
 <link href="<?=base_url('assets/plugin/bootstrap/dist/css/bootstrap.min.css')?>" rel="stylesheet">

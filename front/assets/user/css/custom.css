@@ -39,7 +39,7 @@ a.btn.btn-default.nav_item:hover {
 }
 
 a.nav-link.nav_item.signup:hover {
-    color: #ff67cb;
+	color: #faa82c;
 }
 
 #search_text {
@@ -116,12 +116,12 @@ a.nav-link.nav_item.signup:hover {
   }
 
   div.history_tab ul li:hover{
-     color: #ff67cb;
+     color: #faa82c;
   }
 
   div.history_tab ul li.active:hover{
-    color: #ff67cb;
-    border-bottom: 1px solid #ff67cb;
+    color: #faa82c;
+    border-bottom: 1px solid #faa82c;
  }
 
   div.history_tab ul li.active {

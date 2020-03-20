@@ -72,7 +72,7 @@ function hideChatPanel() {
         $copen.addClass("rollIn animated").one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){
         });
     }
-    $('#chatPanelBackdrop').css('display', 'none');
+    //$('#chatPanelBackdrop').css('display', 'none');
 }
 
 $(document).ready(function() {
@@ -80,7 +80,6 @@ $(document).ready(function() {
     $(window).resize(function(w) {
         set_layout();
     });
-
     $(window).scroll(function (e) {
         const is_mobile = ($(window).width() <= 756);
         if (is_mobile) {
@@ -91,13 +90,8 @@ $(document).ready(function() {
             }
         }
     });
-
     $(document).click(function (e) {
-        if ($(e.target).attr('id') == 'chatPanelBackdrop' && window.innerWidth < 1250) {
-            hideChatPanel();
-        }
     });
-
     $("a.bar-close").click(function() {
         hideChatPanel();
     });
@@ -112,17 +106,15 @@ $(document).ready(function() {
             $chatPanel.css("transform" , "");
             $main_container.css('margin-left' , "0px");
             $main_container.css('width' , "78%");
-            
             setTimeout(function(){
                 $('footer').width($('#main-container')[0].clientWidth);
                 $('footer').css('left', $('#main-container').position().left);
             },400)
-    
         } else {
             $('body').removeClass('chat-panel-open');
             $copen = $("div.copen");
             $copen.fadeOut();
         }
-        $('#chatPanelBackdrop').css('display', 'block');
+        //$('#chatPanelBackdrop').css('display', 'block');
     });
-});         
+});

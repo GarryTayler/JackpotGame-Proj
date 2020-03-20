@@ -7,7 +7,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 <link rel="icon" type="image/png" href="<?= base_url('assets/images/favicon.png') ?>">
-<title>Register | Goldrush</title>
+<title>Register | SPIN2WIN</title>
 <!-- Bootstrap Core CSS -->
 <link href="<?=base_url()?>assets/plugin/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 <!-- animation CSS -->

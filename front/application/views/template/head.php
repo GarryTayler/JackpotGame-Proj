@@ -3,9 +3,9 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Goldrush is Professional Gambling Website" />
+<meta name="description" content="SPIN2WIN is Professional Gambling Website" />
 <!-- SITE TITLE -->
-<title>Goldrush</title>
+<title>SPIN2WIN</title>
 <!-- Favicon Icon -->
 <link rel="shortcut icon" type="image/x-icon" href="<?= base_url(''); ?>assets/user/images/logo.png">
 <!-- Animation CSS -->

@@ -10,7 +10,7 @@
                 </ul>
             </div>
             <div class="col-md-4 text-center">
-                <p class="copyright">COPYRIGHT &copy; 2020 - GOLD RUSH</p>
+                <p class="copyright">COPYRIGHT &copy; 2020 - SPIN2WIN</p>
             </div>
             <div class="col-md-4">
                 <ul class="list_none footer_menu">

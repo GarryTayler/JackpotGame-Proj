@@ -42,7 +42,7 @@ require_once('application/views/template/menu.php');
                     <p class="text-center" style="color:#C8CAD0;font-size:13px;">You will receive coins automatically after sending BTC to the address displayed below</p>
                     <div class="text-center">
                         <div class="address-wrapper">
-                            <p style="text-align: left;font-size: 10px;width:100%;">Your personal BTC deposit address</p>
+                            <p style="text-align: left;font-size: 13px;width:100%;">Your personal BTC deposit address</p>
                             <input type="text" id="deposit-address" name="deposit-address">
                             <button class="btn_change">Copy address</button>
                         </div>
@@ -82,8 +82,8 @@ require_once('application/views/template/menu.php');
         var base_url = '<?=base_url()?>';
         var user_id = <?=or_default($this->session->userdata('USERID'), 0)?>;
     </script>
-    <script src="<?= base_url(''); ?>assets/vuejs/vue.min.js"></script>
-    <script src="<?= base_url(''); ?>assets/vuejs/axios.min.js"></script>
+    <!-- <script src="<?= base_url(''); ?>assets/vuejs/vue.min.js"></script>
+    <script src="<?= base_url(''); ?>assets/vuejs/axios.min.js"></script> -->
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/js/pages/game.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
 </div>

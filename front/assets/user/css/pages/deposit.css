@@ -48,7 +48,7 @@
     }
 }
 .address-wrapper input {
-    width: calc(100% - 155px)
+    width: calc(100% - 120px)
 }
 .address-wrapper .btn_change {
     width:120px;
