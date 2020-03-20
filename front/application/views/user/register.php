@@ -3,8 +3,12 @@
 <?php
 require_once('application/views/template/head.php');
 ?>
-
-<body class="bg_light">
+<style>
+	body {
+		background-color: #121832;
+	}
+</style>
+<body>
 
 <?php
 require_once('application/views/template/loader.php');
@@ -36,7 +40,7 @@ require_once('application/views/template/loader.php');
                 <img src="<?= base_url(''); ?>assets/user/images/logo_rush.png" class="login-logo">
             </div>
             <div class="text-center">
-                <p class="login-welcome">Welcome back!</p>
+                <p class="login-welcome">Welcome back !</p>
             </div>
             <div class="text-center">
                 <p class="login-hint">Sign up to your account here:</p>

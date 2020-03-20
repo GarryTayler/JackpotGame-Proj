@@ -4,8 +4,13 @@
 require_once('application/views/template/head.php');
 ?>
 
-<body class="bg_light">
+<style>
+	body {
+		background-color: #121832;
+	}
+</style>
 
+<body>
 <?php
 require_once('application/views/template/loader.php');
 ?>

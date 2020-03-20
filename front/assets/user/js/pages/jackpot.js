@@ -343,7 +343,7 @@ var BettingPanel = function() {
 		initChart: function() {
 			var ctx = document.getElementById('myChart');//.getContext('2d');
 
-            resizeChartArea();
+            resizeChartArea(false);
 
 			// we make datasets from game betting data
 			// here...
@@ -378,7 +378,9 @@ var BettingPanel = function() {
                             top: 0,
                             bottom: 0
                         }
-                    }
+					},
+					responsive:true,
+					maintainAspectRatio:true,
 				},
 			};
 			if (jackpanel != undefined) {
@@ -411,7 +413,7 @@ function time_down() {
 $(document).ready(function() {
 	console.log('set onfocus');
 
-    resizeChartArea();
+    resizeChartArea(true);
 
 	window.onfocus = function() {
 		jackpot_socket.emit('Init'); // needs refresh
@@ -422,16 +424,19 @@ $(document).ready(function() {
 });
 
 $(window).resize(function(w) {
-    resizeChartArea();
+	resizeChartArea(false);
+	// BettingPanel.refresh();
 });
 
-function resizeChartArea() {
+function resizeChartArea(initStatus) {
     set_layout();
     var w = $('#div-chart').width();
-    $('#myChart').attr('width', w);
-    $('#myChart').attr('height', w);
-
-    var divRelativeW = $('#div-relative').width();
+	if(initStatus){
+		$('#myChart').attr('width', w);
+		$('#myChart').attr('height', w);    
+	}
+	
+	var divRelativeW = $('#div-relative').width();
     $('#jackpotTitle').css('font-size', divRelativeW / 9);
     $('#jackpotTitle').css('margin-bottom', divRelativeW / 13);
 
@@ -454,7 +459,6 @@ function resizeChartArea() {
 	} else {
         $("#current_players").css('height', $(".deposit-wrapper").height() + 'px');
 	}
-
 }
 
 var Rotate = function() {

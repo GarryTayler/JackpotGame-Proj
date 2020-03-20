@@ -11,6 +11,9 @@
         top: 0;
         z-index: 9993;
     }
+	.chat-close-wrapper {
+		cursor: pointer;
+	}
 </style>
 <div id="chatPanelBackdrop"></div>
 <div class="copen">

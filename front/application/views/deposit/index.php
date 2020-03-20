@@ -82,7 +82,8 @@ require_once('application/views/template/menu.php');
         var base_url = '<?=base_url()?>';
         var user_id = <?=or_default($this->session->userdata('USERID'), 0)?>;
     </script>
-
+    <script src="<?= base_url(''); ?>assets/vuejs/vue.min.js"></script>
+    <script src="<?= base_url(''); ?>assets/vuejs/axios.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/js/pages/game.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
 </div>
