@@ -359,9 +359,12 @@ ul li.dropdown-item1:hover{
 }
 
 div.copen {
-    position: absolute;
+    /*position: absolute;
     left: 35px;
-    top: 10px;
+    top: 10px;*/
+    position: fixed;
+    left: 32px;
+    top: 102px;
     z-index: 1001;
     background: rgb(227 , 98 , 191);
     padding: 0px 0.73rem;

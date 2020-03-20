@@ -61,6 +61,10 @@ function hideChatPanel() {
 
         $main_container.css('margin-left' , (-width) + "px");
         $main_container.css('width' , "100%");
+
+        $('footer').width('calc(100% - 20px)');
+        $('footer').css('left', '10px');
+
     } else {
         $('body').addClass('chat-panel-open');
         $copen = $("div.copen");
@@ -72,9 +76,7 @@ function hideChatPanel() {
 }
 
 $(document).ready(function() {
-    setTimeout(function () {
-        set_layout();
-    }, 1000);
+    set_layout();
     $(window).resize(function(w) {
         set_layout();
     });
@@ -91,7 +93,7 @@ $(document).ready(function() {
     });
 
     $(document).click(function (e) {
-        if ($(e.target).attr('id') == 'chatPanelBackdrop') {
+        if ($(e.target).attr('id') == 'chatPanelBackdrop' && window.innerWidth < 1250) {
             hideChatPanel();
         }
     });
@@ -110,6 +112,12 @@ $(document).ready(function() {
             $chatPanel.css("transform" , "");
             $main_container.css('margin-left' , "0px");
             $main_container.css('width' , "78%");
+            
+            setTimeout(function(){
+                $('footer').width($('#main-container')[0].clientWidth);
+                $('footer').css('left', $('#main-container').position().left);
+            },400)
+    
         } else {
             $('body').removeClass('chat-panel-open');
             $copen = $("div.copen");

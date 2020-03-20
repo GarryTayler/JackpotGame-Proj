@@ -36,7 +36,7 @@ require_once('application/views/template/menu.php');
         <?php
         require_once('application/views/template/chat.php');
         ?>
-        <div id="main-container" class="deposit-wrapper" style="margin-left:10px;margin-right:10px;">
+        <div id="main-container" class="deposit-wrapper">
             <div class="row" style="margin-left: 0px; margin-right: 0px;">
                 <div class="col-md-8 deposit-info-wrapper" style="background: #1F2640;float:left;">
                     <p class="text-center" style="color:#C8CAD0;font-size:13px;">You will receive coins automatically after sending BTC to the address displayed below</p>
