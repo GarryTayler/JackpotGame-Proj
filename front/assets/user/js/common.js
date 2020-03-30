@@ -3,20 +3,18 @@ function showToast (type , message , position = 'top-right')
     heading = '';
     if( type == 'error' )
         heading = 'Error';
-
     $.toast({
         heading: heading,
         text: message,
         showHideTransition: 'fade',
         position: position,
         icon: type
-    });            
+    });
 }
 
 function run_waitMe(el, num, effect)
 {
     text = 'Please wait...'; fontSize = '';
-    
     switch (num) {
         case 1:
             maxSize = '';
@@ -37,8 +35,8 @@ function run_waitMe(el, num, effect)
     el.waitMe({
         effect: effect,
         text: text,
-        bg: 'rgba(39 , 20 , 66 , 0.7)',
-        color: '#c287ff',
+        bg: 'rgba(0, 159, 250, 0.15)',
+        color: '#009ffa',
         maxSize: maxSize,
         waitTime: -1,
         source: 'img.svg',

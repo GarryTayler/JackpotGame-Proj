@@ -86,6 +86,7 @@ defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest auto
 
 define('CHAT_SERVER_URL', 'http://localhost:4201/');
 define('JACKPOT_SERVER_URL', 'http://localhost:4203/');
+define('MAIN_SERVER_URL', 'http://localhost:3001/');
 
 define('CHAT_LOG_LIMIT' , 20);
 define('TOKEN_LENGTH' , 24);

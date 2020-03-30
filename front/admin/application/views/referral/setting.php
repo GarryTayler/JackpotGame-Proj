@@ -34,6 +34,21 @@
                         <button class="btn btn-info form-control gr-change-btn" onclick="onChangeFee()">Change</button>
                     </div>
                 </div>
+                <div class="form-group m-form__group row">
+                    <label class="col-lg-4 col-form-label">
+                        Admin Fee(%)
+                    </label>
+                    <div class="col-lg-5">
+                        <input type="text"
+                               id="admin_fee"
+                               value="<?= $adminFeeInfo ?>"
+                               oninput="this.value = this.value.replace(/[^0-9.]/g, ''); this.value = this.value.replace(/(\..*)\./g, '$1');"
+                               class="form-control m-input" placeholder="Admin Fee(%)">
+                    </div>
+                    <div class="col-lg-3">
+                        <button class="btn btn-info form-control gr-change-btn" onclick="onChangeAdminFee()">Change</button>
+                    </div>
+                </div>
             </div>
             <!--end::Form-->
         </div>
@@ -76,6 +91,29 @@
                     swal(
                         'Success!',
                         'Withdrawal Fee has been changed successfully!',
+                        'success'
+                    )
+                } else {
+                    alert(res.msg);
+                }
+            },
+            error: function(err) {
+                alert('Server error');
+            }
+        })
+    }
+    function onChangeAdminFee() {
+        var admin_fee = $('#admin_fee').val();
+        $.ajax({
+            url: baseURL + 'referral/ajax_save_setting',
+            type:'post',
+            dataType: 'json',
+            data: {key: 'ADMIN_FEE', value: admin_fee},
+            success: function(res) {
+                if (res.errorCode == 0) {
+                    swal(
+                        'Success!',
+                        'Admin Fee has been changed successfully!',
                         'success'
                     )
                 } else {

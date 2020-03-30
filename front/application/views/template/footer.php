@@ -15,8 +15,8 @@
             <div class="col-md-4">
                 <ul class="list_none footer_menu">
                     <li><a href="#">FAQ</a></li>
-                    <li><a href="#">PRIVACY POLICY</a></li>
-                    <li><a href="#">TERMS AND CONDITIONS</a></li>
+                    <li><a href="/policy">PRIVACY POLICY</a></li>
+                    <li><a href="/terms">TERMS AND CONDITIONS</a></li>
                 </ul>
             </div>
         </div>

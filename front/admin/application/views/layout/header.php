@@ -48,7 +48,7 @@
                                 data-dropdown-toggle="click">
                                 <a href="#" class="m-nav__link m-dropdown__toggle">
                                     <span class="m-topbar__userpic">
-                                        <img src="<?= base_url('assets/images/user4.jpg') ?>"
+                                        <img src="<?= base_url('assets/images/no_avatar.jpg') ?>"
                                              onerror="this.src='<?= base_url('assets/images/no_avatar.jpg'); ?>'"
                                              class="m--img-rounded m--marginless m--img-centered" alt=""/>
                                     </span>
@@ -63,7 +63,7 @@
                                              style="background: url(<?= base_url('assets/images/user_profile_bg.jpg') ?>); background-size: cover;">
                                             <div class="m-card-user m-card-user--skin-dark">
                                                 <div class="m-card-user__pic">
-                                                    <img src="<?= base_url('assets/images/user4.jpg') ?>"
+                                                    <img src="<?= base_url('assets/images/no_avatar.jpg') ?>"
                                                          onerror="this.src='<?= base_url('assets/images/no_avatar.jpg'); ?>'"
                                                          class="m--img-rounded m--marginless" alt=""/>
                                                 </div>
@@ -85,19 +85,6 @@
                                                             Section
                                                         </span>
                                                     </li>
-                                                    <li class="m-nav__item">
-                                                        <a href="##" class="m-nav__link">
-                                                            <i class="m-nav__link-icon flaticon-profile-1"></i>
-                                                            <span class="m-nav__link-title">
-                                                                <span class="m-nav__link-wrap">
-                                                                    <span class="m-nav__link-text">
-                                                                        My Profile
-                                                                    </span>
-                                                                </span>
-                                                            </span>
-                                                        </a>
-                                                    </li>
-
                                                     <li class="m-nav__separator m-nav__separator--fit"></li>
                                                     <li class="m-nav__item">
                                                         <a href="<?=site_url('change_password')?>" class="m-nav__link">

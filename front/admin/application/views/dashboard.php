@@ -13,15 +13,15 @@
                         <tbody>
                             <tr>
                                 <td class="txt-oflo">New users</td>
-                                <td><span class="text-success">125</span></td>
+                                <td><span class="text-success"><?php echo $newUsers; ?></span></td>
                             </tr>
                             <tr>
                                 <td class="txt-oflo">Logged users</td>
-                                <td><span class="text-success">125</span></td>
+                                <td><span class="text-success">0</span></td>
                             </tr>
                             <tr>
                                 <td class="txt-oflo">Active users</td>
-                                <td><span class="text-success">125</span></td>
+                                <td><span class="text-success"><?php echo $newUsers; ?></span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -62,23 +62,23 @@
                         <tbody>
                             <tr>
                                 <td class="txt-oflo">Ticket placed</td>
-                                <td><span class="text-success">125</span></td>
+                                <td><span class="text-success">0</span></td>
                             </tr>
                             <tr>
                                 <td class="txt-oflo">Lost tickets</td>
-                                <td><span class="text-success">125</span></td>
+                                <td><span class="text-success">0</span></td>
                             </tr>
                             <tr>
                                 <td class="txt-oflo">Won tickets</td>
-                                <td><span class="text-success">125</span></td>
+                                <td><span class="text-success">0</span></td>
                             </tr>
                             <tr>
                                 <td class="txt-oflo">Pending tickets</td>
-                                <td><span class="text-success">125</span></td>
+                                <td><span class="text-success">0</span></td>
                             </tr>
                             <tr>
                                 <td class="txt-oflo">Cancelled tickets</td>
-                                <td><span class="text-success">125</span></td>
+                                <td><span class="text-success">0</span></td>
                             </tr>
                         </tbody>
                     </table>

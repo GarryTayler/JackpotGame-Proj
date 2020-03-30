@@ -100,11 +100,6 @@ class Users_Model extends CI_Model {
 	}
 
 	function lose_game($userID, $betAmount) {
-		// when user loses bet, block amount and wallet reduces
-		/*$this->db->where('ID', $userID)
-			->set('WALLET_BLOCK', 'WALLET_BLOCK - '.$betAmount, false)
-			->set('WALLET', 'WALLET - '.$betAmount, false)
-			->update('users');*/
 		// to do here add lose game logic
 	}
 

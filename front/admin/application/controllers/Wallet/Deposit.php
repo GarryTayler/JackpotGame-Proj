@@ -42,7 +42,14 @@ class Deposit extends MY_Controller {
 
         $totalCount = $this->Deposit_Withdraw_Log_Model->getLogsCount(1, $from, $to);
         $logsList = $this->Deposit_Withdraw_Log_Model->getLogs(1, $page, $pageSize, $from, $to, $orderby, $direction);
-        $ret = array('totalCount'=>$totalCount, 'logsList'=>$logsList);
+        $list = array();
+        foreach ($logsList as $log) {
+            // $log['AMOUNT_BTC'] = number_format($log['AMOUNT_BTC']);
+            $log['AMOUNT_COINS'] = number_format($log['AMOUNT_COINS']);
+            // $log['FEE'] = number_format($log['FEE']);
+            $list[] = $log;
+        }
+        $ret = array('totalCount'=>$totalCount, 'logsList'=>$list);
         echo json_encode($ret);
     }
     /**

@@ -21,6 +21,7 @@
                         <th>Username</th>
                         <th>Email</th>
                         <th>Wallet</th>
+                        <th>Referral Code</th>
                         <th>CreatedAt</th>
                         <th>IP</th>
                         <th>State</th>
@@ -92,7 +93,7 @@
                 blockBtnClass = '',
                 blockBtnToolTip = '';
 
-            if (tblData[i].STATE == 1) {
+            if (tblData[i].STATE == 0) {
                 blockState = '<span class="m-badge m-badge--primary m-badge--wide">active</span>';
                 blockBtnClass = 'btn-focus';
                 blockBtnToolTip = 'Block';
@@ -103,11 +104,12 @@
             }
 
             var trRecord = `<tr>
-                            <td><img src="${tblData[i].AVATAR}" onerror="this.src='${no_avatar}'"></td>
+                            <td><img src="/uploads/profile/${tblData[i].AVATAR}" onerror="this.src='${no_avatar}'"></td>
                             <td>${tblData[i].USERNAME}</td>
                             <td>${tblData[i].EMAIL}</td>
                             <td>${tblData[i].WALLET}</td>
-                            <td>${tblData[i].CREATE_TIME}</td>
+                            <td>${tblData[i].REFERAL_CODE}</td>
+                            <td>${getFullTimeFormat(tblData[i].CREATE_TIME)}</td>
                             <td>${tblData[i].LAST_IPADDRESS}</td>
                             <td>${blockState}</td>
                             <td>

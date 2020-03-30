@@ -24,7 +24,21 @@ require_once('application/views/template/menu.php');
     }
     ::-ms-input-placeholder { /* Microsoft Edge */
         color: #fff;
-    }
+	}
+	.btn_change:hover {
+		background-color: #2c51bd;
+	}
+	#qrcode {
+		width: 140px;
+		height: 140px;
+		margin: 0 auto;
+		text-align: center;
+		background: #fff;
+    	padding: 6px;
+	}
+	#qrcode a {
+		font-size: 0.8em;
+	}
 </style>
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/user/plugins/scrollbar/css/jquery.mCustomScrollbar.css">
 <link rel="stylesheet" type="text/css" href="<?= base_url('');?>assets/user/css/game_panel.css" />
@@ -37,17 +51,20 @@ require_once('application/views/template/menu.php');
         require_once('application/views/template/chat.php');
         ?>
         <div id="main-container" class="deposit-wrapper">
-            <div class="row" style="margin-left: 0px; margin-right: 0px;">
+            <div class="row deposit-panel" style="margin-left: 0px; margin-right: 0px;">
                 <div class="col-md-8 deposit-info-wrapper" style="background: #1F2640;float:left;">
                     <p class="text-center" style="color:#C8CAD0;font-size:13px;">You will receive coins automatically after sending BTC to the address displayed below</p>
                     <div class="text-center">
                         <div class="address-wrapper">
                             <p style="text-align: left;font-size: 13px;width:100%;">Your personal BTC deposit address</p>
-                            <input type="text" id="deposit-address" name="deposit-address">
-                            <button class="btn_change">Copy address</button>
+                            <input type="text" id="deposit-address" name="deposit-address" readonly>
+                            <button class="btn_change" id="copy_address">Copy address</button>
                         </div>
                         <div class="qr-wrapper">
-                            <img src="<?php echo base_url()?>assets/user/images/qr_image.png">
+                           <!--
+							   <img src="<?php echo base_url()?>assets/user/images/qr_image.png">
+							-->
+							<div id="qrcode"></div>
                         </div>
                         <div class="calc-wrapper">
                             <p>COIN TO BTC CALCULATOR</p>
@@ -75,15 +92,61 @@ require_once('application/views/template/menu.php');
             ?>
         </div>
     </div>
-
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
     <script type="text/javascript">
-        var game_type = 'jackpot';
+		var game_type = 'jackpot';
+		var coin = 0 , btc = 0;
         var site_url = '<?=site_url()?>';
         var base_url = '<?=base_url()?>';
-        var user_id = <?=or_default($this->session->userdata('USERID'), 0)?>;
-    </script>
-    <!-- <script src="<?= base_url(''); ?>assets/vuejs/vue.min.js"></script>
-    <script src="<?= base_url(''); ?>assets/vuejs/axios.min.js"></script> -->
+		var user_id = <?=or_default($this->session->userdata('USERID'), 0)?>;
+		run_waitMe($('.deposit-panel'), 2, 'ios');
+		$.ajax({
+            url: '<?= base_url("Deposit/getWalletAddress") ?>',
+            type: 'post',
+            dataType: 'json',
+            data: {},
+            success: function (res) {
+				$('.deposit-panel').waitMe('hide');
+				if(res.status != 'success') {
+					showToast('error' , 'You are failed to get your deposit address.');
+					return;
+				}
+				$('#deposit-address').val(res.data.res);
+				$('#qrcode').empty();
+				$('#qrcode').qrcode({width: 128,height: 128,text: res.data.res});
+            },
+            error: function (err) {
+				$('.deposit-panel').waitMe('hide');
+				showToast('error' , 'The network has got a problem.');
+            }
+        })
+		$('#coin_value').on('keyup' , function(e) {
+			coin = parseFloat($('#coin_value').val());
+			if(isNaN(coin)) {
+				btc = 0;
+			}
+			else
+				btc = parseFloat(coin / 1000000).toFixed(6);
+			$('#btc_value').val(btc);
+		});
+		$('#btc_value').on('keyup' , function(e) {
+			btc = parseFloat($('#btc_value').val());
+			if(isNaN(btc))
+				coin = 0;
+			else
+				coin = parseInt(btc * 1000000);
+			$('#coin_value').val(coin);
+		});
+		$('#copy_address').on('click', function(e) {
+			var copyText = document.getElementById("deposit-address");
+			/* Select the text field */
+			copyText.select();
+			copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+			 /* Copy the text inside the text field */
+			  document.execCommand("copy");
+			  showToast('success' , 'The deposit address is copied.');
+		});
+	</script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/js/pages/game.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
 </div>

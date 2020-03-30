@@ -69,7 +69,7 @@ class Auth extends MY_Controller {
         $data = $this->input->post();
         // check for cur password
         $password = $this->db->from('admin')->where('ID', $this->user_data['ID'])->get()->row()->PASSWORD;
-        if ($password != md5($data['cur_password'])) {
+        if ($password != md5($data['curPassword'])) {
             $this->res_error('Current password doesn\'t match.');
         }
         $this->db->update('admin', array('PASSWORD' => md5($data['password'])), array('ID' => $this->user_data['ID']));

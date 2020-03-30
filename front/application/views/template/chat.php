@@ -21,22 +21,19 @@
         <i class="fa fa-angle-double-right" aria-hidden="true"></i>
     </a>
 </div>
-
 <div class="chat-panel">
     <div class="row row_heading_v1" style="margin: 0">
         <div class="row" style="width: 100%;margin:0;height: 65px">
             <div class="chat-title-wrapper">
                 <label class="chat-title">Live Chat</label>
             </div>
-            <div class="chat-close-wrapper">
+            <div class="chat-close-wrapper" id="chat-close-wrapper">
                 <a class="bar-close"><i class="fa fa-chevron-left" aria-hidden="true" style="font-size: 14px;margin-top:24px;"></i></a>
             </div>
         </div>
     </div>
-
     <ul class="list-unstyled mCustomScrollbar" id="chatlog1" style="border-bottom: 2px solid rgb(52, 63, 97);overflow-y: hidden;">
     </ul>
-    
     <div class="msg-input left-input" style="align-items: center;padding: 12px 0;">
         <?php
         if( isset($_SESSION['logged_in']) && $_SESSION['logged_in'] ) {

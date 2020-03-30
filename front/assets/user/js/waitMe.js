@@ -25,8 +25,8 @@ Github: https://github.com/vadimsva/waitMe
           var _defaults = {
             effect: 'bounce',
             text: '',
-            bg: 'rgba(39 , 20 , 66 , 0.7)',
-            color: '#c287ff',
+            bg: 'rgba(0, 159, 250, 0.15)',
+            color: '#009ffa',
 						maxSize: '',
 						waitTime: -1,
 						textPos: 'vertical',
@@ -158,9 +158,8 @@ Github: https://github.com/vadimsva/waitMe
 
 
 
-          _options.bg = 'rgba(39 , 20 , 66 , 0.7)';
+          _options.bg = 'rgba(0, 159, 250, 0.15)';
           elemObj.css({background: _options.bg});
-					
 					if (_options.maxSize !== '' && _options.effect != 'none') {
 						var elemH = effectObj.outerHeight();
 						var elemW = effectObj.outerWidth();
@@ -175,7 +174,7 @@ Github: https://github.com/vadimsva/waitMe
 									effectObj.css({height:_options.maxSize + 'px', width:_options.maxSize + 'px'});
 									effectObj.find('> div').css({margin: '0 5%'});
 								} else {
-									var zoom = _options.maxSize / elemMax - 0.2;
+									var zoom = 0.55;
 									var offset = '-50%';
 									if (_options.effect == 'roundBounce') {
 										offset = '-75%';

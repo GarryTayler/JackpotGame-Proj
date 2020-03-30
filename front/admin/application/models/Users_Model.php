@@ -111,4 +111,17 @@ class Users_Model extends MY_Model {
             ->update($this->table);
         return $ret;
     }
+    /**
+     * get count of new users
+     * @return int
+     * @param $from, $to
+    */
+    function countNewUsers($from, $to) {
+        $count = $this->db
+            ->where('CREATE_TIME >=', $from)
+            ->where('CREATE_TIME <=', $to)
+            ->get($this->table)
+            ->num_rows();
+        return $count;
+    }
 }

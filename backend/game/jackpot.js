@@ -39,38 +39,38 @@ app.post('/jackpot/ajax_deposit', function (req, res) {
             msg:'You have to login first.'
 		})
 	}
-
-	let userInfo = getUserInfo(req.body.token);
+	
 	let gameID = req.body.game_id;
 	let depositAmount = req.body.deposit_amount;
 
-    // check if this amount is available on wallet
-	if (userInfo.wallet_available < depositAmount) {
-		return res.json({
-			status: false,
-			msg: 'Not enough wallet.'
-		})
-	}
-
-	// check game winner
-	let sql = `select * from jackpot_home where ID='${gameID}`;
-	con.query(sql, function(err, result){
-		if (err) return res.json({status: false, msg: 'Invalid Game Data.'});
-		if (result.length > 0 && result[0]) {
-
+	getUserInfo(req.body.token, function(userInfo){
+		// check if this amount is available on wallet
+		if (userInfo.wallet < depositAmount) {
+			return res.json({
+				status: false,
+				msg: 'Not enough wallet.'
+			})
 		}
-        return res.json({status: false, msg: 'Invalid Game Data.'});
+
+		// check game winner
+		let sql = `select * from jackpot_home where ID='${gameID}`;
+		con.query(sql, function(err, result){
+			if (err) return res.json({status: false, msg: 'Invalid Game Data.'});
+			if (result.length > 0 && result[0]) {
+
+			}
+			return res.json({status: false, msg: 'Invalid Game Data.'});
+		});
+
+		let betInfo = {
+			USERID: userInfo.userid,
+			BET_AMOUNT: parseFloat(depositAmount),
+			AVATAR: userInfo.avatar,
+			USERNAME: userInfo.username
+		};
+		Jackpot.new_bet(betInfo);
+		res.json({'error_code' : 0});
 	});
-
-    let betInfo = {
-        USERID: userInfo.userid,
-        BET_AMOUNT: parseFloat(depositAmount),
-        AVATAR_MEDIUM: userInfo.avatarmedium,
-        USERNAME: userInfo.username
-    };
-    Jackpot.new_bet(betInfo);
-    res.json({'error_code' : 0});
-
 });
 
 app.post('/jackpot/ajax_max_amount', function(req, res){
@@ -80,11 +80,12 @@ app.post('/jackpot/ajax_max_amount', function(req, res){
 			msg: 'You should login first.'
 		});
 	}
-	let userInfo = getUserInfo(req.body.token);
-	res.json({
-		status: true,
-		wallet: userInfo.wallet_available
-	})
+	getUserInfo(req.body.token, function(userInfo){
+		res.json({
+			status: true,
+			wallet: userInfo.wallet
+		})
+	});
 });
 
 app.post('/new_deposit', function(req, res) {
@@ -108,18 +109,25 @@ function checkLogin(userToken) {
 }
 
 /**
- * Get user info from token
+ *
  * @param token
+ * @param cb
  */
-function getUserInfo(token) {
-    return {
-        avatarmedium: '/imgs/user_com1.jpg',
-        avatar: '',
-        userid: '1',
-        username: 'Test Account',
-        wallet: 2237740.00,
-        wallet_available: 2054225.00,
-    }
+function getUserInfo(token, cb) {
+
+    let sql = `select * from users where API_TOKEN='${token}'`;
+    con.query(sql, function (err, result) {
+        if (err) throw err;
+        let userObj = result[0];
+        let userInfo =  {
+            avatar: userObj['AVATAR'],
+            userid: userObj['ID'],
+            username: userObj['USERNAME'],
+            wallet: userObj['WALLET_BLOCK'],
+        };
+        return cb(userInfo);
+    });
+
 }
 
 function check_round_finishable() {

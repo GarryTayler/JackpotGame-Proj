@@ -26,7 +26,7 @@ require_once('application/views/template/menu.php');
         require_once('application/views/template/chat.php');
         ?>
         <div id="main-container">
-            <div class="faq-wrapper">
+            <div class="faq-wrapper faq-panel">
                 <?php for($i = 0; $i < 10; $i++) { ?>
                     <div class="faq-item-wrapper">
                         <div class="faq-item-title">
@@ -57,24 +57,50 @@ require_once('application/views/template/menu.php');
         var game_type = 'jackpot';
         var site_url = '<?=site_url()?>';
         var base_url = '<?=base_url()?>';
-        var user_id = <?=or_default($this->session->userdata('USERID'), 0)?>;
-
+		run_waitMe($('.faq-panel'), 2, 'ios');
+		$.ajax({
+            url: '<?= base_url("Faq/get_list") ?>',
+            type: 'post',
+            dataType: 'json',
+            data: {},
+            success: function (res) {
+				$('.faq-panel').waitMe('hide');
+				if(res.status != 'success') {
+					showToast('error' , 'You are failed to get your deposit address.');
+					return;
+				}
+				let html = '';
+				for(let i = 0; i < res.data.length; i ++) {
+					html += '<div class="faq-item-wrapper"> \
+                        <div class="faq-item-title" style="cursor:pointer;" onclick="openFaq(this, ' + res.data[i].id + ')"> \
+                            <label style="cursor:pointer;">' + res.data[i].question + '</label> \
+                            <i class="fa fa-plus"></i> \
+                        </div> \
+                        <div id="faq' + res.data[i].id + '" style="display: none;"> \
+                            ' + res.data[i].answer + ' \
+                        </div> \
+                    </div>';
+				}
+				$('.faq-panel').html(html);
+            },
+            error: function (err) {
+				$('.faq-panel').waitMe('hide');
+				showToast('error' , 'The network has got a problem.');
+            }
+        })
         function openFaq(obj, no) {
-            if($(obj).hasClass('fa-plus')) {
+			var object = $(obj).find('i');
+            if(object.hasClass('fa-plus')) {
                 $("#faq" + no).slideDown();
-                $(obj).removeClass('fa-plus');
-                $(obj).addClass('fa-minus');
-            }else if($(obj).hasClass('fa-minus')) {
+                object.removeClass('fa-plus');
+                object.addClass('fa-minus');
+            }else if(object.hasClass('fa-minus')) {
                 $("#faq" + no).slideUp();
-                $(obj).removeClass('fa-minus');
-                $(obj).addClass('fa-plus');
+                object.removeClass('fa-minus');
+                object.addClass('fa-plus');
             }
         }
     </script>
-
-    <script src="<?= base_url(''); ?>assets/vuejs/vue.min.js"></script>
-    <script src="<?= base_url(''); ?>assets/vuejs/axios.min.js"></script>
-
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/js/pages/game.js"></script>
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>
 </div>

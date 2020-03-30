@@ -126,9 +126,9 @@ class User extends MY_Controller {
             } else {
                 $userInfo = $this->Users_Model->getUser($id);
                 if ($userInfo['STATE'] * 1 == 0 ) {
-                    $this->Users_Model->updateUser($id, array('STATE' => 1));
+                    $this->Users_Model->updateUser($id, array('STATE' => 1)); // active
                 } else {
-                    $this->Users_Model->updateUser($id, array('STATE' => 0));
+                    $this->Users_Model->updateUser($id, array('STATE' => 0)); // inactive
                 }
                 $ret['errorCode'] = 0;
             }

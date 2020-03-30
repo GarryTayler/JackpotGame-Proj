@@ -1,3 +1,11 @@
+<style>
+    .game-round {
+        cursor: pointer;
+    }
+    .game-round:hover {
+        color:#36a3f7 !important;
+    }
+</style>
 <div class="row">
     <div class="col-lg-12">
         <!--begin::Portlet-->
@@ -20,10 +28,12 @@
                 <table class="table table-bordered table-responsive-md" id="grTable">
                     <thead>
                     <tr>
+                        <th>Round</th>
                         <th>Time</th>
                         <th>HASH</th>
                         <th>Total Players</th>
                         <th>Total Betting Amount</th>
+                        <th>Total Profit</th>
                         <th>Winner</th>
                         <th>Action</th>
                     </tr>
@@ -36,6 +46,43 @@
             <!--end::Form-->
         </div>
         <!--end::Portlet-->
+    </div>
+</div>
+
+<div class="modal fade" id="gameDlg" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="gameDlgTitle">
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">
+                        ×
+                    </span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-responsive-md" id="detailTable">
+                    <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Time</th>
+                        <th>BET AMOUNT</th>
+                        <th>USER NAME</th>
+                        <th>PROFIT</th>
+                        <th>RESULT</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    Close
+                </button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -106,11 +153,13 @@
         $('#grTable tbody').html('');
         for (var i = 0; i < tblData.length; i++) {
             var trRecord = `<tr>
+                            <td onclick="onShowGameDetail('${tblData[i].ID}')" class="game-round">${tblData[i].ID}</td>
                             <td>${tblData[i].CREATE_TIME}</td>
                             <td>${tblData[i].HASH}</td>
                             <td>${tblData[i].TOTAL_PLAYERS}</td>
                             <td>${tblData[i].TOTAL_BETTING_AMOUNT}</td>
-                            <td>${tblData[i].WINNER_USERNAME}</td>
+                            <td>${tblData[i].TOTAL_PROFIT}</td>
+                            <td>${tblData[i].WINNER_USERNAME}(${tblData[i].WINNER_EMAIL})</td>
                             <td>
                                 <button class="btn btn-danger"
                                     onclick="onDeleteItem('${tblData[i].ID}')"
@@ -148,4 +197,41 @@
         })
     }
 
+    function onShowGameDetail(id) {
+        $.ajax({
+            url: '<?= base_url("Game/Jackpot/ajax_get_logs") ?>',
+            type: 'post',
+            dataType: 'json',
+            data: {gameid: id},
+            success: function (res) {
+                $("#gameDlgTitle").html("Round " + id);
+                renderGameDetail(res.logList);
+                $("#gameDlg").modal();
+            },
+            error: function (err) {
+                console.log(err);
+                alert('Server Error');
+            }
+        });
+    }
+
+
+    function renderGameDetail(tblData) {
+        if (tblData.length == 0) {
+            $('#detailTable tbody').html('<tr><td colspan="6" class="no-data">No Data</td></td>');
+            return;
+        }
+        $('#detailTable tbody').html('');
+        for (var i = 0; i < tblData.length; i++) {
+            var trRecord = `<tr>
+                            <td>${i + 1}</td>
+                            <td>${tblData[i].CREATE_TIME}</td>
+                            <td>${tblData[i].BET_AMOUNT}</td>
+                            <td>${tblData[i].USERNAME}</td>
+                            <td>${tblData[i].PROFIT}</td>
+                            <td>${tblData[i].RESULT}</td>
+                        </tr>`;
+            $('#detailTable tbody').append(trRecord);
+        }
+    }
 </script>

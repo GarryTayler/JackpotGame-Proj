@@ -99,31 +99,27 @@ class MY_Controller extends CI_Controller {
         $data_['menus'] = array(
             array('title' => 'Dashboard', 'icon' => 'flaticon-layers', 'id' => 'dashboard', 'path' => 'dashboard'),
             array('title' => 'User', 'icon' => 'la la-users', 'id' => 'users', 'path' => 'user'),
-            array('title' => 'GameHistory', 'icon' => 'la la-gamepad', 'has_submenu' => true,
-                'id' => array('jackpot'),
-                'submenus' => array(
-                    array('title' => 'Jackpot', 'id' => 'jackpot', 'path' => 'game/jackpot'),
-                )
-            ),
+            array('title' => 'GameHistory', 'icon' => 'flaticon-layers', 'id' => 'jackpot', 'path' => 'game/jackpot'),
             array('title' => 'Wallet', 'icon' => 'la la-money', 'has_submenu' => true,
                 'id' => array('deposit', 'withdrawal'),
                 'submenus' => array(
                     array('title' => 'Deposit', 'path' => 'wallet/deposit', 'id' => 'deposit'),
-                    array('title' => 'Withdraw', 'path' => 'wallet/withdraw', 'id' => 'withdraw'),
+                    array('title' => 'Withdraw', 'path' => 'wallet/withdraw', 'id' => 'withdrawal'),
                 )
             ),
             array('title' => 'Referral', 'icon' => 'la la-gift', 'has_submenu' => true,
-                'id' => array('referral', 'referral_setting'),
+                'id' => array('referral'),
                 'submenus' => array(
                     array('title' => 'Referral', 'path' => 'referral', 'id' => 'referral'),
-                    array('title' => 'Setting', 'path' => 'referral/setting', 'id' => 'referral_setting'),
                 )
             ),
-            array('title' => 'Faq', 'icon' => 'la la-exclamation-triangle', 'id' => 'faq', 'path' => 'faq'),
+            array('title' => 'Setting', 'icon' => 'la la-cog', 'id' => 'referral_setting', 'path' => 'referral/setting'),
             array('title' => 'Pages', 'icon' => 'la la-suitcase', 'has_submenu' => true,
-                'id' => array('policy'),
+                'id' => array('faq', 'policy', 'terms'),
                 'submenus' => array(
+                    array('title' => 'Faq', 'path' => 'faq', 'id' => 'faq'),
                     array('title' => 'Privacy and Policy', 'path' => 'Pages/PrivacyPolicy', 'id' => 'policy'),
+                    array('title' => 'Terms and Conditions', 'path' => 'Pages/Terms', 'id' => 'terms'),
                 )
             ),
         );

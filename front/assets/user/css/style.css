@@ -3509,3 +3509,9 @@ header a:hover,
 /*===================================*
 22. END CONTACT PAGE
 *====================================*/
+.policy-panel .pg-title{
+	color: white;
+}
+.policy-panel p {
+	color: white;
+}

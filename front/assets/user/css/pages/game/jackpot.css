@@ -579,10 +579,10 @@ Top panel
 .withdraw-from-wrapper input.form-control,
 .referral-from-wrapper input.form-control {
 	padding: .6rem .75rem;
-	font-size: 1.3rem;
 	background-color: #313d60;
     border: 1px solid #313d60;
-    color: white;
+	color: white;
+	font-size: 13px;
 }
 
 .referral-from-wrapper .input-group-text:hover {

@@ -16,17 +16,18 @@
                 </div>
                 <table class="table table-bordered table-responsive-md" id="grTable">
                     <thead>
-                    <tr>
-                        <th>Avatar</th>
-                        <th>Username</th>
-                        <th>Email</th>
-                        <th>Bonus</th>
-                        <th>Profit</th>
-                        <th>Log Date</th>
-                        <th>Referral<br>Code</th>
-                        <th>Referral<br>Username</th>
-                        <th>Referral<br>Email</th>
-                    </tr>
+                        <tr>
+                            <th>ID</th>
+                            <th>Avatar</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Bonus</th>
+                            <th>Profit</th>
+                            <th>Log Date</th>
+                            <th>Referral<br>Code</th>
+                            <th>Referral<br>Username</th>
+                            <th>Referral<br>Email</th>
+                        </tr>
                     </thead>
                     <tbody>
                     </tbody>
@@ -106,30 +107,16 @@
             }
 
             var trRecord = `<tr>
+                            <td>${tblData[i].ID}</td>
                             <td><img src="${tblData[i].AVATAR}" onerror="this.src='${no_avatar}'"></td>
                             <td>${tblData[i].USERNAME}</td>
                             <td>${tblData[i].EMAIL}</td>
-                            <td>${tblData[i].WALLET}</td>
-                            <td>${tblData[i].CREATE_TIME}</td>
-                            <td>${tblData[i].LAST_IPADDRESS}</td>
-                            <td>${blockState}</td>
-                            <td>
-                                <button class="btn btn-danger"
-                                    onclick="onDeleteItem('${tblData[i].ID}')"
-                                    data-toggle="m-tooltip" title="Delete">
-                                    <i class="fa fa-trash"></i>
-                                </button>
-                                <button class="btn ${blockBtnClass}"
-                                    onclick="onBlockItem(this, '${tblData[i].ID}')"
-                                    data-toggle="m-tooltip" title="${blockBtnToolTip}">
-                                    <i class="fa fa-window-close-o"></i>
-                                </button>
-                                <button class="btn btn-warning"
-                                    onclick="onResetPassword('${tblData[i].ID}')"
-                                    data-toggle="m-tooltip" title="Reset Password">
-                                    <i class="fa fa-refresh"></i>
-                                </button>
-                            </td>
+                            <td></td>
+                            <td></td>
+                            <td>${getFullTimeFormat(tblData[i].UPDATE_TIME)}</td>
+                            <td>${tblData[i].REFERAL_CODE}</td>
+                            <td>${tblData[i].USERNAME}</td>
+                            <td>${tblData[i].EMAIL}</td>
                         </tr>`;
             $('#grTable tbody').append(trRecord);
         }

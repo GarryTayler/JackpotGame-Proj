@@ -65,10 +65,17 @@ class Jackpot_Model extends MY_Model {
      * @param $gameId
     */
     public function getGameLogs($gameId) {
+        $bet_result = $this->db
+            ->from($this->game_table)
+            ->where('ID', $gameId)
+            ->get()
+            ->row_array();
+
         $result = $this->db
             ->from($this->log_table)
             ->where('GAMEID', $gameId)
             ->get()->result_array();
+
         $ret = array();
         foreach($result as $item) {
             $newItem = $item;
@@ -76,7 +83,16 @@ class Jackpot_Model extends MY_Model {
                 ->where('ID', $item['USERID'])
                 ->get($this->user_table)
                 ->row_array();
-            $newItem['user_info'] = $userInfo;
+            if($item['USERID'] == $bet_result['WINNER']) {
+                $newItem['RESULT'] = 'WIN';
+            }else {
+                $newItem['RESULT'] = 'LOSE';
+            }
+            $newItem['USERNAME'] = $userInfo['USERNAME'];
+            $newItem['EMAIL'] = $userInfo['EMAIL'];
+            $newItem['CREATE_TIME'] = date("Y-m-d H:i:s", $newItem['CREATE_TIME']);
+            $newItem['PROFIT'] = number_format($newItem['PROFIT']);
+            $newItem['BET_AMOUNT'] = number_format($newItem['BET_AMOUNT']);
             $ret[] = $newItem;
         }
         return $ret;

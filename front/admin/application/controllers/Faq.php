@@ -12,17 +12,13 @@ class Faq extends MY_Controller {
      * @request get
     */
     public function index() {
-        $contentData = array();
-        $this->render('faq/index', 'Faq', 'faq', $contentData);
-    }
-    /**
-     * render create new faq page
-     * @response html
-     * @request get
-    */
-    public function create() {
-        $contentData = array();
-        $this->render('faq/edit', 'Faq', 'faq', $contentData);
+        $totalCount = $this->Faq_Model->getFaqsCount();
+        $pageParams = array(
+            'page'=>1,
+            'pageSize'=>10,
+            'totalCount' =>$totalCount
+        );
+        $this->render('faq/index', 'Faq', 'faq', $pageParams);
     }
 
     /**
@@ -32,17 +28,16 @@ class Faq extends MY_Controller {
      * @param faqid
      */
     public function edit() {
-        $params = $this->input->get();
+        $params = $this->input->post();
         $faqId = isset($params['faqid']) ? $params['faqid'] : '';
-        $ret = array();
         if($faqId == '') {
             // to do here go to error page
+            echo json_encode(array('error'=>'1', 'msg'=>'FAQ is invalid.'));
             return;
         }
         $faqInfo = $this->Faq_Model->getFaq($faqId);
-        $contentData = array();
-        $contentData['faqInfo'] = $faqInfo;
-        $this->render('faq/edit', 'Faq', 'faq', $contentData);
+        $ret = array('error'=>'0', 'question'=>$faqInfo['question'], 'answer'=>$faqInfo['answer']);
+        echo json_encode($ret);
     }
     /**
      * get faq list
@@ -72,7 +67,9 @@ class Faq extends MY_Controller {
     public function ajax_save_faq() {
         $params = $this->input->post();
         $faqId = isset($params['faqid']) ? $params['faqid'] : '';
-        $dbParams = $this->getBoClass('faq');
+        $dbParams = array();
+        $dbParams['question'] = $params['question'];
+        $dbParams['answer'] = $params['answer'];
         if($faqId == '') { // create new faq
             $this->Faq_Model->insertFaq($dbParams);
         }else{ // update faq

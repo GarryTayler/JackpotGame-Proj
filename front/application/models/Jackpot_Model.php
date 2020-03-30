@@ -3,7 +3,7 @@
 class Jackpot_Model extends CI_Model {
     function __construct() {
         parent::__construct();
-
+        $this->load->model('Variable_Model', 'variable');
         $this->load->helper('string');
     }
 
@@ -75,13 +75,35 @@ class Jackpot_Model extends CI_Model {
                 continue;
             }
             $this->user->lose_game($player->USERID, $player->BET_AMOUNT);
+            // when user loses bet, PROFIT is minus
+            $loss_profit = "-".$player->BET_AMOUNT;
+            $this->db->from('jackpot_game_log')
+                ->where('GAMEID', $gameID)
+                ->where('USERID', $player->USERID)
+                ->set('PROFIT', $loss_profit)
+                ->update();
         }
 
+
         // server profit
-        $server_profit = ($gameInfo->TOTAL_BETTING_AMOUNT - $winner_bet) * BETTING_SERVER_PROFIT;
+	    //Get betting server profit from variable table
+        $server_betting_profit = 0;
+        $adminFeeInfo = $this->getVariable("", 'ADMIN_FEE');
+        if (isset($adminFeeInfo['VALUE'])) {
+            $server_betting_profit = $adminFeeInfo['VALUE'];
+        } else {
+            $server_betting_profit = BETTING_SERVER_PROFIT;
+        }
+        $server_profit = $gameInfo->TOTAL_BETTING_AMOUNT * $server_betting_profit;
         $this->db->update('jackpot_game', array('TOTAL_PROFIT' => $server_profit), array('ID' => $gameID));
         // winner profit
         $winner_profit = $gameInfo->TOTAL_BETTING_AMOUNT - $server_profit;
+        $this->db->from('jackpot_game_log')
+            ->where('GAMEID', $gameID)
+            ->where('USERID', $winner->USERID)
+            ->set('PROFIT', $winner_profit)
+            ->update();
+
         // minus winner profit from admin wallet
         $this->db
             ->set('WALLET', 'WALLET - '.$winner_profit, false)
@@ -152,5 +174,30 @@ class Jackpot_Model extends CI_Model {
 
         if ($timeLeft < 0) return 0;
         return $timeLeft;
+    }
+
+    /**
+     * get variable by id or key
+     * @return mixed
+     * @param $id or $key
+     * */
+    function getVariable($id = '', $key = '') {
+        if($id != '') {
+            $ret = $this->db
+                ->from('variable')
+                ->where('ID', $id)
+                ->get()
+                ->row_array();
+            return $ret;
+        }else if($key != '') {
+            $ret = $this->db
+                ->from('variable')
+                ->where('VARIABLE', $key)
+                ->get()
+                ->row_array();
+            return $ret;
+        }else{
+            return false;
+        }
     }
 }

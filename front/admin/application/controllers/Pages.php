@@ -15,7 +15,7 @@ class Pages extends MY_Controller {
         $contentData = array();
         $info = $this->Variable_Model->getVariable('', 'privacy_policy');
         $contentData['info'] = $info;
-        $this->render('pages/privacy_policy', 'Privacy and Policy', 'privacy_policy', $contentData);
+        $this->render('pages/privacy_policy', 'Privacy and Policy', 'policy', $contentData);
     }
     /**
      * save privacy and policy
@@ -32,5 +32,30 @@ class Pages extends MY_Controller {
         }
         echo json_encode(array('errorCode'=>0));
     }
-
+    /**
+     * render terms and condtion page
+     * @response html
+     * @request get
+     */
+    public function Terms() {
+        $contentData = array();
+        $info = $this->Variable_Model->getVariable('', 'terms_conditions');
+        $contentData['info'] = $info;
+        $this->render('pages/terms', 'Terms and Conditions', 'terms', $contentData);
+    }
+    /**
+     * save terms and conditions
+     * @response json
+     * @request post
+     */
+    public function ajax_save_terms() {
+        $params = $this->input->post();
+        $content = $params['content'];
+        if($this->Variable_Model->existVariable('terms_conditions')) {
+            $this->Variable_Model->updateVariable('terms_conditions', $content);
+        }else {
+            $this->Variable_Model->insertVariable('terms_conditions', $content);
+        }
+        echo json_encode(array('errorCode'=>0));
+    }
 }

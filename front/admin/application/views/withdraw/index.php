@@ -40,12 +40,13 @@
                 <table class="table table-bordered table-responsive-md" id="grTable">
                     <thead>
                         <tr>
+                            <th>ID</th>
                             <th>Time</th>
                             <th>Email</th>
                             <th>Username</th>
                             <th>Transfer Address</th>
-                            <th>Deposit Amount<br>(BTC)</th>
-                            <th>Deposit Amount<br>(Coins)</th>
+                            <th>Withdrawal Amount<br>(BTC)</th>
+                            <th>Withdrawal Amount<br>(Coins)</th>
                             <th>Fee(BTC)</th>
                             <th>Status</th>
                         </tr>
@@ -138,17 +139,18 @@
             var confirmStatusHTML = '',
                 blockBtnToolTip = '';
 
-            if (tblData[i].STATUS == 1) {
+            if (tblData[i].STATUS == 2) {
+                confirmStatusHTML = `<button class="btn btn-default">
+                                    Complete
+                                </button>`
+            } else {
                 confirmStatusHTML = `<button class="btn btn-focus"
                                     onclick="onConfirmItem(this, '${tblData[i].ID}')">
                                     Confirm
                                 </button>`
-            } else {
-                confirmStatusHTML = `<button class="btn btn-default">
-                                    Complete
-                                </button>`
             }
             var trRecord = `<tr>
+                            <td>${tblData[i].ID}</td>
                             <td>${getFullTimeFormat(tblData[i].CREATE_TIME)}</td>
                             <td>${tblData[i].EMAIL}</td>
                             <td>${tblData[i].USERNAME}</td>

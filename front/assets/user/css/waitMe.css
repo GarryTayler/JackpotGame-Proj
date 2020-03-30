@@ -151,7 +151,7 @@ body.waitMe_body .waitMe_container.text > div {width:100%;top:45%;text-align:cen
 
 
 /* ios */
-.waitMe_container .waitMe_progress.ios {margin:auto;width:40px;height:40px}
+.waitMe_container .waitMe_progress.ios {margin:auto;width:80px;height:80px}
 .waitMe_container .waitMe_progress.ios > div {width:10%;height:26%;position:absolute;left:44.5%;top:37%;opacity:0;border-radius:50px;box-shadow:0 0 3px rgba(0,0,0,.2);animation:ios 1s infinite linear}
 .waitMe_container .waitMe_progress.ios .waitMe_progress_elem1 {transform:rotate(0deg) translate(0, -142%);animation-delay:0s}
 .waitMe_container .waitMe_progress.ios .waitMe_progress_elem2 {transform:rotate(30deg) translate(0, -142%);animation-delay:-.9167s}

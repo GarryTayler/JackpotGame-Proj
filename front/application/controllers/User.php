@@ -123,23 +123,22 @@ class User extends MY_Controller {
 		echo json_encode($ret_data);
 	}
 
-	public function get_balance () 
+	public function get_balance ()
 	{
-		if( !isset($_SESSION['logged_in']) || ($_SESSION['logged_in'] != TRUE) ){
-			echo json_encode( array('HTTP_CODE' => HTTP_NOT_ATHENTICATED , 'res_msg' => 'Log in to get access to all features.') );
-			return;
-		}	
+        if (!isset($_SESSION['logged_in']) || ($_SESSION['logged_in'] != true)) {
+            echo json_encode(array('HTTP_CODE' => HTTP_NOT_ATHENTICATED , 'res_msg' => 'Log in to get access to all features.'));
+            return;
+        }
 		$userInfo = $this->Users_Model->getUserInfobyUserid($_SESSION['USERID']);
 		echo json_encode( array('HTTP_CODE' => HTTP_OK , 'WALLET' => $userInfo['WALLET']) );
 		return;
 	}
-
-	public function emit() 
+	public function emit()
 	{
 		if( !isset($_SESSION['logged_in']) || ($_SESSION['logged_in'] != TRUE) ){
 			echo json_encode( array('error_code' => 1 , 'res_msg' => 'Log in to get access to all features.') );
 			return;
-		}		
+		}
 		$host = CHAT_SERVER_URL."post_msg";
 		$curtime = time();
 		$param_data = array();
@@ -148,7 +147,6 @@ class User extends MY_Controller {
 		$param_data['username'] = $this->session->userdata('USERNAME');
 		$param_data['curtime'] = $curtime;
 		$param_data['type'] = $_POST['type'];
-
 		$json = json_encode($param_data);
 		$ch = curl_init();
 		curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -161,7 +159,6 @@ class User extends MY_Controller {
 		        'Content-Type: application/json',
 		        'Content-Length: ' . strlen($json))
 		);
-
 		$data = curl_exec($ch);
 		$ret = json_decode($data , true);
 		//error_code
@@ -174,7 +171,6 @@ class User extends MY_Controller {
 				'IPADDRESS' => $this->input->ip_address(),
 				'USERID' => $this->session->userdata('USERID')
 			);
-
 			$this->db->insert('chats' , $insert_data);
 			echo json_encode( array('error_code' => 0) );
 		}

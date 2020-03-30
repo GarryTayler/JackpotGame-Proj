@@ -53,22 +53,11 @@ class MY_Controller extends CI_Controller
         $data = array();
         $data['menu'] = $menu;
         $data['submenu'] = $submenu;
-        if($contentData != NULL)
+        if ($contentData != null) {
             $data['data'] = $contentData;
-        $this->load->view($path , $data);
+        }
+        $this->load->view($path, $data);
     }
-
-    /*protected function load_admin_view($path ,  $menu = '' , $submenu = '', $contentData = NULL) {
-        $data = array(); $header_data = array();
-        $header_data['menu'] = $menu;
-        $header_data['submenu'] = $submenu;
-        if($contentData != NULL)
-            $data['data'] = $contentData;
-
-        $this->load->view('admin/template/header' , $header_data);       
-		$this->load->view($path , $data);
-		$this->load->view('admin/template/footer');
-    }*/
 
     function ip_info($ip = NULL, $purpose = "location", $deep_detect = TRUE) {
 

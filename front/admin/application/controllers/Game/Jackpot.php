@@ -42,7 +42,14 @@ class Jackpot extends MY_Controller {
         $totalCount = $this->Jackpot_Model->getGamesCount($from, $to);
         // get game history list
         $historyList = $this->Jackpot_Model->getGames($page, $pageSize,$from, $to, $orderby, $direction);
-        $ret = array('totalCount'=>$totalCount, 'historyList'=>$historyList);
+        $list = array();
+        foreach ($historyList as $history) {
+            $history['TOTAL_BETTING_AMOUNT'] = number_format($history['TOTAL_BETTING_AMOUNT']);
+            $history['TOTAL_PROFIT'] = number_format($history['TOTAL_PROFIT']);
+            $history['CREATE_TIME'] = date("Y-m-d H:i:s", $history['CREATE_TIME']);
+            $list[] = $history;
+        }
+        $ret = array('totalCount'=>$totalCount, 'historyList'=>$list);
         echo json_encode($ret);
     }
     /**
