@@ -7,11 +7,10 @@ class Users_Model extends CI_Model {
 	function __construct()
 	{
 		parent::__construct();
-		$this->load->database(); 
+		$this->load->database();
 	}
 
-	function getAdminInfobyUsername( $username ) 
-	{
+	function getAdminInfobyUsername( $username ) {
 		$this->db->select("*");
 		$this->db->from($this->ADMIN);
 		$this->db->where('DEL_YN' , 'N');
@@ -20,8 +19,7 @@ class Users_Model extends CI_Model {
 		return $result;
 	}
 
-	function getUserInfobyUsername( $username ) 
-	{
+	function getUserInfobyUsername( $username ) {
 		$this->db->select("*");
 		$this->db->from($this->USERS);
 		$this->db->where('DEL_YN' , 'N');
@@ -31,29 +29,25 @@ class Users_Model extends CI_Model {
 		return $result;
 	}
 
-	function getUserInfobyEmail( $email ) 
-	{
+	function getUserInfobyEmail( $email ) {
 		$this->db->select("*");
 		$this->db->from($this->USERS);
 		$this->db->where('DEL_YN' , 'N');
 		$this->db->where('EMAIL' , $email);
 
 		$result = $this->db->get()->result_array();
-		return $result;	
+		return $result;
 	}
 
-	function getUserInfobyUserid($userid)
-	{
+	function getUserInfobyUserid($userid) {
 		$this->db->select("*");
 		$this->db->from($this->USERS);
 		$this->db->where('DEL_YN' , 'N');
 		$this->db->where('ID' , $userid);
 		$result = $this->db->get()->row_array();
-		return $result;	
+		return $result;
 	}
-	
-	function saveToken( $ipaddress , $user_id ) 
-	{
+	function saveToken( $ipaddress , $user_id ) {
 		$token = generateRandomString(TOKEN_LENGTH);
 		$data = array(
 			'API_TOKEN' => $token ,
@@ -63,31 +57,22 @@ class Users_Model extends CI_Model {
 		$this->db->update($this->USERS , $data);
 		return $token;
 	}
-
-	function updateToken( $ipaddress , $user_id ) 
-	{
+	function updateToken( $ipaddress , $user_id ) {
 		$this->db->select('*');
 		$this->db->from($this->USERS);
 		$this->db->where('ID' , $user_id);
 		$this->db->where('DEL_YN' , 'N');
-		
 		$result = $this->db->get()->result_array();
-
-		if(count($result) < 1) 
+		if(count($result) < 1)
 			return "0";
-
 		if($result[0]['API_TOKEN'] != "")
 			return "1";
-		
 		return $this->saveToken( $ipaddress , $user_id );
 	}
-
-
 	function available_wallet($userID) {
 		return $this->db->select('WALLET')->from('users')
 						->where('ID', $userID)->get()->row()->WALLET;
 	}
-
 	function new_bet($userID, $betAmount) {
 	    // minus user wallet
 		$this->db->where('ID', $userID)
@@ -98,13 +83,11 @@ class Users_Model extends CI_Model {
             ->set('WALLET', 'WALLET + '.$betAmount, false)
             ->update('admin');
 	}
-
 	function lose_game($userID, $betAmount) {
 		// to do here add lose game logic
 	}
-
 	function win_game(
-		$userID, 
+		$userID,
 		$betAmount, // his bet amount
 		$totalProfit // that game's total bet --> his total profit
 	) {
@@ -113,7 +96,6 @@ class Users_Model extends CI_Model {
 			->set('WALLET', 'WALLET +' . $totalProfit, false)
 			->update('users');
 	}
-
 	function bet_available($userID, $betAmount) {
 		$userInfo = $this->db->from('users')->where('ID', $userID)->get()->row();
 		if ( !$userInfo ) {
@@ -124,34 +106,39 @@ class Users_Model extends CI_Model {
 		}
 		return 'success';
 	}
-
 	function saveUserInfo($userInfo) {
 	    $userInfo['password'] = md5($userInfo['password']);
         $ret = $this->db->insert('users', $userInfo);
         return $ret;
     }
-
     function saveUserName($userId, $username) {
         $code = $this->db->where('ID', $userId)->set('USERNAME', $username)->update("users");
         return $code;
     }
-
     function saveEmail($userId, $email) {
         $code = $this->db->where('ID', $userId)->set('EMAIL', $email)->update("users");
         return $code;
     }
-
     function saveSecurity($userId, $password) {
 	    $password = md5($password);
         $code = $this->db->where('ID', $userId)->set('PASSWORD', $password)->update("users");
         return $code;
     }
-
     function saveAvatar($userId, $avatar) {
         $code = $this->db->where('ID', $userId)
             ->set('AVATAR', $avatar)
             ->update("users");
 
         return $code;
-    }
+	}
+	function checkReferralCode($referralcode) {
+		$this->db->select("*");
+		$this->db->from($this->USERS);
+		$this->db->where('DEL_YN' , 'N');
+		$this->db->where('REFERRAL_CODE' , $referralcode);
+		$result = $this->db->get()->result_array();
+		if(count($result) < 1)
+			return FALSE;
+		return TRUE;
+	}
 }

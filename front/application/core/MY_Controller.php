@@ -3,7 +3,6 @@ class MY_Controller extends CI_Controller
 {
     public $curUserno;
     public $curTime;
-    
 	public function __construct() {
         parent::__construct();
         // save last access url
@@ -47,7 +46,16 @@ class MY_Controller extends CI_Controller
         }
 
         $this->curTime = date('Y-m-d H:i:s');
-    }
+	}
+	public function generateReferralCode($length = 10) {
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return 'REF_'.$randomString;
+	}
 
 	protected function load_view($path ,  $menu = '' , $submenu = '', $contentData = NULL) {
         $data = array();
@@ -124,7 +132,6 @@ class MY_Controller extends CI_Controller
         }
         return $output;
     }
-    
     function load_json( $resp ) {
         exit( json_encode( $resp ) );
     }

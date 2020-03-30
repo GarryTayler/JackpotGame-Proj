@@ -85,13 +85,29 @@ var getUserBalance = function(keyData, callback) {
     });
 }
 
+var getReferralCode = function(user_id) {
+    var query = "SELECT REFERRAL_CODE FROM users WHERE ID=" + user_id;
+    return new Promise((resolve , reject) => {
+        db.con.query(query , function(err , result , fields) {
+            if(err)
+                reject(err);
+            else {
+                result = JSON.stringify(result);
+                result = JSON.parse(result);
+                resolve(result[0]['REFERRAL_CODE'])
+            }
+        });
+    });
+}
+
 var userModel = {
     updateBalance: updateBalance,
     getUserBalance: getUserBalance,
     updateAdminBalance: updateAdminBalance,
     updateUserBalance: updateUserBalance,
     getParentReferralCode: getParentReferralCode,
-    getUseridByParentReferralCode: getUseridByParentReferralCode
+    getUseridByParentReferralCode: getUseridByParentReferralCode,
+    getReferralCode: getReferralCode
 }
 
 module.exports = userModel;

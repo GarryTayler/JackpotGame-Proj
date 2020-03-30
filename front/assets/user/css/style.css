@@ -138,7 +138,7 @@ section.small_pb {
 	background-size: 100% !important;
 	-moz-background-size: 100% !important;
 	-o-background-size: 100% auto !important;
-	-webkit-background-size: 100% !important;
+	-webkit-background-size: cover !important;
 	-khtml-background-size: 100% !important;
 	overflow-x:hidden;
 }

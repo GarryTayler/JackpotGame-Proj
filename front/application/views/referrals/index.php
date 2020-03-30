@@ -11,7 +11,7 @@ require_once('application/views/template/loader.php');
 ?>
 
 <?php
-require_once('application/views/template/menu.php');
+require_once('application/views/template/menu.php'); 
 ?>
 
 <style>
@@ -47,7 +47,7 @@ require_once('application/views/template/menu.php');
         require_once('application/views/template/chat.php');
         ?>
         <div id="main-container">
-            <div id="referralPanelWrap">
+            <div class="deposit-panel" id="referralPanelWrap">
                 <div class="referralBox">
                     <h3>Referral</h3>
                     <p>Invite your friends and win money</p>
@@ -56,22 +56,22 @@ require_once('application/views/template/menu.php');
                             <div class="form-group">
                                 <label class="control-label">Your referral link</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
-                                    <div class="input-group-append" style="cursor: pointer;">
-                                        <span class="input-group-text" id="yourReferralLink">Copy</span>
+                                    <input type="text" class="form-control" id="referral_link" readonly>
+                                    <div class="input-group-append" style="cursor: pointer;" id="yourReferralLink">
+                                        <span class="input-group-text">Copy</span>
                                     </div>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label">Your referral code</label>
                                 <div class="input-group mb-3">
-                                    <input type="text" class="form-control">
+                                    <input type="text" class="form-control" id="referral_code" readonly>
                                     <div class="input-group-append" style="cursor: pointer;">
                                         <span class="input-group-text" id="yourReferralCode">Change</span>
                                     </div>
                                 </div>
                             </div>
-                            <p style="max-width: 80%;margin: 0 auto;">New user will get <strong>+5%</strong> bonus on their first deposit for using your code</p>
+                            <p style="max-width: 80%;margin: 0 auto;">New user will get <strong>+<span id="referral_pros1">0</span>%</strong> bonus on their first deposit for using your code</p>
                         </form>
                     </div>
                 </div>
@@ -82,7 +82,7 @@ require_once('application/views/template/menu.php');
                         <div>
                             <h4>1. Share your referral link or code</h4>
                             <p>Everyone who registers through your link or uses your code becomes your referral.</p>
-                            <p>The Code will give your referrals + 5% on their first deposit.</p>
+                            <p>The Code will give your referrals + <span id="referral_pros2">0</span>% on their first deposit.</p>
                         </div>
                     </div>
                     <div class="howItWorksItem arrow-img">
@@ -117,14 +117,44 @@ require_once('application/views/template/menu.php');
         </div>
     </div>
 
-
-
     <script type="text/javascript">
         var game_type = 'jackpot';;
         var site_url = '<?=site_url()?>';
         var base_url = '<?=base_url()?>';
-        var user_id = <?=or_default($this->session->userdata('USERID'), 0)?>;
+		var user_id = <?=or_default($this->session->userdata('USERID'), 0)?>;
+		run_waitMe($('.deposit-panel'), 2, 'ios');
+		$.ajax({
+            url: '<?= base_url("Referral/getReferralValue") ?>',
+            type: 'post',
+            dataType: 'json',
+            data: {},
+            success: function (res) {
+				$('.deposit-panel').waitMe('hide');
+				if(res.status != 'success') {
+					showToast('error' , 'You are failed to get your deposit address.');
+					return;
+				}
+				$('#referral_link').val(res.data.data.referral_link);
+				$('#referral_code').val(res.data.data.referral_code);
+				$('#referral_pros1').html(res.data.data.referral_value);
+				$('#referral_pros2').html(res.data.data.referral_value);
+            },
+            error: function (err) {
+				$('.deposit-panel').waitMe('hide');
+				showToast('error' , 'The network has got a problem.');
+            }
+		})
+		$('#yourReferralLink').on('click', function(e) {
+			var copyText = document.getElementById("referral_link");
+			/* Select the text field */
+			copyText.select();
+			copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+			 /* Copy the text inside the text field */
+			  document.execCommand("copy");
+			  showToast('success' , 'The referral link is copied.');
+		});
     </script>
+
     <script type="text/javascript" src="<?php echo base_url(); ?>assets/user/js/pages/game.js"></script>
     <script type="text/javascript"
             src="<?php echo base_url(); ?>assets/user/plugins/scrollbar/js/jquery.mCustomScrollbar.concat.min.js"></script>

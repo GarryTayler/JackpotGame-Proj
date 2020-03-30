@@ -67,7 +67,7 @@ router.post('/get_deposit_address', function (req, res , next) {
                                 code: 20000,
                                 status: 'success',
                                 message: null,
-                                address: apiResult.input_address
+                                res: apiResult.input_address
                             };
                             return res.json(resp);
                         }

@@ -17,7 +17,10 @@ class User extends MY_Controller {
     }
 	public function register()
 	{
-		$this->load_view('user/register');
+		$parent_referral_code = $_GET['r'];
+		if(!isset($parent_referral_code))
+			$parent_referral_code = '';
+		$this->load_view('user/register' , '' , '' , array('referral_code_p' => $parent_referral_code));
 	}
 	public function signIn()
 	{
@@ -74,8 +77,22 @@ class User extends MY_Controller {
             $ret['res_msg'] = 'Your email address is used already. Please type other email.';
             echo json_encode($ret);
             return;
-        }
-
+		}
+		$result = $this->Users_Model->getUserInfobyUsername($info['username']);
+        if(count($result) > 0) {
+            $ret['error_code'] = 1;
+            $ret['res_msg'] = 'Your username is used already. Please type other username.';
+            echo json_encode($ret);
+            return;
+		}
+		$referral_code = '';
+		while(1) {
+			$referral_code = $this->generateReferralCode();
+			if(!$this->Users_Model->checkReferralCode($referral_code)) {
+				break;
+			}
+		}
+		$info['referral_code'] = $referral_code;
         $code = $this->Users_Model->saveUserInfo($info);
         if($code == false) {
             $ret['error_code'] = 1;
@@ -97,7 +114,7 @@ class User extends MY_Controller {
 	    $balance = $this->Users_Model->available_wallet($userId);
 	    echo json_encode(array('status'=>1, 'wallet'=>number_format($balance,0 , '.' , ' ')));
     }
-	public function logout() 
+	public function logout()
 	{
 		$unset_userdata = array(
 			'WALLET' => 0,
@@ -106,14 +123,12 @@ class User extends MY_Controller {
 			'AVATAR' => '',
 			'logged_in' => FALSE
 		);
-
 		session_destroy();
-
 		$this->session->unset_userdata($unset_userdata);
 		redirect();
 	}
 
-	public function getChatList() 
+	public function getChatList()
 	{
 		$type = $this->input->post();
 		$result = $this->Chats_Model->getChatList($type['type']);

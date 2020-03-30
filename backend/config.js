@@ -27,7 +27,8 @@ var config = {
 
     EMAIL: 'no-reply@bitcrash.co.za',
     EMAIL_PWD: 'Rpy@2010!#_',
-    EMAIL_REQUEST: 'https://cryptoonline.ml:3001/api/user/forgot_user_password'
+    EMAIL_REQUEST: 'https://cryptoonline.ml:3001/api/user/forgot_user_password',
+    MAIN_REFERRAL_PREFIX: 'https://spin2win.app/Signup'
 }
 
 module.exports = config

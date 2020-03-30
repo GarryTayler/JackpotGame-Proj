@@ -39,7 +39,7 @@ class Jackpot extends MY_Controller {
         }
         $this->db->set('TOTAL_BETTING_AMOUNT', 'TOTAL_BETTING_AMOUNT +'.$depositAmount, false)->where('ID', $gameID)->update('jackpot_game');
 		// insert into jackpot_game_log
-		$this->db->insert('jackpot_game_log', 
+		$this->db->insert('jackpot_game_log',
 			array(
 				'USERID' => $userID,
 				'GAMEID' => $gameID,

@@ -3,7 +3,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-//var userRouter = require('./routes/user');
+var userRouter = require('./routes/user');
 var btcRouter = require('./routes/bitcoin');
 
 var app = express();
@@ -33,7 +33,7 @@ app.use(function (req, res, next) {
 	next();
 });
 
-//app.use('/api/user', userRouter);
+app.use('/api/user', userRouter);
 app.use('/api/btc' , btcRouter);
 
 // catch 404 and forward to error handler

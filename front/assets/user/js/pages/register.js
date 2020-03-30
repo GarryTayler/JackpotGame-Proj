@@ -57,27 +57,22 @@ $( document ).ready(function() {
             showToast('error' , 'The Password shouldn\'t be empty. This is required field.');
             return;
         }
-
         if( $('#confirm_password').val() == '' ) {
             $('#confirm_password').removeClass('outline-normal');
             $('#confirm_password').addClass('outline-red');
             showToast('error' , 'The Confirm Password shouldn\'t be empty. This is required field.');
             return;
         }
-
         if( $('#password').val() != $('#confirm_password').val()) {
             $('#confirm_password').removeClass('outline-normal');
             $('#confirm_password').addClass('outline-red');
             showToast('error' , 'The Confirm Password is not correct.');
             return;
         }
-
         if($("#check-privacy").prop('checked') != true) {
             showToast('error' , 'You should accept privacy and policy.');
             return;
         }
-
-
         blockUI();
         $.ajax({
             url: base_url+'User/signUp',
@@ -86,7 +81,8 @@ $( document ).ready(function() {
             data: {
                 username : $('#username').val() ,
                 email: $("#email").val(),
-                password : $('#password').val()
+				password : $('#password').val(),
+				referral_code_p : $('#referral_code_p').val()
             },
             success: function(data) {
                 $.unblockUI();
