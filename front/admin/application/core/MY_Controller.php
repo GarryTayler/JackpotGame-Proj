@@ -99,12 +99,12 @@ class MY_Controller extends CI_Controller {
         $data_['menus'] = array(
             array('title' => 'Dashboard', 'icon' => 'flaticon-layers', 'id' => 'dashboard', 'path' => 'dashboard'),
             array('title' => 'User', 'icon' => 'la la-users', 'id' => 'users', 'path' => 'user'),
-            array('title' => 'GameHistory', 'icon' => 'flaticon-layers', 'id' => 'jackpot', 'path' => 'game/jackpot'),
+            array('title' => 'GameHistory', 'icon' => 'flaticon-layers', 'id' => 'jackpot', 'path' => 'Game/Jackpot'),
             array('title' => 'Wallet', 'icon' => 'la la-money', 'has_submenu' => true,
                 'id' => array('deposit', 'withdrawal'),
                 'submenus' => array(
-                    array('title' => 'Deposit', 'path' => 'wallet/deposit', 'id' => 'deposit'),
-                    array('title' => 'Withdraw', 'path' => 'wallet/withdraw', 'id' => 'withdrawal'),
+                    array('title' => 'Deposit', 'path' => 'Wallet/Deposit', 'id' => 'Deposit'),
+                    array('title' => 'Withdraw', 'path' => 'Wallet/Withdraw', 'id' => 'Withdrawal'),
                 )
             ),
             array('title' => 'Referral', 'icon' => 'la la-gift', 'has_submenu' => true,

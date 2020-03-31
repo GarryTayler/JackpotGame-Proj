@@ -104,7 +104,7 @@
         ajaxData.page = curPage;
 
         $.ajax({
-            url: '<?= base_url("wallet/withdraw/ajax_get_logs") ?>',
+            url: '<?= base_url("Wallet/Withdraw/ajax_get_logs") ?>',
             type: 'post',
             dataType: 'json',
             data: ajaxData,
@@ -188,7 +188,7 @@
         }).then(function(result) {
             if (result.value) {
                 $.ajax({
-                    url: baseURL + 'wallet/withdraw/ajax_confirm_transaction',
+                    url: baseURL + 'Wallet/Withdraw/ajax_confirm_transaction',
                     type: 'post',
                     dataType: 'json',
                     data: {id: rId},

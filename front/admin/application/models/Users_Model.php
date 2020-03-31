@@ -24,7 +24,7 @@ class Users_Model extends MY_Model {
         $this->db->order_by($orderby, $direction);
         $result = $this->db
             ->get($this->table, $pageSize, $start)
-            ->result_array();
+			->result_array();
         return $result;
     }
     /**

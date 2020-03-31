@@ -22,7 +22,8 @@ class Jackpot_Model extends MY_Model {
         if($to != '')
             $this->db->where('UPDATE_TIME <=', $to);
         $result = $this->db
-            ->where('DEL_YN', 'N')
+			->where('DEL_YN', 'N')
+			->where('WINNER > ' , 0)
             ->order_by($orderby, $direction)
             ->get($this->game_table, $pageSize, $start)
             ->result_array();
@@ -40,7 +41,6 @@ class Jackpot_Model extends MY_Model {
         }
         return $ret;
     }
-
     /**
      * get total count of game history list
      * @return int
@@ -53,7 +53,8 @@ class Jackpot_Model extends MY_Model {
             $this->db->where('UPDATE_TIME <=', $to);
         $count = $this->db
             ->from($this->game_table)
-            ->where('DEL_YN', 'N')
+			->where('DEL_YN', 'N')
+			->where('WINNER > ' , 0)
             ->get()
             ->num_rows();
         return $count;

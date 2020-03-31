@@ -108,7 +108,7 @@
                             <td>${tblData[i].USERNAME}</td>
                             <td>${tblData[i].EMAIL}</td>
                             <td>${tblData[i].WALLET}</td>
-                            <td>${tblData[i].REFERAL_CODE}</td>
+                            <td>${tblData[i].REFERRAL_CODE}</td>
                             <td>${getFullTimeFormat(tblData[i].CREATE_TIME)}</td>
                             <td>${tblData[i].LAST_IPADDRESS}</td>
                             <td>${blockState}</td>

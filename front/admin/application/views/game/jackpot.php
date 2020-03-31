@@ -152,6 +152,10 @@
         }
         $('#grTable tbody').html('');
         for (var i = 0; i < tblData.length; i++) {
+			if(tblData[i].WINNER_USERNAME == null)
+				tblData[i].WINNER_USERNAME = '';
+			if(tblData[i].WINNER_EMAIL == null)
+				tblData[i].WINNER_EMAIL = '';
             var trRecord = `<tr>
                             <td onclick="onShowGameDetail('${tblData[i].ID}')" class="game-round">${tblData[i].ID}</td>
                             <td>${tblData[i].CREATE_TIME}</td>

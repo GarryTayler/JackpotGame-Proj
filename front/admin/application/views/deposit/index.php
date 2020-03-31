@@ -103,7 +103,7 @@
         ajaxData.page = curPage;
 
         $.ajax({
-            url: '<?= base_url("wallet/deposit/ajax_get_logs") ?>',
+            url: '<?= base_url("Wallet/Deposit/ajax_get_logs") ?>',
             type: 'post',
             dataType: 'json',
             data: ajaxData,
