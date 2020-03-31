@@ -56,15 +56,14 @@ $route['PrivacySecurity'] = 'Profile/privacy';
 $route['JumpersBoard'] = 'Leaderboard/jumpersBoard';
 $route['Login'] = 'User/login';
 $route['Signup'] = 'User/register';
+$route['Forgotpassword'] = 'User/forgot_password';
+$route['reset_password'] = 'User/reset_password';
 /* Admin Route */
 $route['Gamecontrol'] = 'E34_DF/Main';
-
 $route['Gamecontrol/User'] = 'E34_DF/User';
 $route['Gamecontrol/User/login_post'] = 'E34_DF/User/login_post';
 $route['Gamecontrol/logout'] = 'E34_DF/User/logout';
-
 /* Game Route */
 $route['Gamecontrol/Jackpot'] = 'E34_DF/Game/Jackpot';
-
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

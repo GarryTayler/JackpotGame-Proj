@@ -23,7 +23,7 @@ function blockUI() {
     }
   });
   $('.blockUI.blockMsg').center_layout();
-}//end Blockui   
+}//end Blockui
 
 
 $( document ).ready(function() {

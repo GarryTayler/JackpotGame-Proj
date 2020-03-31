@@ -46,18 +46,16 @@ require_once('application/views/template/loader.php');
             <div class="text-center">
                 <p class="login-hint">Sign into your account here:</p>
             </div>
-            <div class="text-center" style="margin-top:80px;">
-                <input type="text" class="login_input" required="" name="username" id="username" placeholder="Email"/>
-            </div>
             <div class="text-center" style="margin-top:10px;">
-                <input type="password" class="login_input" required="" name="password" id="password" placeholder="Password"/>
-            </div>
-            <div class="text-center">
-                <p style="margin-top:20px;cursor: pointer;" class="login-hint"><a class="login-hint" href="<?= base_url('Forgotpassword'); ?>">FORGOT PASSWORD ?</a></p>
-            </div>
+                <input type="password" class="login_input" required="" name="password" id="password" placeholder="New Password"/>
+			</div>
+			<div class="text-center" style="margin-top:10px;">
+                <input type="password" class="login_input" required="" name="password" id="confirm_password" placeholder="Confirm Password"/>
+			</div>
+			<input type="hidden" id="pass_token" value="<?= $data['pass_token'] ?>" />
             <div class="text-center" style="margin-top:50px;">
-                <button class="btn_login" id="btn_login" type="button">Login to your account</button>
-            </div>
+                <button class="btn_login" id="btn_login" type="button">Reset Password</button>
+			</div>
             <div class="text-center" style="margin-top:80px;">
                 <p class="login-hint" style="color:#F1F1F6;">Don't have an account?<a class="login-hint" href="<?= base_url('Signup'); ?>" style="color:#F1F1F6;padding-left: 10px;">Sign Up</a></p>
             </div>
@@ -74,6 +72,66 @@ require_once('application/views/template/loader.php');
 </script>
 <script type="text/javascript" src="<?= base_url('');?>assets/user/plugins/Atlas.Standard-master/js/blockUI.js"></script>
 <script type="text/javascript" src="<?= base_url('');?>assets/user/js/global.js"></script>
-<script type="text/javascript" src="<?= base_url('');?>assets/user/js/pages/login.js"></script>
+<script>
+	//Center the element
+	$.fn.center_layout = function () {
+	this.css("position", "absolute");
+	this.css("top", ($(window).height() - this.height()) / 2 + $(window).scrollTop() + "px");
+	this.css("left", ($(window).width() - this.width()) / 2 + $(window).scrollLeft() + "px");
+	return this;
+	}
+
+	//blockUI
+	function blockUI() {
+		$.blockUI({
+			css: {
+			backgroundColor: 'transparent',
+			border: 'none'
+			},
+			message: '<div class="spinner"></div>',
+			baseZ: 1500,
+			overlayCSS: {
+			backgroundColor: '#FFFFFF',
+			opacity: 0.7,
+			cursor: 'wait'
+			}
+		});
+		$('.blockUI.blockMsg').center_layout();
+	}//end Blockui
+	$('#btn_login').on('click' , function(e) {
+		if($('#password').val() == '') {
+			showToast('error' , 'The password shouldn\'t be empty. This is required field.');
+			return;
+		}
+		if($('#confirm_password').val() == '') {
+			showToast('error' , 'Please confirm your password');
+			return;
+		}
+		if($('#password').val() != $('#confirm_password').val()) {
+			showToast('error' , 'Please confirm your password correctly.');
+			return;
+		}
+		blockUI();
+		$.ajax({
+          url: base_url+'User/submit_password',
+          type: 'POST',
+          dataType: 'json',
+          data: {
+			password: $('#password').val(),
+			pass_token: $('#pass_token').val()
+          },
+          success: function(data) {
+              $.unblockUI();
+			  //console.log(data);
+			  if(data.status == "success") {
+				showToast('success' ,'The password was reset successfully.');
+			  }
+			  else {
+				showToast('error' , 'The password reset was just failed.');
+			  }
+          }
+        });
+	});
+</script>
 </body>
 </html>

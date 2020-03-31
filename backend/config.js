@@ -25,10 +25,9 @@ var config = {
     BTC_withdraw_fee: 0.00005,
     BTC_min_withdraw_amount: 0.0001,
 
-    EMAIL: 'no-reply@bitcrash.co.za',
-    EMAIL_PWD: 'Rpy@2010!#_',
+    EMAIL: 'forgot@spin2win.app',
+    EMAIL_PWD: 'forgot@123_',
     EMAIL_REQUEST: 'https://cryptoonline.ml:3001/api/user/forgot_user_password',
     MAIN_REFERRAL_PREFIX: 'https://spin2win.app/Signup'
 }
-
 module.exports = config

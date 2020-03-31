@@ -18,6 +18,6 @@ class Policy extends MY_Controller
         } else {
             $contentData['content'] = '';
         }
-        $this->load_view('policy/index', 'home', '', $contentData);
+        $this->load_view('policy/index', 'policy', '', $contentData);
     }
 }

@@ -31,7 +31,7 @@
     "net": "^1.0.2",
     "node-cron": "^2.0.3",
     "node-datetime": "^2.1.2",
-    "nodemailer": "^6.4.4",
+    "nodemailer": "^6.4.6",
     "nodemon": "^1.18.8",
     "path": "^0.12.7",
     "random-number": "0.0.9",

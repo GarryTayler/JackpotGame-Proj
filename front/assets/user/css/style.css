@@ -3515,3 +3515,7 @@ header a:hover,
 .policy-panel p {
 	color: white;
 }
+
+ol, ul {
+	color: white;
+}

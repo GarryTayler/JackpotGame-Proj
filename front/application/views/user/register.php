@@ -60,7 +60,7 @@ require_once('application/views/template/loader.php');
             <div class="text-center" style="margin-top:60px;">
                 <input class="custom-check" type="checkbox" id="check-privacy">
                 <span class="toggle__label">
-                    <span class="login-hint">I accept <a href="javascript:void(0);"><u>privacy</u></a> and <a href="javascript:void(0);"><u>policy</u></a></span>
+                    <span class="login-hint">I accept <a href="/policy"><u>privacy and policy</u></a></span>
                 </span>
 			</div>
 			<input type="hidden" id="referral_code_p" value="<?= $data['referral_code_p'] ?>" />

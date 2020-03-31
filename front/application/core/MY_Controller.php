@@ -56,7 +56,15 @@ class MY_Controller extends CI_Controller
 		}
 		return 'REF_'.$randomString;
 	}
-
+	public function generateString($length = 20) {
+		$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+		$charactersLength = strlen($characters);
+		$randomString = '';
+		for ($i = 0; $i < $length; $i++) {
+			$randomString .= $characters[rand(0, $charactersLength - 1)];
+		}
+		return $randomString;
+	}
 	protected function load_view($path ,  $menu = '' , $submenu = '', $contentData = NULL) {
         $data = array();
         $data['menu'] = $menu;

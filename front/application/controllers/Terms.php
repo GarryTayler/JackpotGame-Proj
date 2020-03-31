@@ -18,6 +18,6 @@ class Terms extends MY_Controller
         } else {
             $contentData['content'] = '';
         }
-        $this->load_view('terms/index', 'home', '', $contentData);
+        $this->load_view('terms/index', 'terms', '', $contentData);
     }
 }

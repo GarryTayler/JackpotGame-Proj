@@ -19,6 +19,11 @@ require_once('application/views/template/menu.php');
 <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/user/css/pages/game/jackpot_responsive.css">
 <link rel="stylesheet" href="<?= base_url(''); ?>assets/user/css/pages/faq.css">
 
+<style>
+	.faq-item-contents {
+		color: #c1bbbb;
+	}
+</style>
 
 <div class="main_container" style="background:url('<?= base_url('');?>assets/user/images/background.png') no-repeat center 0; padding-top: 100px !important;">
     <div class="game_panel animation" data-animation="fadeInUp" data-animation-delay="1.3s" style="display:flex; justify-content: space-around;">
@@ -33,7 +38,7 @@ require_once('application/views/template/menu.php');
                             <label>How to play Jackpot</label>
                             <i class="fa fa-plus" onclick="openFaq(this, '<?php echo $i; ?>')"></i>
                         </div>
-                        <div id="faq<?php echo $i;?>" style="display: none;">
+                        <div id="faq<?php echo $i;?>" class="faq-item-contents" style="display: none;">
                             <div class="faq-item-content">
                                 <p>* Register a account on jackpot.co.za</p>
                                 <p>* Register a account on jackpot.co.za</p>
@@ -76,7 +81,7 @@ require_once('application/views/template/menu.php');
                             <label style="cursor:pointer;">' + res.data[i].question + '</label> \
                             <i class="fa fa-plus"></i> \
                         </div> \
-                        <div id="faq' + res.data[i].id + '" style="display: none;"> \
+                        <div id="faq' + res.data[i].id + '" class="faq-item-contents" style="display: none;"> \
                             ' + res.data[i].answer + ' \
                         </div> \
                     </div>';

@@ -14,7 +14,25 @@ class User extends MY_Controller {
 		}
 		else
 			$this->load_view('user/login');
+	}
+	public function forgot_password() {
+        if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+            redirect($_SESSION['url']);
+        } else {
+            $this->load_view('user/forgot_password');
+        }
     }
+	public function reset_password() {
+		if (isset($_SESSION['logged_in']) && $_SESSION['logged_in']) {
+            redirect($_SESSION['url']);
+        } else {
+			$pass_token = '';
+			if(isset($_GET['pass_token'])) {
+				$pass_token = $_GET['pass_token'];
+			}
+            $this->load_view('user/reset_password' , '', '', array('pass_token' => $pass_token));
+		}
+	}
 	public function register()
 	{
 		$parent_referral_code = $_GET['r'];
@@ -59,11 +77,11 @@ class User extends MY_Controller {
 		$this->session->set_userdata($session_userdata);
 		$this->session->set_userdata('token', $this->Users_Model->saveToken($this->input->ip_address() , $this->session->userdata('USERID')));
 		$ret['error_code'] = 0;
-		if( isset($_SESSION['url']) && ($_SESSION['url'] != '') ) {
-			$ret['login_link'] = $this->session->userdata('url');
+		if( isset($_SESSION['url']) && ($_SESSION['url'] != '') && (strpos($_SESSION['url'], 'Signup') === false) && (strpos($_SESSION['url'], 'reset_password') === false) && (strpos($_SESSION['url'], 'Forgotpassword') === false)) {
+				$ret['login_link'] = $this->session->userdata('url');
 		}
 		else
-			$ret['login_link'] = site_url('');
+				$ret['login_link'] = site_url('');
 		echo json_encode($ret);
 		return;
 	}
@@ -190,8 +208,41 @@ class User extends MY_Controller {
 			echo json_encode( array('error_code' => 0) );
 		}
 		else {
-			echo json_encode( array('error_code' => 1) );	
+			echo json_encode( array('error_code' => 1) );
 		}
 	}
-
+	public function submit_email() {
+		// const {email , pass_token} = req.body
+		$info = $this->input->post();
+		$pass_token = $this->generateString();
+		$update_data = array( "PASS_TOKEN" => $pass_token);
+		$this->db->where('EMAIL', $info['email']);
+		$this->db->update('users', $update_data);
+		$param_data = array();
+		$param_data['email'] = $info['email'];
+		$param_data['pass_token'] = $pass_token;
+		$json = json_encode($param_data);
+		$host = MAIN_SERVER_URL."api/user/forgot_user_password";
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_HEADER, 0);
+		curl_setopt($ch, CURLOPT_URL, $host);
+		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $json);
+		curl_setopt($ch, CURLOPT_HTTPHEADER, array(    //<--- Added this code block
+		        'Content-Type: application/json',
+		        'Content-Length: ' . strlen($json))
+		);
+		$data = curl_exec($ch);
+		$ret = json_decode($data , true);
+		echo json_encode(array('status' => 'success' , 'data' => $ret));
+	}
+	public function submit_password() {
+		$info = $this->input->post();
+		$update_data = array( "PASSWORD" => md5($info['password']));
+		$this->db->where('PASS_TOKEN', $info['pass_token']);
+		$this->db->update('users', $update_data);
+		echo json_encode(array('status' => 'success'));
+	}
 }

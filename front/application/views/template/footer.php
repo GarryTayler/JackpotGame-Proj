@@ -1,4 +1,9 @@
 <!-- START FOOTER SECTION -->
+<style>
+	.footer_menu a.active{
+		color: #00a0fb;
+	}
+</style>
 <footer style="position: fixed;bottom: 0">
     <div class="bottom_footer">
         <div class="row" style="padding:8px 16px;">
@@ -14,9 +19,9 @@
             </div>
             <div class="col-md-4">
                 <ul class="list_none footer_menu">
-                    <li><a href="#">FAQ</a></li>
-                    <li><a href="/policy">PRIVACY POLICY</a></li>
-                    <li><a href="/terms">TERMS AND CONDITIONS</a></li>
+                    <li><a href="/faq" class="<?php echo $menu=='faq'?'active':''; ?>">FAQ</a></li>
+                    <li><a href="/policy" class="<?php echo $menu=='policy'?'active':''; ?>">PRIVACY POLICY</a></li>
+                    <li><a href="/terms" class="<?php echo $menu=='terms'?'active':''; ?>">TERMS AND CONDITIONS</a></li>
                 </ul>
             </div>
         </div>
