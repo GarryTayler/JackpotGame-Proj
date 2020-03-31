@@ -16,7 +16,7 @@ class Dashboard extends MY_Controller {
         $from = strtotime(date("Y-m-d 00:00:00"));
         $to = strtotime(date("Y-m-d 23:59:59"));
         $newUsers = $this->Users_Model->countNewUsers($from, $to);
-        file_put_contents("1.txt", $newUsers);
+        //file_put_contents("1.txt", $newUsers);
         $contentData = array('newUsers'=>$newUsers);
         $this->render('dashboard', 'Dashboard', 'dashboard', $contentData);
     }

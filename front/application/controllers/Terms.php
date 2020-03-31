@@ -6,7 +6,7 @@ class Terms extends MY_Controller
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('variable_Model', 'variable');
+        $this->load->model('Variable_Model', 'variable');
     }
 
     public function index()
