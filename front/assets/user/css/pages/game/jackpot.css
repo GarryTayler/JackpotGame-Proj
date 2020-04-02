@@ -108,6 +108,7 @@ Jackpot panel
 	height: 70%;
 	left: 15%;
 	top: 15%;
+	z-index: 1000;
 }
 
 #div-relative {
@@ -144,23 +145,16 @@ img.jackpot-timer {
 	margin-right: 5px;
 }
 
-/**
-Player Info
-*/
-#current_players {
-	/* min-width: 300px; */
-}
-
 @media (min-width: 776px) {
 	#current_players {
 		margin-left:-15px;
-		width: 250px;
+		width: 270px;
 	}
 }
 #player_list {
 	border: solid 1px #1e263f; 
 	padding: 3px; overflow: auto;
-	height:calc(100% - 32px);
+	max-height:calc(100% - 32px);
 }
 
 .div-player-info {
@@ -682,4 +676,29 @@ Top panel
 }
 .btn-grid-deposit {
 	box-shadow:  1px 1px 4px #172038;
+}
+#current_players {
+	display: flex;
+	flex-direction: column;
+	scrollbar-width: none;
+}
+#current_players::-webkit-scrollbar {
+	display: none;
+}
+
+#fireworks {
+	width: 200px;
+	height: 200px;
+	background-image: url(/assets/user/images/game/jackpot/firework_ff4343.png);
+    background-position: -1600px -1800px;	
+}
+
+.fireworks-container {
+	position: absolute; 
+	z-index: 1002; 
+	width: 100%; 
+	height: 100%; 
+	align-items: center; 
+	justify-content: center; 
+	display: flex;	
 }

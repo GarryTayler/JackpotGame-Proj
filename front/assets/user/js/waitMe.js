@@ -6,7 +6,6 @@ Github: https://github.com/vadimsva/waitMe
 (function($) {
   $.fn.waitMe = function(method) {
     return this.each(function() {
-
       var elem = $(this),
 			elemClass = 'waitMe',
 			waitMe_text,
@@ -19,7 +18,6 @@ Github: https://github.com/vadimsva/waitMe
 			waitMeObj,
 			_options,
 			currentID;
-
       var methods = {
         init : function() {
           var _defaults = {

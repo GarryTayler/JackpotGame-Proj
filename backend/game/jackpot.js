@@ -92,7 +92,7 @@ app.post('/new_deposit', function(req, res) {
 	let betInfo = {
 		USERID: req.body.USERID,
 		BET_AMOUNT: parseFloat(req.body.BET_AMOUNT),
-		AVATAR_MEDIUM: req.body.AVATAR_MEDIUM,
+		AVATAR: req.body.AVATAR,
 		USERNAME: req.body.USERNAME
 	};
 	Jackpot.new_bet(betInfo);
@@ -146,9 +146,10 @@ io.on('connection', function(socket) {
 	socket_init(socket);
 });
 
-function socket_init(socket) 
+function socket_init(socket)
 {
 	var params = Jackpot.params();
+
 	if (params.status == 'ROTATE') {
 		// when it's rotating, you have to send rotating info
 		params.rotation = Rotate.params();
@@ -209,9 +210,6 @@ var Jackpot = function() {
 
 	return {
 		init: function() {
-
-			console.log(mainServerUrl + 'ajax_round_info');
-
 			request.post({
 				url: mainServerUrl + 'ajax_round_info',
 				formData: {}
@@ -249,7 +247,7 @@ var Jackpot = function() {
 			io.emit('Finish', params);
 		},
 		new_bet: function(betInfo) {
-			bets.push(betInfo);
+			bets.unshift(betInfo);
 			game.TOTAL_BETTING_AMOUNT = parseFloat(game.TOTAL_BETTING_AMOUNT) + betInfo.BET_AMOUNT;
 			for (var i = 0; i < bets.length; i += 1) {
 				bets[i].CHANCE = parseInt(10000 * bets[i].BET_AMOUNT / game.TOTAL_BETTING_AMOUNT) / 100;
@@ -315,7 +313,6 @@ var Rotate = function() {
 				else if (speed_ > 0.1) 
 					rate -= 0.02;
 				else {
-					// console.log('slowDownDistance', curAngle - slowDownStartAngle);
 				}
 			} else {
 				if (curAngle > slowDownStartAngle) 
@@ -333,7 +330,6 @@ var Rotate = function() {
 			}, 20);
 		}
 	};
-	
 	return {
 		start: function(stopAngle1) {
 			stopAngle = runUpAngle + 2160 + slowAngle + stopAngle1;

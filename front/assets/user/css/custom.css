@@ -637,32 +637,25 @@ submenu ========================================================================
 
   /* width */
   ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px !important;
+    width: 2px;
+    height: 2px !important;
   }
-  
   /* Track */
   ::-webkit-scrollbar-track {
     background: #1F2640;
   }
-  
   /* Handle */
   ::-webkit-scrollbar-thumb {
     background: #0B102F;
   }
-  
   /* Handle on hover */
   ::-webkit-scrollbar-thumb:hover {
     background: #0B102F;
   }
-
-
   body {
-    scrollbar-color: #5a2d82 #2f1244;
-    scrollbar-width: 4px;
+	scrollbar-color: #5a2d82 #2f1244; 
+	/* scrollbar-width: 2px; */
   }
-
-
   /* game panel */
   .game_panel {
     width: 100%;

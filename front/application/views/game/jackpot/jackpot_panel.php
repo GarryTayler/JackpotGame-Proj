@@ -36,7 +36,7 @@
             </div>
             <div class="bet-detail-wrapper">
                 <img src="<?php echo base_url();?>assets/user/images/deposit_amount.png">
-                <span class="numeric">{{my_bet.BET_AMOUNT}}</span>
+                <span class="numeric">{{number_format(my_bet.BET_AMOUNT)}}</span>
                 <label>Your Amount</label>
             </div>
             <div class="bet-detail-wrapper">
@@ -57,7 +57,7 @@
             </div>
         </div>
     </div>
-    <div style="color: #d3c1d5; text-align: center;display: none;">
+    <div style="color: #d3c1d5; text-align: center; display: none;">
         <span class="title-small">Round Hash:</span><span id="round_hash">76Ed56fhhfbeeehj42dnkellzsdnkszdlfkjwe111lksdgsv23fwnmk65gdrvg29sv1</span>
     </div>
     <div class="row" style="margin-top: 20px;min-height: 550px;" id="my-panel">
@@ -66,11 +66,11 @@
                 <span class="title-small" v-show="bets.length">Current Jackpot:</span>
                 <div id="player_list" v-show="bets.length">
                     <div class="div-player-info row" v-for="user in bets">
-                        <img src="<?php echo base_url()?>uploads/profile/<?php echo $this->session->userdata('AVATAR');?>" onerror="this.src='<?php echo base_url()?>assets/user/images/no_avatar.jpg'">
+                        <img v-if="user.hasOwnProperty('AVATAR') && user.AVATAR != null && user.AVATAR != ''" :src="'<?php echo base_url()?>uploads/profile/' + user.AVATAR" onerror="this.src='<?php echo base_url()?>assets/user/images/no_avatar.jpg'">
                         <div style="margin: 5px 0px; border-radius: 2px; border: solid 2px #fdb11d;"></div>
                         <div style="margin: 0px 10px;" class="bet-log-wrapper">
                             <label class="player-name">{{ user.USERNAME }}</label>
-                            <div class="div-deposit-info">Deposited <span class="numeric deposit-amount">{{ user.BET_AMOUNT }}</span>
+                            <div class="div-deposit-info">Deposited <span class="numeric deposit-amount">{{ number_format(user.BET_AMOUNT) }}</span>
                                 Coins
                             </div>
                             <label class="lbl-percent">{{ user.CHANCE }}%</label>
@@ -78,7 +78,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+		</div>
         <div class="col-md-5 order-1 order-md-2 ">
             <div id="jackpot_circle" style="position:relative;padding-top:100%;">
                 <div id="jackpot-wrapper">
@@ -87,17 +87,21 @@
                             <canvas id="myChart"></canvas>
                         </div>
                     </div>
-                    <div style="width: 100%; position: absolute;text-align: center">
+                    <div style="width: 100%; position: absolute;text-align: center; z-index: 1001;">
                         <img style="margin: 0px auto;"
                              src="<?= base_url('assets/user/images/game/jackpot/rectangle.png') ?>">
-                    </div>
+					</div>
+					<div class="fireworks-container">
+						<div id="fireworks">
+						</div>
+					</div>
                     <div class="circle_div">
                         <div id="div-relative">
                             <div class="row text_label">
                                 <span id="jackpotTitle" style="margin: auto;">Jackpot</span>
                             </div>
                             <div class="row number_label" style="margin-bottom: 40px;">
-                                <span id="betting_total" style="margin: auto; font-size: 48px;">${{ game.TOTAL_BETTING_AMOUNT }}</span>
+                                <span id="betting_total" style="margin: auto; font-size: 48px;">{{ number_format(game.TOTAL_BETTING_AMOUNT) }}</span>
                             </div>
                             <div class="row" style="padding: 0 10px;justify-content: center;align-items: center;">
                                 <img src="<?= base_url('assets/user/images/game/jackpot/timer.png') ?>"
@@ -125,7 +129,7 @@
                             </div>
                             <table style="width:100%;font-size:14px">
                                 <tr>
-                                    <td id="last_win_amount">{{last_winner.BET_AMOUNT}}</td>
+                                    <td id="last_win_amount">{{number_format(last_winner.BET_AMOUNT)}}</td>
                                     <td id="last_win_percent">{{last_winner.WIN_CHANCE}}%</td>
                                 </tr>
                                 <tr style="font-size: 12px;">
@@ -202,5 +206,20 @@
 </div>
 <script src="<?php echo base_url();?>assets/modules/socket.io-client/dist/socket.io.js"></script>
 <script>
-    var jackpot_socket = io.connect('<?php echo JACKPOT_SERVER_URL; ?>', {forceNew: true, reconnection:false});
+	var jackpot_socket = io.connect('<?php echo JACKPOT_SERVER_URL; ?>', {forceNew: true, reconnection:false});
+	//var animation = setInterval( moveSprite,40);
+	var x = 0 , y = 0;
+	function moveSprite(){
+		//console.log(x, y);
+		$('#fireworks').css('background-position', x + 'px '+ y + 'px');
+		x -= 200;
+		if(x < -1600)
+		{
+			y -= 200;
+			x = 0;
+		}
+		if(y < -1800) {
+			y = 0;
+		}
+	}
 </script>

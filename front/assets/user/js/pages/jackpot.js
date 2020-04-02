@@ -1,6 +1,5 @@
 // socket part start ==========
 jackpot_socket.on('Init', function(resp) {
-	console.log('init', resp);
 	// initialize data from server
 	app.last_winner = resp.last_winner;
 	app.last_winner.AVATAR = base_url + "uploads/profile/" + app.last_winner.AVATAR;
@@ -8,7 +7,6 @@ jackpot_socket.on('Init', function(resp) {
 	app.bets = resp.bets;
 	app.players = resp.players;
 	app.game = resp.game;
-
 	if (timerHandler) {
 		clearInterval(timerHandler);
 		timerHandler = null;
@@ -28,11 +26,9 @@ jackpot_socket.on('Init', function(resp) {
 		// timer is cleared, the only thing we have to do rotate to final angle
 		app.finish(resp.curAngle, resp.winner);
 	}
-
 	if (resp.status != 'ROTATE') {
 		$("#div-rotate").css('transform', '');
 	}
-
 	BettingPanel.refresh();
 	if (!user_id) return;
 	app.player_index = -1;
@@ -46,7 +42,6 @@ jackpot_socket.on('Init', function(resp) {
 });
 
 jackpot_socket.on('Started', function(time_left) {
-	console.log('started', time_left);
 	if (timerHandler) {
 		clearInterval(timerHandler);
 		timerHandler = null;
@@ -57,7 +52,6 @@ jackpot_socket.on('Started', function(time_left) {
 });
 
 jackpot_socket.on('Rotate', function(rotation) {
-	console.log('rotate', rotation);
 	if (timerHandler) {
 		clearInterval(timerHandler);
 		timerHandler = null;
@@ -71,7 +65,6 @@ jackpot_socket.on('Finish', function (resp) {
 		clearInterval(timerHandler);
 		timerHandler = null;
 	}
-	console.log(resp);
 	app.finish(
 		resp.curAngle,
 		resp.winner_id
@@ -79,10 +72,7 @@ jackpot_socket.on('Finish', function (resp) {
 });
 
 jackpot_socket.on('Update', function (resp) {
-	// u needs to refresh chart
-	console.log('Update');
 	app.player_index = -1;
-
 	app.bets = resp.bets;
 	app.players = resp.players;
 	app.game = resp.game;
@@ -106,11 +96,11 @@ jackpot_socket.on('disconnect' , function() {
 // there my boy, we have three things to complete bet
 
 // colors for chart
-var colors = [ 
-    '#ff8229', '#87cefa', '#da70d6', '#32cd32', '#6495ed', 
-    '#ff69b4', '#ba55d3', '#cd5c5c', '#ffa500', '#40e0d0', 
-    '#1e90ff', '#ff6347', '#7b68ee', '#00fa9a', '#ffd700', 
-    '#6b8e23', '#ff00ff', '#3cb371', '#b8860b', '#30e0e0' 
+var colors = [
+    '#ff8229', '#87cefa', '#da70d6', '#32cd32', '#6495ed',
+    '#ff69b4', '#ba55d3', '#cd5c5c', '#ffa500', '#40e0d0',
+    '#1e90ff', '#ff6347', '#7b68ee', '#00fa9a', '#ffd700',
+    '#6b8e23', '#ff00ff', '#3cb371', '#b8860b', '#30e0e0'
 ];
 
 var service = axios.create({
@@ -124,7 +114,7 @@ var jackpanel;
 /**
  * fireworks code
  * */
-var firework_timer = null;
+var firework_timer = null, firework_x = 0, firework_y = 0;
 var firework_index = 1;
 var user_anim_index = 1;
 
@@ -143,7 +133,6 @@ var app = new Vue({
         last_bet_id: 0,
         flag_sound: true,
         flag_loaded: false,
-
         // current players
         bets: [
             {
@@ -265,7 +254,6 @@ var app = new Vue({
 				'jackpot/ajax_deposit',
 				function(resp) {
 					if (!resp.status) {
-						console.log(resp.error);
 						showToast('error', resp.msg);
 					}else {
 						$("#profile_balance").html(resp.balance);
@@ -284,6 +272,7 @@ var app = new Vue({
 		finish: function(angle, winner) {
 			$("#div-rotate").css('transform', 'rotate3d(0, 0, 1, ' + angle + 'deg)');
 			// alert user the result ... but we don't run this code
+			BettingPanel.startFirworks();
 			if (user_id == winner) {
 				update_wallet();
 				showToast('success', 'You are the winner !');
@@ -291,6 +280,27 @@ var app = new Vue({
 				update_wallet();
 				showToast('warning', 'You loose~');
 			}
+		},
+		number_format: function(num) {
+			num = parseInt(num);
+			num = num.toString();
+			var splitString = num.split("");
+			var reverseArray = splitString.reverse();
+			num = reverseArray.join("");
+			var result = "";
+			var gap_size = 3; //Desired distance between spaces
+			while (num.length > 0) // Loop through string
+			{
+				if(result.length > 0)
+					result = result + " " + num.substring(0,gap_size); // Insert space character
+				else
+					result = num.substring(0,gap_size); // Insert space character
+				num = num.substring(gap_size);  // Trim String
+			}
+			splitString = result.split("");
+			reverseArray = splitString.reverse();
+			result = reverseArray.join("");
+			return result;
 		}
     }
 });
@@ -312,33 +322,23 @@ var BettingPanel = function() {
 		refresh: function() {
 			this.initChart();
 		},
-		fireworksFunc: function (){
-            if(firework_index > 90)
-            {
-                clearInterval(firework_timer);
-                firework_index = 1;
-                user_anim_index = 1;
-                app.refresh(); // refresh echart, and other things.
-                return;
-            }
-
-            $('#fireworks').removeClass('firework' + (firework_index-1));
-            $('#fireworks').addClass('firework' + firework_index);
-
-            firework_index ++;
-            if(user_anim_index > 56){
-                return;
-            } else {
-                $('.fire.animFL')
-                    .show()
-                    .removeClass('afwin' + (user_anim_index-1))
-                    .addClass('afwin' + user_anim_index);
-                $('.fire.animWL')
-                    .show()
-                    .removeClass('afwin' + (user_anim_index-1))
-                    .addClass('afwin' + user_anim_index);
-                user_anim_index ++;
-            }
+		startFirworks: function () {
+			firework_x = firework_y = 0;
+			firework_timer = setInterval(this.fireworksFunc, 40);
+		},
+		fireworksFunc: function () {	
+			$('#fireworks').css('background-position', firework_x + 'px '+ firework_y + 'px');
+			firework_x -= 200;
+			if(firework_x < -1600)
+			{
+				firework_y -= 200;
+				firework_x = 0;
+			}
+			if(firework_y < -1800) {
+				firework_y = 0;
+				clearInterval(firework_timer);
+				firework_timer = null;
+			}
         },
 		initChart: function() {
 			var ctx = document.getElementById('myChart');//.getContext('2d');
@@ -409,18 +409,12 @@ function time_down() {
 	}
 }
 
-
 $(document).ready(function() {
-	console.log('set onfocus');
-
     resizeChartArea(true);
-
 	window.onfocus = function() {
 		jackpot_socket.emit('Init'); // needs refresh
 	};
 	jackpot_socket.emit('Init');
-
-
 });
 
 $(window).resize(function(w) {
@@ -433,9 +427,8 @@ function resizeChartArea(initStatus) {
     var w = $('#div-chart').width();
 	if(initStatus){
 		$('#myChart').attr('width', w);
-		$('#myChart').attr('height', w);    
+		$('#myChart').attr('height', w);
 	}
-	
 	var divRelativeW = $('#div-relative').width();
     $('#jackpotTitle').css('font-size', divRelativeW / 9);
     $('#jackpotTitle').css('margin-bottom', divRelativeW / 13);
@@ -457,7 +450,7 @@ function resizeChartArea(initStatus) {
         $("#current_players").css('min-height', 'auto');
         $("#current_players").css('max-height', '400px');
 	} else {
-        $("#current_players").css('height', $(".deposit-wrapper").height() + 'px');
+        $("#current_players").css('max-height', $(".deposit-wrapper").height() + 'px');
 	}
 }
 
@@ -513,7 +506,6 @@ var Rotate = function() {
 	return {
 		start: function(params) {
 			stopAngle = params.stopAngle;
-            console.log('stopAngle', stopAngle);
 			slowDownStartAngle = params.slowDownStartAngle;
 			isRunUp = params.isRunUp;
 			isSlowDown = params.isSlowDown;
@@ -552,16 +544,13 @@ var FireWorks = function() {
             for ( ; i < app.bets.length; i += 1 ) {
                 if ( app.bets[i].USERID == app.game.WINNER) break;
             }
-            // showToast('successs', 'Winner is ' + app.bets[i].USERNAME);
+            //showToast('successs', 'Winner is ' + app.bets[i].USERNAME);
             app.refresh();
 			return;
 		}
-
 		$('#fireworks').removeClass('firework' + (firework_index -1));
 		$('#fireworks').addClass('firework' + (firework_index +1));
-
 		firework_index += 1;
-
 		if (user_anim_index > 56) {
 			return;
 		} else {
@@ -571,11 +560,9 @@ var FireWorks = function() {
 			$('.fire.animWL').show()
 				.removeClass('afwin' + (user_anim_index -1))
 				.addClass('afwin' + user_anim_index);
-
 			user_anim_index += 1;
 		}
 	};
-
 	return {
 		start: function() {
 			setTimeout(
