@@ -61,7 +61,11 @@ require_once('application/views/template/menu.php');
     <script type="text/javascript">
         var game_type = 'jackpot';
         var site_url = '<?=site_url()?>';
-        var base_url = '<?=base_url()?>';
+		var base_url = '<?=base_url()?>';
+		function filter_text(str) {
+			str = str.replace(/(?:\r\n|\r|\n)/g, '<br>');
+			return str;
+		}
 		run_waitMe($('.faq-panel'), 2, 'ios');
 		$.ajax({
             url: '<?= base_url("Faq/get_list") ?>',
@@ -82,7 +86,7 @@ require_once('application/views/template/menu.php');
                             <i class="fa fa-plus"></i> \
                         </div> \
                         <div id="faq' + res.data[i].id + '" class="faq-item-contents" style="display: none;"> \
-                            ' + res.data[i].answer + ' \
+                            ' + filter_text(res.data[i].answer) + ' \
                         </div> \
                     </div>';
 				}
