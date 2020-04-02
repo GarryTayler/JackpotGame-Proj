@@ -23,7 +23,7 @@
 <link rel="stylesheet" type="text/css"
       href="<?php echo base_url(); ?>assets/user/css/pages/game/jackpot_responsive.css">
 
-<div id="main-container">
+<div id="main-container" style="padding-top: 2px;">
     <div class="row">
         <p class="page-title">Dashboard</p>
     </div>

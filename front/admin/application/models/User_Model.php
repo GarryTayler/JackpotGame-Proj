@@ -18,7 +18,7 @@ class User_Model extends MY_Model {
             $generalSearch = '';
         }
         if (!empty($query)) {
-            $this->where($query);
+            $this->db->where($query);
         }
         $this->db->where('user_role', 'USER');
 
@@ -33,7 +33,7 @@ class User_Model extends MY_Model {
             $generalSearch = '';
         }
         if (!empty($query)) {
-            $this->where($query);
+            $this->db->where($query);
         }
 
         return $this->_count_data($this->table, $generalSearch, $this->searchFields);

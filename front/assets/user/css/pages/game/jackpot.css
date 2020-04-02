@@ -71,7 +71,7 @@ Jackpot panel
 	height:90%;
 	left:5%;
 	top:5%;
-	border: solid 4px white;
+	border: solid 4px #1e263f;
 	border-radius: 50%;
 }
 #div-rotate {
@@ -679,4 +679,7 @@ Top panel
     .referral-from-wrapper {
         max-width: 90%;
     }
+}
+.btn-grid-deposit {
+	box-shadow:  1px 1px 4px #172038;
 }
