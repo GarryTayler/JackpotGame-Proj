@@ -60,7 +60,6 @@ class Jackpot_Model extends CI_Model {
                 break;
             }
         }
-
         // set winner to game
         $this->db->update('jackpot_game', array('WINNER' => $winner->USERID), array('ID' => $gameID));
         // HERE SERVER SIDE GET'S THERE PROFIT; hmm ~
@@ -94,7 +93,7 @@ class Jackpot_Model extends CI_Model {
         } else {
             $server_betting_profit = BETTING_SERVER_PROFIT;
         }
-        $server_profit = $gameInfo->TOTAL_BETTING_AMOUNT * $server_betting_profit;
+        $server_profit = ($gameInfo->TOTAL_BETTING_AMOUNT - $winner_bet) * $server_betting_profit / 100;
         $this->db->update('jackpot_game', array('TOTAL_PROFIT' => $server_profit), array('ID' => $gameID));
         // winner profit
         $winner_profit = $gameInfo->TOTAL_BETTING_AMOUNT - $server_profit;
