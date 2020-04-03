@@ -107,7 +107,8 @@ class Users_Model extends CI_Model {
 		return 'success';
 	}
 	function saveUserInfo($userInfo) {
-	    $userInfo['password'] = md5($userInfo['password']);
+		$userInfo['PASSWORD'] = md5($userInfo['password']);
+		$userInfo['CREATE_TIME'] = time();
         $ret = $this->db->insert('users', $userInfo);
         return $ret;
     }

@@ -39,10 +39,8 @@ app.post('/jackpot/ajax_deposit', function (req, res) {
             msg:'You have to login first.'
 		})
 	}
-	
 	let gameID = req.body.game_id;
 	let depositAmount = req.body.deposit_amount;
-
 	getUserInfo(req.body.token, function(userInfo){
 		// check if this amount is available on wallet
 		if (userInfo.wallet < depositAmount) {
