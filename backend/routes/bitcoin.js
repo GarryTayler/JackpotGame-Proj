@@ -106,7 +106,7 @@ router.post('/deposit/:who', async function(req, res, next) {
                         who : who,
                         type : 1,
                         amount : amount,
-                        fees : 0,
+                        fees : 0.00012,
                         detail : tx_hash,
                         txhash : destination_txhash
                     }

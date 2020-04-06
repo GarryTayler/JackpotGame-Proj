@@ -1,4 +1,5 @@
 // socket part start ==========
+var firework_timer = null, firework_x = 0, firework_y = 0;
 jackpot_socket.on('Init', function(resp) {
 	// initialize data from server
 	app.last_winner = resp.last_winner;
@@ -40,7 +41,6 @@ jackpot_socket.on('Init', function(resp) {
 	}
 	render_time_bar();
 });
-
 jackpot_socket.on('Started', function(time_left) {
 	if (timerHandler) {
 		clearInterval(timerHandler);
@@ -50,7 +50,6 @@ jackpot_socket.on('Started', function(time_left) {
 	render_time_bar();
 	timerHandler = setInterval(time_down, 1000);
 });
-
 jackpot_socket.on('Rotate', function(rotation) {
 	if (timerHandler) {
 		clearInterval(timerHandler);
@@ -59,7 +58,6 @@ jackpot_socket.on('Rotate', function(rotation) {
 	app.game.TIME_LEFT = 0; // time gone already ...
 	Rotate.start(rotation);
 });
-
 jackpot_socket.on('Finish', function (resp) {
 	if (timerHandler) {
 		clearInterval(timerHandler);
@@ -70,13 +68,11 @@ jackpot_socket.on('Finish', function (resp) {
 		resp.winner_id
 	);
 });
-
 jackpot_socket.on('Update', function (resp) {
 	app.player_index = -1;
 	app.bets = resp.bets;
 	app.players = resp.players;
 	app.game = resp.game;
-
 	// refresh panel
 	BettingPanel.refresh();
 	if (!user_id) return;
@@ -87,14 +83,11 @@ jackpot_socket.on('Update', function (resp) {
 		}
 	}
 });
-
 jackpot_socket.on('disconnect' , function() {
 	showToast('error' , 'Game server might have network problem. Please check  your internet connection.');
 });
 // socket part end ============
-
 // there my boy, we have three things to complete bet
-
 // colors for chart
 var colors = [
     '#ff8229', '#87cefa', '#da70d6', '#32cd32', '#6495ed',
@@ -114,11 +107,10 @@ var jackpanel;
 /**
  * fireworks code
  * */
-var firework_timer = null, firework_x = 0, firework_y = 0;
+
 var firework_index = 1;
 var user_anim_index = 1;
-
-var app = new Vue({ 
+var app = new Vue({
     el: '#main-container',
     data: {
 		player_index: -1,
@@ -146,7 +138,7 @@ var app = new Vue({
 		],
 		players: [], // SAME AS bets, but is grouped with player
 
-        // jackpot circle        
+        // jackpot circle
 
         // last_winner
         last_winner: {
@@ -156,7 +148,6 @@ var app = new Vue({
             WIN_CHANCE : 29
         },
         last_winner_exist: false,
-
         // deposit
         input_deposit: '',
         deposits: [
@@ -184,10 +175,10 @@ var app = new Vue({
 		},
 		my_bet: function() {
 			if (this.player_index >= 0) {
-				var t = this.players[this.player_index]; 
+				var t = this.players[this.player_index];
 				return {
 					BET_AMOUNT: t.BET_AMOUNT,
-					CHANCE: parseInt(t.BET_AMOUNT * 10000 / this.game.TOTAL_BETTING_AMOUNT) / 100 
+					CHANCE: parseInt(t.BET_AMOUNT * 10000 / this.game.TOTAL_BETTING_AMOUNT) / 100
 				};
 			} else {
 				return {
@@ -229,7 +220,7 @@ var app = new Vue({
         on_max:function() {
             // get max available from server, then set it
             var self = this;
-            send_request('jackpot/ajax_max_amount', 
+            send_request('jackpot/ajax_max_amount',
                 function(resp) {
                     if (resp.status) {
                         self.input_deposit = resp.wallet;
@@ -489,7 +480,6 @@ var Rotate = function() {
 				}
 			}
 		}
-	
 		if (curAngle >= stopAngle) {
 			clearInterval(timerHandler);
 			timerHandler = null;
@@ -528,51 +518,3 @@ var Rotate = function() {
 		}
 	};
 }();
-
-// fireworks --> when betting finishes, firework shows on the winner
-var FireWorks = function() {
-	var firework_index = 0;
-	var firework_timer = 0;
-	var user_anim_index = 0;
-
-	var fireworksFunc = function() {
-		if ( firework_index > 90 ) {
-			// finishes firework anim
-            clearInterval(firework_timer);
-            // then refresh
-            var i = 0;
-            for ( ; i < app.bets.length; i += 1 ) {
-                if ( app.bets[i].USERID == app.game.WINNER) break;
-            }
-            //showToast('successs', 'Winner is ' + app.bets[i].USERNAME);
-            app.refresh();
-			return;
-		}
-		$('#fireworks').removeClass('firework' + (firework_index -1));
-		$('#fireworks').addClass('firework' + (firework_index +1));
-		firework_index += 1;
-		if (user_anim_index > 56) {
-			return;
-		} else {
-			$('.fire.animFL').show()
-				.removeClass('afwin' + (user_anim_index -1))
-				.addClass('afwin' + user_anim_index);
-			$('.fire.animWL').show()
-				.removeClass('afwin' + (user_anim_index -1))
-				.addClass('afwin' + user_anim_index);
-			user_anim_index += 1;
-		}
-	};
-	return {
-		start: function() {
-			setTimeout(
-				function() {
-					$('.fire').addClass('animFL');
-					// winner's firework anims
-					firework_timer = setInterval(fireworksFunc, 50);
-				},
-				500 // time
-			);
-		}
-	}
-}
