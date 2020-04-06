@@ -20,12 +20,12 @@ jackpot_socket.on('Init', function(resp) {
 		render_time_bar();
 		timerHandler = setInterval(time_down, 1000);
 	} else if (resp.status == 'ROTATE') {
-		// rotating -- means you neds to start rotate
+		// rotating -- means you needs to start rotate
 		// rotate to given angle
 		Rotate.start(resp.rotation);
 	} else if (resp.status == 'FINISHED') {
 		// timer is cleared, the only thing we have to do rotate to final angle
-		app.finish(resp.curAngle, resp.winner);
+		app.finish(resp.curAngle, resp.winner_id);
 	}
 	if (resp.status != 'ROTATE') {
 		$("#div-rotate").css('transform', '');
@@ -265,12 +265,11 @@ var app = new Vue({
 			// alert user the result ... but we don't run this code
 			BettingPanel.startFirworks();
 			if (user_id == winner) {
-				update_wallet();
 				showToast('success', 'You are the winner !');
 			} else {
-				update_wallet();
 				showToast('warning', 'You loose~');
 			}
+            update_wallet();
 		},
 		number_format: function(num) {
 			num = parseInt(num);
@@ -314,7 +313,11 @@ var BettingPanel = function() {
 			this.initChart();
 		},
 		startFirworks: function () {
-			firework_x = firework_y = 0;
+            firework_x = firework_y = 0;
+			if (firework_timer) {
+                clearInterval(firework_timer);
+                firework_timer = null;
+			}
 			firework_timer = setInterval(this.fireworksFunc, 40);
 		},
 		fireworksFunc: function () {	

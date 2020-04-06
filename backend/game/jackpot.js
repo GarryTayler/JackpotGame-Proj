@@ -275,13 +275,19 @@ var Jackpot = function() {
 			});
 		},
 		params: function() {
-			return {
+			var retObj = {
 				status: status,
 				game: game,
 				last_winner: last_winner,
 				players: players,
 				bets: bets
 			};
+			if (status == 'FINISHED') {
+				var params = Rotate.params();
+				retObj.winner_id = cur_winner.USERID;
+				retObj.curAngle = params.curAngle;
+			}
+			return retObj;
 		}
 	}
 }();
