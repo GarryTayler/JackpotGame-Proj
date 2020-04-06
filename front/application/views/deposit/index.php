@@ -54,6 +54,7 @@ require_once('application/views/template/menu.php');
             <div class="row deposit-panel" style="margin-left: 0px; margin-right: 0px;">
                 <div class="col-md-8 deposit-info-wrapper" style="background: #1F2640;float:left;">
                     <p class="text-center" style="color:#C8CAD0;font-size:13px;">You will receive coins automatically after sending BTC to the address displayed below</p>
+					<p class="text-center" style="color:#C8CAD0;font-size:13px;">You have to deposit at least 0.00012BTC. Spin2Win won't proceed with deposit processing for any amount below that.</p>
                     <div class="text-center">
                         <div class="address-wrapper">
                             <p style="text-align: left;font-size: 13px;width:100%;">Your personal BTC deposit address</p>

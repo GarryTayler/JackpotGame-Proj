@@ -126,16 +126,7 @@ var app = new Vue({
         flag_sound: true,
         flag_loaded: false,
         // current players
-        bets: [
-            {
-                USERID: 1,
-                USERNAME: 'Karlson',
-                AVATAR: '',
-                BET_AMOUNT: 1000,
-                CHANCE: 0,
-                COLOR: '#FFF' // white
-            }
-		],
+        bets: [],
 		players: [], // SAME AS bets, but is grouped with player
 
         // jackpot circle
