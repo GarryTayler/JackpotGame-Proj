@@ -25,7 +25,7 @@ jackpot_socket.on('Init', function(resp) {
 		Rotate.start(resp.rotation);
 	} else if (resp.status == 'FINISHED') {
 		// timer is cleared, the only thing we have to do rotate to final angle
-		app.finish(resp.curAngle, resp.winner_id);
+		app.finish(resp.curAngle, resp.winner);
 	}
 	if (resp.status != 'ROTATE') {
 		$("#div-rotate").css('transform', '');
@@ -256,11 +256,12 @@ var app = new Vue({
 			// alert user the result ... but we don't run this code
 			BettingPanel.startFirworks();
 			if (user_id == winner) {
+				update_wallet();
 				showToast('success', 'You are the winner !');
 			} else {
+				update_wallet();
 				showToast('warning', 'You loose~');
 			}
-            update_wallet();
 		},
 		number_format: function(num) {
 			num = parseInt(num);
