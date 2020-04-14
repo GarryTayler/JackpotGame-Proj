@@ -1,5 +1,10 @@
 // socket part start ==========
-var firework_timer = null, firework_x = 0, firework_y = 0;
+var firework_timer = null,
+	firework_x = 0,
+	firework_y = 0,
+	isFirstLoad = true,
+	isNeedrefresh = true;
+
 jackpot_socket.on('Init', function(resp) {
 	// initialize data from server
 	app.last_winner = resp.last_winner;
@@ -12,25 +17,30 @@ jackpot_socket.on('Init', function(resp) {
 		clearInterval(timerHandler);
 		timerHandler = null;
 	}
+
+	isNeedrefresh = false;
 	// THERE ARE FOUR STATUS
 	if (resp.status == 'WAITING') {
-		// we need to do nothing
+		if (resp.bets.length == 0) {
+            isNeedrefresh = true;
+		}
 	} else if (resp.status == 'STARTED') {
 		// timer running
 		render_time_bar();
 		timerHandler = setInterval(time_down, 1000);
 	} else if (resp.status == 'ROTATE') {
-		// rotating -- means you needs to start rotate
-		// rotate to given angle
+        isNeedrefresh = true;
 		Rotate.start(resp.rotation);
 	} else if (resp.status == 'FINISHED') {
-		// timer is cleared, the only thing we have to do rotate to final angle
-		app.finish(resp.curAngle, resp.winner);
+        finishGame(resp);
 	}
+
 	if (resp.status != 'ROTATE') {
 		$("#div-rotate").css('transform', '');
 	}
-	BettingPanel.refresh();
+
+    BettingPanel.refresh();
+
 	if (!user_id) return;
 	app.player_index = -1;
 	for (var i = 0; i < app.players.length; i += 1) {
@@ -42,6 +52,7 @@ jackpot_socket.on('Init', function(resp) {
 	render_time_bar();
 });
 jackpot_socket.on('Started', function(time_left) {
+    isNeedrefresh = false;
 	if (timerHandler) {
 		clearInterval(timerHandler);
 		timerHandler = null;
@@ -51,6 +62,7 @@ jackpot_socket.on('Started', function(time_left) {
 	timerHandler = setInterval(time_down, 1000);
 });
 jackpot_socket.on('Rotate', function(rotation) {
+	isNeedrefresh = true;
 	if (timerHandler) {
 		clearInterval(timerHandler);
 		timerHandler = null;
@@ -59,16 +71,10 @@ jackpot_socket.on('Rotate', function(rotation) {
 	Rotate.start(rotation);
 });
 jackpot_socket.on('Finish', function (resp) {
-	if (timerHandler) {
-		clearInterval(timerHandler);
-		timerHandler = null;
-	}
-	app.finish(
-		resp.curAngle,
-		resp.winner_id
-	);
+	finishGame(resp);
 });
 jackpot_socket.on('Update', function (resp) {
+    isNeedrefresh = true;
 	app.player_index = -1;
 	app.bets = resp.bets;
 	app.players = resp.players;
@@ -126,7 +132,16 @@ var app = new Vue({
         flag_sound: true,
         flag_loaded: false,
         // current players
-        bets: [],
+        bets: [
+            {
+                USERID: 1,
+                USERNAME: 'Karlson',
+                AVATAR: '',
+                BET_AMOUNT: 1000,
+                CHANCE: 0,
+                COLOR: '#FFF' // white
+            }
+		],
 		players: [], // SAME AS bets, but is grouped with player
 
         // jackpot circle
@@ -254,14 +269,13 @@ var app = new Vue({
 		finish: function(angle, winner) {
 			$("#div-rotate").css('transform', 'rotate3d(0, 0, 1, ' + angle + 'deg)');
 			// alert user the result ... but we don't run this code
-			BettingPanel.startFirworks();
 			if (user_id == winner) {
-				update_wallet();
 				showToast('success', 'You are the winner !');
 			} else {
-				update_wallet();
 				showToast('warning', 'You loose~');
 			}
+			BettingPanel.startFirworks();
+            update_wallet();
 		},
 		number_format: function(num) {
 			num = parseInt(num);
@@ -302,7 +316,8 @@ function send_request(url, process = function(resp){}, data = false) {
 var BettingPanel = function() {
 	return {
 		refresh: function() {
-			this.initChart();
+			if (isFirstLoad || isNeedrefresh) this.initChart();
+            isFirstLoad = false;
 		},
 		startFirworks: function () {
             firework_x = firework_y = 0;
@@ -405,7 +420,6 @@ $(document).ready(function() {
 
 $(window).resize(function(w) {
 	resizeChartArea(false);
-	// BettingPanel.refresh();
 });
 
 function resizeChartArea(initStatus) {
@@ -438,6 +452,17 @@ function resizeChartArea(initStatus) {
 	} else {
         $("#current_players").css('max-height', $(".deposit-wrapper").height() + 'px');
 	}
+}
+
+function finishGame(resp) {
+    if (timerHandler) {
+        clearInterval(timerHandler);
+        timerHandler = null;
+    }
+    app.finish(
+        resp.curAngle,
+        resp.winner_id
+    );
 }
 
 var Rotate = function() {

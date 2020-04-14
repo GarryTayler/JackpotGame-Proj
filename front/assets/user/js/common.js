@@ -4,13 +4,29 @@ function showToast (type , message , position = 'top-right')
     if( type == 'error' )
         heading = 'Error';
 
-    $.toast({
+    //Check duplication toast
+    // jq-toast-single
+    var toastObj = $.toast.options;
+    if ($('.jq-toast-single').css('display') == 'block' &&
+        toastObj.heading == heading &&
+        toastObj.icon == type &&
+        toastObj.text == message &&
+        toastObj.position == position) {
+        return;
+    }
+    $.toast.options = {
         heading: heading,
         text: message,
         showHideTransition: 'fade',
         position: position,
-        icon: type
-    });
+        icon: type,
+        allowToastClose: true,
+        hideAfter: 3000,
+        loader: true,
+        loaderBg: '#9EC600',
+        stack: 5,
+    };
+    $.toast();
 }
 
 function run_waitMe(el, num, effect)
